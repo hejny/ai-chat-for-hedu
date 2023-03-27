@@ -1,3 +1,70 @@
 .Chat {
-    /* TODO: Use or remove empty css */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    /*background-color: #f2f2f2;*/
+}
+
+/* Chat messages area */
+.chatMessages {
+    height: calc(100% - 60px);
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+/* Individual chat message */
+.chatMessage {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    max-width: 60%;
+}
+
+/* Sender name */
+.chatMessage .sender {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Message text */
+.chatMessage .messageText {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    align-self: flex-start;
+    max-width: 70%;
+}
+
+/* Sender message text */
+.chatMessage.sender .messageText {
+    background-color: #008cba;
+    align-self: flex-end;
+}
+
+/* Chat input area */
+.chatInput {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Chat input field */
+.chatInput textarea {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Chat send button */
+.chatInput button {
+    background-color: #008cba;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
 }
