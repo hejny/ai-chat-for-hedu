@@ -26,9 +26,7 @@ export function FooterSection() {
                 </li>
                 */}
 
-                <li>
-                    <Link href="/gallery">{t('Footer.gallery')}</Link>
-                </li>
+      
 
                 <li>
                     <Link href="/contact">{t('Footer.contact')}</Link>
@@ -36,6 +34,14 @@ export function FooterSection() {
 
                 <li>
                     <Link href="/about">{t('Footer.technical-details')}</Link>
+                </li>
+
+                <li>
+                    <a href="https://h-edu.org/">H-edu</a>
+                </li>
+
+                <li>
+                    <a href="https://collboard.com/">Collboard</a>
                 </li>
 
                 {/*

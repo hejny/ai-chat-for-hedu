@@ -7,7 +7,7 @@ html {
 }
 
 body {
-    background-color: #121121 /* <- TODO: Color to config */;
+    background: var(--main-background);
 }
 
 /* TODO: [🎨] ACRY all colors in one place HERE */

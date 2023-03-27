@@ -1,21 +1,44 @@
 import { useTranslation } from 'next-i18next';
+import { useState } from 'react';
 import { Article } from '../../components/Article/Article';
+import { Chat, ChatMessage } from '../../components/Chat/Chat';
 import { Section } from '../../components/Section/Section';
 import styles from './Journal.module.css';
 
 export function JournalSection() {
     const { t } = useTranslation();
 
+    // TODO: Make custom hook - event sourced
+    const [messages, setMessages] = useState<Array<ChatMessage>>([]);
+
     return (
         <Section id="Journal" className={styles.JournalSection}>
-            <h2><Article content={t('title')}/></h2>
-        
-           
-        
+            <h2>
+                <Article content={t('title')} />
+            </h2>
+
+            <Chat
+                messages={messages}
+                onMessage={(messageContent) =>
+                    setMessages([
+                        ...messages,
+                        {
+                            date: new Date(),
+                            from: 'TEACHER',
+                            content: messageContent,
+                        },
+                        {
+                            date: new Date(),
+                            from: 'JOURNAL',
+                            content: `Odpovídám na ${messageContent}`,
+                        },
+                    ])
+                }
+            />
+            {/*<RecordForm/>*/}
         </Section>
     );
 }
-
 
 /*
 
