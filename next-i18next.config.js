@@ -2,7 +2,7 @@ const { join } = require('path');
 
 module.exports = {
     i18n: {
-        defaultLocale: 'en',
+        defaultLocale: 'cs',
         locales: ['en', 'cs'],
         localeDetection: false,
     },
