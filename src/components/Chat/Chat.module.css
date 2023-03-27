@@ -1,5 +1,5 @@
 .Chat {
-    height: 100%;
+    /*height: 100%;*/
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -9,8 +9,8 @@
 
 /* Chat messages area */
 .chatMessages {
-    height: calc(100% - 60px);
-    overflow-y: scroll;
+    height: calc(100vh - 300px);
+    overflow-y: auto;
     margin-bottom: 10px;
 }
 

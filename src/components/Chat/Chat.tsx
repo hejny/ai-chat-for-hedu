@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import spaceTrim from 'spacetrim';
 import { Promisable } from 'type-fest';
 import { classNames } from '../../utils/classNames';
 import { Article } from '../Article/Article';
@@ -25,6 +26,10 @@ export function Chat(props: ChatProps) {
             throw new Error(`Can not find textarea`);
         }
 
+        if (spaceTrim(textAreaElement.current.value) === '') {
+            return;
+        }
+
         await onMessage(textAreaElement.current.value);
 
         textAreaElement.current.value = '';
@@ -36,9 +41,11 @@ export function Chat(props: ChatProps) {
             <div className={styles.chatMessages}>
                 {messages.map(({ from, content }, i) => (
                     <div key={i} className={classNames(styles.chatMessage, from === 'TEACHER' && styles.sender)}>
+                        {/*
                         <div key={i} className={styles.sender}>
                             {from.substring(0, 1)}
                         </div>
+                        */}
                         <div key={i} className={styles.messageText}>
                             <Article /* TODO: className={styles.messageText} */ {...{ content }} />
                         </div>
