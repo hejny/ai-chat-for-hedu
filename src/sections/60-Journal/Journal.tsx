@@ -4,6 +4,7 @@ import { Article } from '../../components/Article/Article';
 import { Chat, ChatMessage } from '../../components/Chat/Chat';
 import { Section } from '../../components/Section/Section';
 import styles from './Journal.module.css';
+import { speak } from './utils/speech';
 
 export function JournalSection() {
     const { t } = useTranslation();
@@ -19,27 +20,39 @@ export function JournalSection() {
 
             <Chat
                 messages={messages}
-                onMessage={(messageContent) =>
-                    setMessages([
-                        ...messages,
-                        {
-                            date: new Date(),
-                            from: 'TEACHER',
-                            content: messageContent,
-                        },
-                        {
-                            date: new Date(),
-                            from: 'JOURNAL',
-                            content: `Odpovídám na ${messageContent}`,
-                        },
-                    ])
-                }
+                onMessage={async (messageContent) => {
+                    const myMessage: ChatMessage = {
+                        date: new Date(),
+                        from: 'TEACHER',
+                        content: messageContent,
+                    };
+
+                    const replyMessage: ChatMessage = {
+                        date: new Date(),
+                        from: 'JOURNAL',
+                        content: `Odpovídám na ${messageContent}`,
+                    };
+
+                    setMessages([...messages, myMessage, replyMessage]);
+                    /* not await BUT maybe should be */ speak(
+                        replyMessage.content,
+                        'cs',
+                    ) /* <- TODO: !!! Do speech here or inside <Chat/> component */;
+                }}
             />
             {/*<RecordForm/>*/}
         </Section>
     );
 }
 
+/**
+ * TODO: !!! Pick a voice
+ * TODO: !!! Voice is working with markdown
+ * TODO: !!! Highlite during a speech
+ * TODO: !!! Allow to listen
+ * TODO: !!! Imitate conversation
+ * TODO: !!! Use momentjs for dates
+ */
 /*
 
 TODO:
