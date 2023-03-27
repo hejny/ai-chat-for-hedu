@@ -10,7 +10,7 @@
         "url": "https://github.com/hejny/ai-chat-for-hedu"
     },
     "scripts": {
-        "dev": "next dev -p 4455",
+        "dev": "next dev -p 4466",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
