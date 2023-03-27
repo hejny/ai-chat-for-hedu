@@ -10,7 +10,13 @@ export function JournalSection() {
     const { t } = useTranslation();
 
     // TODO: Make custom hook - event sourced
-    const [messages, setMessages] = useState<Array<ChatMessage>>([]);
+    const [messages, setMessages] = useState<Array<ChatMessage>>([
+        {
+            date: new Date(),
+            from: 'JOURNAL',
+            content: `Jaký máš cíl dnešní hodiny matematiky?`,
+        },
+    ]);
 
     return (
         <Section id="Journal" className={styles.JournalSection}>
@@ -52,6 +58,7 @@ export function JournalSection() {
  * TODO: !!! Allow to listen
  * TODO: !!! Imitate conversation
  * TODO: !!! Use momentjs for dates
+ * TODO: !!! (How) Should be initial message spokem?
  */
 /*
 
