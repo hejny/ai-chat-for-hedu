@@ -1,10 +1,8 @@
 import styles from './Sample.module.css';
 
-interface SampleProps {
-    sample: string;
-}
+interface SampleProps {}
 
 export function Sample(props: SampleProps) {
-    const { sample } = props;
-    return <div className={styles.sample}>{sample}</div>;
+    const {} = props;
+    return <div className={styles.Sample}></div>;
 }
