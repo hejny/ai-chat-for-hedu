@@ -6,6 +6,7 @@ import journalAvatar from '../../../public/people/journal.jpeg';
 import teacherAvatar from '../../../public/people/teacher.jpeg';
 import { classNames } from '../../utils/classNames';
 import { Article } from '../Article/Article';
+import { VoiceRecognitionButton } from '../VoiceRecognitionButton/VoiceRecognitionButton';
 import styles from './Chat.module.css';
 export interface ChatMessage {
     // TODO: ID
@@ -22,21 +23,23 @@ interface ChatProps {
 export function Chat(props: ChatProps) {
     const { messages, onMessage } = props;
 
-    const textAreaElement = useRef<HTMLTextAreaElement>();
+    const textareaRef = useRef<HTMLTextAreaElement>();
 
     const handleSend = async () => {
-        if (!textAreaElement.current) {
+        const textareaElement = textareaRef.current;
+
+        if (!textareaElement) {
             throw new Error(`Can not find textarea`);
         }
 
-        if (spaceTrim(textAreaElement.current.value) === '') {
+        if (spaceTrim(textareaElement.value) === '') {
             return;
         }
 
-        await onMessage(textAreaElement.current.value);
+        await onMessage(textareaElement.value);
 
-        textAreaElement.current.value = '';
-        textAreaElement.current.focus();
+        textareaElement.value = '';
+        textareaElement.focus();
     };
 
     return (
@@ -60,7 +63,7 @@ export function Chat(props: ChatProps) {
 
             <div className={styles.chatInput}>
                 <textarea
-                    ref={textAreaElement as any} /* <- !!! Focus on page load */
+                    ref={textareaRef as any} /* <- !!! Focus on page load */
                     defaultValue=""
                     placeholder="Napište zprávu"
                     onKeyDown={(event) => {
@@ -76,6 +79,8 @@ export function Chat(props: ChatProps) {
                     }}
                 />
                 <button onClick={/* not await */ handleSend}>Odeslat</button>
+
+                <VoiceRecognitionButton {...{ textareaRef }} />
             </div>
         </div>
     );
