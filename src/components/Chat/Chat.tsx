@@ -80,7 +80,7 @@ export function Chat(props: ChatProps) {
                 />
                 <button onClick={/* not await */ handleSend}>Odeslat</button>
 
-                <VoiceRecognitionButton {...{ textareaRef }} />
+                <VoiceRecognitionButton language="cs" {...{ textareaRef }} />
             </div>
         </div>
     );
