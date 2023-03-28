@@ -2,13 +2,13 @@
  * Synthesizes speech for the given text in the specified language using the browser's built-in SpeechSynthesis API.
  *
  * @param text The text to synthesize as speech.
- * @param lang The language code to use for the synthesized speech (e.g. 'en-US').
+ * @param language The language code to use for the synthesized speech (e.g. 'en-US').
  * @returns A promise that resolves when speech synthesis is complete.
  */
-export async function speak(text: string, lang: string): Promise<void> {
+export async function speak(text: string, language: string): Promise<void> {
     return new Promise((resolve, reject) => {
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang;
+        utterance.lang = language;
         utterance.onend = () => {
             resolve();
         };
