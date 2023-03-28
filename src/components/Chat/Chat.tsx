@@ -1,6 +1,9 @@
+import Image from 'next/image';
 import { useRef } from 'react';
 import spaceTrim from 'spacetrim';
 import { Promisable } from 'type-fest';
+import journalAvatar from '../../../public/people/journal.jpeg';
+import teacherAvatar from '../../../public/people/teacher.jpeg';
 import { classNames } from '../../utils/classNames';
 import { Article } from '../Article/Article';
 import styles from './Chat.module.css';
@@ -41,11 +44,13 @@ export function Chat(props: ChatProps) {
             <div className={styles.chatMessages}>
                 {messages.map(({ from, content }, i) => (
                     <div key={i} className={classNames(styles.chatMessage, from === 'TEACHER' && styles.sender)}>
-                        {/*
-                        <div key={i} className={styles.sender}>
-                            {from.substring(0, 1)}
+                        <div key={i} className={styles.avatar}>
+                            <Image
+                                src={{ JOURNAL: journalAvatar, TEACHER: teacherAvatar }[from]}
+                                alt={`AI generated image of ${from.toLocaleLowerCase()} as small cartoon avatar`}
+                            />
                         </div>
-                        */}
+
                         <div key={i} className={styles.messageText}>
                             <Article /* TODO: className={styles.messageText} */ {...{ content }} />
                         </div>

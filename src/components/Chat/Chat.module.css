@@ -17,15 +17,29 @@
 /* Individual chat message */
 .chatMessage {
     display: flex;
-    flex-direction: column;
     margin-bottom: 10px;
     max-width: 60%;
+
+    align-items: start;
+    flex-direction: row;
 }
 
-/* Sender name */
-.chatMessage .sender {
-    font-weight: bold;
-    margin-bottom: 5px;
+.chatMessage.sender {
+    align-items: end;
+    flex-direction: row-reverse;
+}
+
+/* Sender Avatar */
+.chatMessage .avatar {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.chatMessage .avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 /* Message text */
@@ -34,14 +48,12 @@
     color: white;
     padding: 10px;
     border-radius: 10px;
-    align-self: flex-start;
     max-width: 70%;
 }
 
 /* Sender message text */
 .chatMessage.sender .messageText {
     background-color: #008cba;
-    align-self: flex-end;
 }
 
 /* Chat input area */
