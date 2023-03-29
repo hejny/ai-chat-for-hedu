@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import spaceTrim from 'spacetrim';
 import { Promisable } from 'type-fest';
 import journalAvatar from '../../../public/people/journal.jpeg';
@@ -24,6 +24,16 @@ export function Chat(props: ChatProps) {
     const { messages, onMessage } = props;
 
     const textareaRef = useRef<HTMLTextAreaElement>();
+
+    useEffect(
+        (/* Focus textarea on page load */) => {
+            if (!textareaRef.current) {
+                return;
+            }
+            textareaRef.current.focus();
+        },
+        [textareaRef],
+    );
 
     const handleSend = async () => {
         const textareaElement = textareaRef.current;
@@ -63,7 +73,7 @@ export function Chat(props: ChatProps) {
 
             <div className={styles.chatInput}>
                 <textarea
-                    ref={textareaRef as any} /* <- !!! Focus on page load */
+                    ref={textareaRef as any}
                     defaultValue=""
                     placeholder="Napište zprávu"
                     onKeyDown={(event) => {
