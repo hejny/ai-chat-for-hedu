@@ -10,7 +10,6 @@
 
     align-items: stretch;
     justify-content: stretch;
-    
 
     /* TODO: Do not show white page scrollbar */
 }
@@ -31,7 +30,6 @@
     grid-column: 1 / span 3;
     grid-row: 1 / span 2;
 }
-
 
 .page main {
     /*/
@@ -60,7 +58,7 @@
     color: var(--normal-text-color);
 }
 
-/* TODO: !!! move to welcome section */
+/* TODO: Move to welcome section */
 .page h1,
 .page h2,
 .page b,

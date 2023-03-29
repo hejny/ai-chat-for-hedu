@@ -1,14 +1,6 @@
 const LINKS = {
     Collboard: 'https://collboard.com',
     'H-edu': 'https://h-edu.cz',
-    'Czech.events': 'https://czech.events',
-    'Česká společnost ornitologická': 'https://www.birdlife.cz/',
-    'České společnosti ornitologické': 'https://www.birdlife.cz/',
-    'Startup Weekendu': 'https://startovani.cz/',
-    // TODO: !!! 'Startup Weekend': 'https://startovani.cz/',
-
-    // TODO: !!! České společnosti ornitologické vs Česká společnost ornitologická
-    // TODO: !!! Startup Weekend vs Startup Weekendu
 };
 
 /**

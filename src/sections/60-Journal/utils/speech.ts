@@ -48,4 +48,5 @@ export async function speak(text: string, language: string): Promise<void> {
 
 /**
  * TODO: !!! Enforce cs
+ * TODO: !!! Try speech/regognition on iPhone
  */

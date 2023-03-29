@@ -22,7 +22,7 @@ export function VoiceRecognitionButton(props: VoiceRecognitionButtonProps) {
     return (
         <button
             onClick={() => {
-                const speechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+                const speechRecognition = window.SpeechRecognition || (window).webkitSpeechRecognition;
 
                 if (isRecording) {
                     speechRecognition.stop();
@@ -33,7 +33,9 @@ export function VoiceRecognitionButton(props: VoiceRecognitionButtonProps) {
                     recognitionInstance.continuous = true;
                     recognitionInstance.interimResults = true;
 
-                    recognitionInstance.onresult = (event: any /*SpeechRecognitionResult*/): void => {
+                    recognitionInstance.recognitionInstance.onresult = (
+                        event: any /*SpeechRecognitionResult*/,
+                    ): void => {
                         const transcript = Array.from(event.results)
                             .map((result: any) => result[0].transcript)
                             .join('');

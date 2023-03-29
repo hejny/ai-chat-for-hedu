@@ -35,7 +35,7 @@ export function AppHead(props: AppHeadProps) {
                 <meta property="og:title" content={title} />
                 <meta property="og:site_name" content={title} />
                 <meta property="og:description" content={description} />
-                {/* TODO: !!! <meta property="og:image" content={homeUrl + cave_of_ideas_with_transparent_look_through.src} /> */}
+                {/* TODO: <meta property="og:image" content={homeUrl + cave_of_ideas_with_transparent_look_through.src} /> */}
                 <meta property="og:url" content={homeUrl} />
                 <meta property="og:type" content="website" /* <- TODO: Make this dynamic */ />
 
@@ -48,7 +48,7 @@ export function AppHead(props: AppHeadProps) {
                 <meta property="twitter:url" content={homeUrl} />
                 <meta property="twitter:title" content={title} />
                 <meta property="twitter:description" content={description} />
-                {/* TODO: !!! <meta property="twitter:image" content={homeUrl + cave_of_ideas_with_transparent_look_through.src} /> */}
+                {/* TODO: <meta property="twitter:image" content={homeUrl + cave_of_ideas_with_transparent_look_through.src} /> */}
             </Head>
             <LanguagePicker />
         </>
