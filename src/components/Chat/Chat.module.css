@@ -20,12 +20,12 @@
     margin-bottom: 10px;
     max-width: 60%;
 
-    align-items: start;
+    align-items: flex-start;
     flex-direction: row;
 }
 
 .chatMessage.sender {
-    align-items: end;
+    align-items: flex-end;
     flex-direction: row-reverse;
 }
 

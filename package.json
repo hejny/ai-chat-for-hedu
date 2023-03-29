@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@next/font": "13.1.1",
+        "@types/dom-speech-recognition": "^0.0.1",
         "configchecker": "1.5.1",
         "destroyable": "0.12.0",
         "html-react-parser": "3.0.12",
@@ -51,7 +52,6 @@
     },
     "devDependencies": {
         "@types/isomorphic-fetch": "0.0.36",
-        "type-fest": "3.7.1",
         "@types/jest": "29.2.6",
         "@types/js-yaml": "4.0.5",
         "@types/lodash": "4.14.191",
@@ -75,6 +75,7 @@
         "jsdom": "21.1.1",
         "prettier": "2.8.1",
         "ts-jest": "29.0.5",
-        "ts-node": "10.9.1"
+        "ts-node": "10.9.1",
+        "type-fest": "3.7.1"
     }
 }

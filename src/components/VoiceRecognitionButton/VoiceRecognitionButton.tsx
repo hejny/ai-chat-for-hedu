@@ -17,39 +17,39 @@ interface VoiceRecognitionButtonProps {
  */
 export function VoiceRecognitionButton(props: VoiceRecognitionButtonProps) {
     const { textareaRef, language } = props;
-    const [isRecording, setRecording] = useState(false);
+    const [speechRecognition, setSpeechRecognition] = useState<SpeechRecognition | null>(null);
 
     return (
         <button
             onClick={() => {
-                const speechRecognition = window.SpeechRecognition || (window).webkitSpeechRecognition;
-
-                if (isRecording) {
+                if (speechRecognition) {
                     speechRecognition.stop();
-                    setRecording(false);
+                    setSpeechRecognition(null);
                 } else {
-                    const recognitionInstance = new speechRecognition();
-                    recognitionInstance.lang = language;
-                    recognitionInstance.continuous = true;
-                    recognitionInstance.interimResults = true;
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    const newSpeechRecognition = new SpeechRecognition();
 
-                    recognitionInstance.recognitionInstance.onresult = (
-                        event: any /*SpeechRecognitionResult*/,
-                    ): void => {
+                    // TODO: Use> recognition.grammars = ...
+                    newSpeechRecognition.lang = language;
+                    newSpeechRecognition.continuous = true;
+                    newSpeechRecognition.interimResults = true;
+                    newSpeechRecognition.maxAlternatives = 1;
+
+                    newSpeechRecognition.addEventListener('result', (event) => {
                         const transcript = Array.from(event.results)
                             .map((result: any) => result[0].transcript)
                             .join('');
 
-                        // TODO: !!!!! Append NOT override
                         textareaRef.current!.value = transcript;
-                    };
+                    });
 
-                    recognitionInstance.start();
-                    setRecording(true);
+                    newSpeechRecognition.start();
+                    setSpeechRecognition(newSpeechRecognition);
+                    textareaRef.current!.focus();
                 }
             }}
         >
-            {isRecording ? 'Stop Recording' : 'Start Recording'}
+            {speechRecognition ? 'Stop Recording' : 'Start Recording'}
         </button>
     );
 }
