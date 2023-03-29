@@ -28,13 +28,15 @@ export default async function handler(request: NextApiRequest, response: NextApi
             throw error;
         }
 
+        const errorMessage = error.message;
+
         response.status(200).json({
             responseText: spaceTrim(
                 (block) => `
                     Problem with OpenAI API:
 
                     \`\`\`text
-                    ${block(error.message)}
+                    ${block(errorMessage)}
                     \`\`\`
                 `,
             ),
