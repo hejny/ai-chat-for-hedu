@@ -20,6 +20,15 @@ const nextConfig = {
         ],
         */
     },
+
+    /*
+    TODO: [🎋]
+    api: {
+        bodyParser: {
+            sizeLimit: '5mb',
+        },
+    },
+    */
 };
 
 module.exports = nextConfig;

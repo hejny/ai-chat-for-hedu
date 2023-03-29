@@ -27,6 +27,7 @@
     "dependencies": {
         "@next/font": "13.1.1",
         "@types/dom-speech-recognition": "^0.0.1",
+        "chatgpt": "^5.1.3",
         "configchecker": "1.5.1",
         "destroyable": "0.12.0",
         "html-react-parser": "3.0.12",

@@ -57,14 +57,14 @@ export function Chat(props: ChatProps) {
             <div className={styles.chatMessages}>
                 {messages.map(({ from, content }, i) => (
                     <div key={i} className={classNames(styles.chatMessage, from === 'TEACHER' && styles.sender)}>
-                        <div key={i} className={styles.avatar}>
+                        <div className={styles.avatar}>
                             <Image
                                 src={{ JOURNAL: journalAvatar, TEACHER: teacherAvatar }[from]}
                                 alt={`AI generated image of ${from.toLocaleLowerCase()} as small cartoon avatar`}
                             />
                         </div>
 
-                        <div key={i} className={styles.messageText}>
+                        <div className={styles.messageText}>
                             <Article /* TODO: className={styles.messageText} */ {...{ content }} />
                         </div>
                     </div>

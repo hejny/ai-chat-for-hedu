@@ -33,10 +33,16 @@ export function JournalSection() {
                         content: messageContent,
                     };
 
+                    const response = await fetch(`/api/chat`, {
+                        method: 'POST',
+                        body: JSON.stringify({ requestText: messageContent }),
+                    });
+                    const { responseText } = await response.json();
+
                     const replyMessage: ChatMessage = {
                         date: new Date(),
                         from: 'JOURNAL',
-                        content: `Odpovídám na ${messageContent}`,
+                        content: responseText,
                     };
 
                     setMessages([...messages, myMessage, replyMessage]);
