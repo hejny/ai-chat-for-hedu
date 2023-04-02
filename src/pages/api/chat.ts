@@ -11,6 +11,8 @@ const api = new ChatGPTAPI({
     },
 });
 
+// console.info(`Using key ` + OPENAI_API_KEY);
+
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
     const { requestText } = JSON.parse(
         request.body,
@@ -34,6 +36,14 @@ export default async function handler(request: NextApiRequest, response: NextApi
             responseText: spaceTrim(
                 (block) => `
                     Problem with OpenAI API:
+                    Using key \`${
+                        OPENAI_API_KEY!.substring(0, 10) +
+                        '***' +
+                        OPENAI_API_KEY!.substring(
+                            OPENAI_API_KEY!.length - 5,
+                            OPENAI_API_KEY!.length,
+                        ) /* <- TODO: Hide key util */
+                    }\`
 
                     \`\`\`text
                     ${block(errorMessage)}

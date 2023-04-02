@@ -29,6 +29,21 @@ describe('removeMarkdownFormatting', () => {
         const str = 'This is a plain string.';
         expect(removeMarkdownFormatting(str)).toEqual(str);
     });
+
+    /* TODO:!!!
+    it('should return the original string if it contains no Markdown tags', () => {
+        const str = spaceTrim(`
+        
+            Hello
+
+            ```
+            World
+            ```
+        
+        `);
+        expect(removeMarkdownFormatting(str)).toEqual(str);
+    });
+    */
 });
 
 /**

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Article } from '../../components/Article/Article';
 import { Chat, ChatMessage } from '../../components/Chat/Chat';
 import { Section } from '../../components/Section/Section';
+import { removeMarkdownFormatting } from '../../utils/content/removeMarkdownFormatting';
 import styles from './Journal.module.css';
 import { speak } from './utils/speech';
 
@@ -46,8 +47,13 @@ export function JournalSection() {
                     };
 
                     setMessages([...messages, myMessage, replyMessage]);
+
+                    if (replyMessage.content.startsWith(`Problem`) /* <- TODO: This is a bit hardcoded */) {
+                        return;
+                    }
+
                     /* not await BUT maybe should be */ speak(
-                        replyMessage.content,
+                        removeMarkdownFormatting(replyMessage.content),
                         'cs',
                     ) /* <- TODO: !!! Do speech here or inside <Chat/> component */;
                 }}
