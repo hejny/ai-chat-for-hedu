@@ -38,7 +38,7 @@ export function JournalSection() {
                         method: 'POST',
                         body: JSON.stringify({ requestText: messageContent }),
                     });
-                    const { responseText } = await response.json();
+                    const { responseText } = (await response.json()) as any;
 
                     const replyMessage: ChatMessage = {
                         date: new Date(),

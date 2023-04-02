@@ -16,7 +16,7 @@ const api = new ChatGPTAPI({
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
     const { requestText } = JSON.parse(
         request.body,
-    ); /* <- TODO: [🎋] Parsing of JSON should be on body-parse NOT manually in each API route handler */
+    ) as any; /* <- TODO: [🎋] Parsing of JSON should be on body-parse NOT manually in each API route handler */
 
     try {
         const gptResponse = await api.sendMessage(requestText, {
