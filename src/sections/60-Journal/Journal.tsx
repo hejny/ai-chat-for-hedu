@@ -47,7 +47,8 @@ export function JournalSection() {
                             parentMessageId: journalPreviousMessage.messageId,
                         }),
                     });
-                    const { responseText, messageId } = (await response.json()) as any;
+                    const { responseText, messageId } =
+                        (await response.json()) /* <- TODO: !!! Handle here error: 504 An error occurred with your deployment FUNCTION_INVOCATION_TIMEOUT */ as any;
 
                     const replyMessage: ChatMessage = {
                         date: new Date(),
