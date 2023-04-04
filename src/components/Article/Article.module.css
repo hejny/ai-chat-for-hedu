@@ -1,4 +1,7 @@
-
-
-.Article{  
+.Article pre {
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.329);
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
 }
