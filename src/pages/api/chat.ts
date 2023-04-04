@@ -1,30 +1,42 @@
-import { ChatGPTAPI } from 'chatgpt';
+import chalk from 'chalk';
 import { NextApiRequest, NextApiResponse } from 'next';
 import spaceTrim from 'spacetrim';
 import { OPENAI_API_KEY } from '../../../config';
-
-const api = new ChatGPTAPI({
-    apiKey: OPENAI_API_KEY!,
-    completionParams: {
-        temperature: 0.5,
-        top_p: 0.8,
-    },
-});
+import { chatGptApi, getInitialMessageId } from './utils/getInitialMessageId';
 
 // console.info(`Using key ` + OPENAI_API_KEY);
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
-    const { requestText } = JSON.parse(
-        request.body,
-    ) as any; /* <- TODO: [🎋] Parsing of JSON should be on body-parse NOT manually in each API route handler */
+    const body = JSON.parse(request.body) as Record<
+        string,
+        string
+    >; /* <- TODO: [🎋] Parsing of JSON should be on body-parse NOT manually in each API route handler */
+    const { requestText } = body;
+    let { parentMessageId } = body;
+
+    if (parentMessageId === 'INITIAL') {
+        parentMessageId = await getInitialMessageId();
+    } else if (!parentMessageId) {
+        return response.status(200).json({
+            responseText: `Key parentMessageId is missing in request`,
+        });
+    }
 
     try {
-        const gptResponse = await api.sendMessage(requestText, {
+        console.info({ parentMessageId });
+        console.info(chalk.blue(requestText));
+
+        const gptResponse = await chatGptApi.sendMessage(requestText, {
+            parentMessageId,
             //parentMessageId: res.id
         });
 
+        console.info(gptResponse);
+        console.info(chalk.blue(gptResponse.text));
+
         const responseText = gptResponse.text;
-        response.status(200).json({ responseText });
+
+        return response.status(200).json({ responseText, messageId: gptResponse.id });
     } catch (error) {
         if (!(error instanceof Error)) {
             throw error;
@@ -32,7 +44,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
         const errorMessage = error.message;
 
-        response.status(200).json({
+        return response.status(200).json({
             responseText: spaceTrim(
                 (block) => `
                     Problem with OpenAI API:

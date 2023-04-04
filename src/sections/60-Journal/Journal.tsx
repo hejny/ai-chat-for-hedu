@@ -1,7 +1,8 @@
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
+import { INITIAL_JOURNAL_MESSAGE_TEXT } from '../../../config';
 import { Article } from '../../components/Article/Article';
-import { Chat, ChatMessage } from '../../components/Chat/Chat';
+import { Chat, ChatMessage, JournalChatMessage, TeacherChatMessage } from '../../components/Chat/Chat';
 import { Section } from '../../components/Section/Section';
 import { removeMarkdownFormatting } from '../../utils/content/removeMarkdownFormatting';
 import styles from './Journal.module.css';
@@ -15,7 +16,8 @@ export function JournalSection() {
         {
             date: new Date(),
             from: 'JOURNAL',
-            content: `Jaký máš cíl dnešní hodiny matematiky?`,
+            content: INITIAL_JOURNAL_MESSAGE_TEXT,
+            messageId: 'INITIAL',
         },
     ]);
 
@@ -28,7 +30,11 @@ export function JournalSection() {
             <Chat
                 messages={messages}
                 onMessage={async (messageContent) => {
-                    const myMessage: ChatMessage = {
+                    const journalPreviousMessage: JournalChatMessage = [...messages]
+                        .reverse()
+                        .find(({ from }) => from === 'JOURNAL') as JournalChatMessage;
+
+                    const myMessage: TeacherChatMessage = {
                         date: new Date(),
                         from: 'TEACHER',
                         content: messageContent,
@@ -36,14 +42,18 @@ export function JournalSection() {
 
                     const response = await fetch(`/api/chat`, {
                         method: 'POST',
-                        body: JSON.stringify({ requestText: messageContent }),
+                        body: JSON.stringify({
+                            requestText: messageContent,
+                            parentMessageId: journalPreviousMessage.messageId,
+                        }),
                     });
-                    const { responseText } = (await response.json()) as any;
+                    const { responseText, messageId } = (await response.json()) as any;
 
                     const replyMessage: ChatMessage = {
                         date: new Date(),
                         from: 'JOURNAL',
                         content: responseText,
+                        messageId,
                     };
 
                     setMessages([...messages, myMessage, replyMessage]);

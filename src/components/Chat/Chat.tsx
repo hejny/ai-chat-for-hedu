@@ -2,16 +2,28 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import spaceTrim from 'spacetrim';
 import { Promisable } from 'type-fest';
+import { INITIAL_TEACHER_MESSAGE_TEXT } from '../../../config';
 import journalAvatar from '../../../public/people/journal.jpeg';
 import teacherAvatar from '../../../public/people/teacher.jpeg';
 import { classNames } from '../../utils/classNames';
 import { Article } from '../Article/Article';
 import { VoiceRecognitionButton } from '../VoiceRecognitionButton/VoiceRecognitionButton';
 import styles from './Chat.module.css';
-export interface ChatMessage {
-    // TODO: ID
+export type ChatMessage = JournalChatMessage | TeacherChatMessage /* <- TODO: Extract commons */;
+
+export interface JournalChatMessage {
+    // TODO: Internal ID
+    // TODO: Maybe mark messageId as gptMessageId
+    messageId: string | 'INITIAL';
     date: Date;
-    from: 'TEACHER' | 'JOURNAL';
+    from: 'JOURNAL';
+    content: string /*_markdown*/;
+}
+
+export interface TeacherChatMessage {
+    // TODO: Internal ID
+    date: Date;
+    from: 'TEACHER';
     content: string /*_markdown*/;
 }
 
@@ -74,8 +86,8 @@ export function Chat(props: ChatProps) {
             <div className={styles.chatInput}>
                 <textarea
                     ref={textareaRef as any}
-                    defaultValue=""
-                    placeholder="Napište zprávu"
+                    defaultValue={INITIAL_TEACHER_MESSAGE_TEXT /* <- !!! Do not use this just as a placeholder */}
+                    placeholder={INITIAL_TEACHER_MESSAGE_TEXT}
                     onKeyDown={(event) => {
                         if (event.shiftKey) {
                             return;
