@@ -36,6 +36,7 @@ export function Chat(props: ChatProps) {
     const { messages, onMessage } = props;
 
     const textareaRef = useRef<HTMLTextAreaElement>();
+    const buttonSendRef = useRef<HTMLButtonElement>();
 
     useEffect(
         (/* Focus textarea on page load */) => {
@@ -49,19 +50,38 @@ export function Chat(props: ChatProps) {
 
     const handleSend = async () => {
         const textareaElement = textareaRef.current;
+        const buttonSendElement = buttonSendRef.current;
 
         if (!textareaElement) {
             throw new Error(`Can not find textarea`);
         }
-
-        if (spaceTrim(textareaElement.value) === '') {
-            return;
+        if (!buttonSendElement) {
+            throw new Error(`Can not find textarea`);
         }
 
-        await onMessage(textareaElement.value);
+        textareaElement.disabled = true;
+        buttonSendElement.disabled = true;
 
-        textareaElement.value = '';
-        textareaElement.focus();
+        try {
+            if (spaceTrim(textareaElement.value) === '') {
+                throw new Error(`You need to write some text`);
+            }
+
+            await onMessage(textareaElement.value);
+
+            textareaElement.value = '';
+            textareaElement.focus();
+        } catch (error) {
+            if (!(error instanceof Error)) {
+                throw error;
+            }
+
+            console.error(error);
+            alert(error.message);
+        } finally {
+            textareaElement.disabled = false;
+            buttonSendElement.disabled = false;
+        }
     };
 
     return (
@@ -100,7 +120,9 @@ export function Chat(props: ChatProps) {
                         /* not await */ handleSend();
                     }}
                 />
-                <button onClick={/* not await */ handleSend}>Odeslat</button>
+                <button ref={buttonSendRef as any} onClick={/* not await */ handleSend}>
+                    Odeslat
+                </button>
 
                 <VoiceRecognitionButton language="cs" {...{ textareaRef }} />
             </div>
