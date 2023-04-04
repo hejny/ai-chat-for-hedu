@@ -6,7 +6,7 @@ import { Chat, ChatMessage, JournalChatMessage, TeacherChatMessage } from '../..
 import { Section } from '../../components/Section/Section';
 import { removeMarkdownFormatting } from '../../utils/content/removeMarkdownFormatting';
 import styles from './Journal.module.css';
-import { speak } from './utils/speech';
+import { speak } from './utils/speak';
 
 export function JournalSection() {
     const { t } = useTranslation();

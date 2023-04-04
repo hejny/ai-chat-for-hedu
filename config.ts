@@ -39,7 +39,7 @@ export const INITIAL_SHEM_MESSAGE_TEXT = spaceTrim(
     Piš pouze v češtině.
     
     
-`,
+` /* <- TODO: !!! Allow to describe a scenario here */,
 );
 
 export const INITIAL_TEACHER_MESSAGE_TEXT = spaceTrim(`

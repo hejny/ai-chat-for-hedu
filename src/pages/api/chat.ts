@@ -65,3 +65,11 @@ export default async function handler(request: NextApiRequest, response: NextApi
         });
     }
 }
+
+/**
+ * TODO: !!! Stream
+ * TODO: !!! Solve HTTP 504 issue
+ * TODO: Cache the same request threads
+ * TODO: Allow the quick buttons [Nemám cíl] [Chci probrat] [Chci dohnat]
+ * TODO: Count usage
+ */

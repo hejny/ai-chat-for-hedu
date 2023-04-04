@@ -18,10 +18,16 @@ export async function getInitialMessageId(): Promise<string> {
     }
 
     console.info(chalk.blue(INITIAL_SHEM_MESSAGE_TEXT));
-    const gptInitialResponse = await chatGptApi.sendMessage(INITIAL_SHEM_MESSAGE_TEXT, {});
+    const gptInitialResponse = await chatGptApi.sendMessage(
+        INITIAL_SHEM_MESSAGE_TEXT /*{ stream: true } <- !!! Play with */,
+    );
     console.info(gptInitialResponse);
     console.info(chalk.green(gptInitialResponse.text));
 
     initialMessageId = gptInitialResponse.id;
     return initialMessageId;
 }
+
+/**
+ * TODO: Make separate testing script
+ */
