@@ -20,9 +20,9 @@ const SocketHandler = (req: any, res: any) => {
             console.log('connection');
 
             (async () => {
+                console.log('Starting test');
                 while (true) {
                     await forTime(1000);
-                    console.log('test');
                     connection.emit('test', faker.hacker.abbreviation());
                 }
             })();
@@ -43,18 +43,27 @@ const SocketHandler = (req: any, res: any) => {
                     const gptResponse = await chatGptApi.sendMessage(content, {
                         parentMessageId,
                         //parentMessageId: res.id
+
+                        onProgress(gptPartialResponse) {
+                            console.info(chalk.blue(gptPartialResponse.text));
+                            connection.emit('response', {
+                                date: new Date(),
+                                from: 'JOURNAL',
+                                messageId: gptPartialResponse.id,
+                                content: gptPartialResponse.text,
+                                isComplete: false,
+                            });
+                        },
                     });
 
                     console.info(gptResponse);
                     console.info(chalk.blue(gptResponse.text));
 
-                    const responseText = gptResponse.text;
-
                     connection.emit('response', {
                         date: new Date(),
                         from: 'JOURNAL',
                         messageId: gptResponse.id,
-                        content: responseText,
+                        content: gptResponse.text,
                         isComplete: true,
                     });
                 } catch (error) {

@@ -6,9 +6,7 @@ import { Article } from '../../components/Article/Article';
 import { Chat } from '../../components/Chat/Chat';
 import { Playground, socket } from '../../components/Playground/Playground';
 import { Section } from '../../components/Section/Section';
-import { removeMarkdownFormatting } from '../../utils/content/removeMarkdownFormatting';
 import styles from './Journal.module.css';
-import { speak } from './utils/speak';
 
 export function JournalSection() {
     const { t } = useTranslation();
@@ -48,19 +46,25 @@ export function JournalSection() {
                         isComplete: true,
                     };
 
+                    setMessages([...messages, myMessage]);
+
                     // TODO: Driver to handle this
 
                     socket.emit('request', myMessage);
-                    const replyMessage: BotChatMessage /* !!! & CompleteChatMessage */ = await new Promise((resolve) =>
-                        socket.once('response', resolve),
-                    );
+                    socket.on('response', (replyMessage) => {
+                        setMessages([...messages, myMessage, replyMessage]);
 
-                    setMessages([...messages, myMessage, replyMessage]);
+                        // TODO: !!! Translate to RxJS object
+                        // TODO: !!! Speech here
+                        // TODO: !!! Cancel this listener
+                    });
 
-                    /* not await BUT maybe should be */ speak(
+                    /*
+                    /* not await BUT maybe should be * / speak(
                         removeMarkdownFormatting(replyMessage.content),
                         'cs',
-                    ) /* <- TODO: !!! Do speech here or inside <Chat/> component */;
+                    ) /* <- TODO: !!! Do speech here or inside <Chat/> component * /;
+                    */
                 }}
             />
             {/*<RecordForm/>*/}
