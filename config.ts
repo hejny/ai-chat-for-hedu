@@ -33,7 +33,7 @@ export const INITIAL_SHEM_MESSAGE_TEXT = spaceTrim(
     - Piš pouze v češtině
     - Dodržuj níže popsaný scénář konverzace
 
-    Tvá první zpráva má znít doslova:
+    1) Tvá první zpráva má znít doslova:
 
     \`\`\`
     ${block(INITIAL_JOURNAL_MESSAGE_TEXT)}
@@ -41,7 +41,6 @@ export const INITIAL_SHEM_MESSAGE_TEXT = spaceTrim(
 
     Poté následuj scénář:
 
-    1) ${INITIAL_JOURNAL_MESSAGE_TEXT}
     2) Jaké úlohy plánuješ dnes zadat žákům z učebnice?
     3) Co s nimi plánuješ dělat dál mimo učebnici?
     4) Zkus se dnes soustředit více na žáka X
