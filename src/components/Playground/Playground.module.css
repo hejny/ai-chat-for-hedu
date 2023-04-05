@@ -1,0 +1,11 @@
+.Playground {
+    /* TODO: Use or remove empty css */
+
+    border: 1px solid red;
+    background-color: brown;
+    color: white;
+    margin: 10px;
+
+    width: 100px;
+    min-height: 20px;
+}

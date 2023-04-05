@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { INITIAL_JOURNAL_MESSAGE_TEXT } from '../../../config';
 import { Article } from '../../components/Article/Article';
 import { Chat, ChatMessage, JournalChatMessage, TeacherChatMessage } from '../../components/Chat/Chat';
+import { Playground } from '../../components/Playground/Playground';
 import { Section } from '../../components/Section/Section';
 import { removeMarkdownFormatting } from '../../utils/content/removeMarkdownFormatting';
 import styles from './Journal.module.css';
@@ -26,6 +27,8 @@ export function JournalSection() {
             <h2>
                 <Article content={t('title')} />
             </h2>
+
+            <Playground />
 
             <Chat
                 messages={messages}
