@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { Server } from 'Socket.IO';
+import { Server } from 'socket.io';
 import { forTime } from 'waitasecond';
 
 const SocketHandler = (req: any, res: any) => {

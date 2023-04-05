@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import io, { Socket } from 'Socket.IO-client';
+import io, { Socket } from 'socket.io-client';
 import styles from './Playground.module.css';
 let socket: Socket;
 
