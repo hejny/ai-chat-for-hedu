@@ -1,9 +1,10 @@
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 import { INITIAL_JOURNAL_MESSAGE_TEXT } from '../../../config';
+import { AliceChatMessage, BotChatMessage, ChatMessage, CompleteChatMessage } from '../../../interfaces/chatMessage';
 import { Article } from '../../components/Article/Article';
-import { Chat, ChatMessage, JournalChatMessage, TeacherChatMessage } from '../../components/Chat/Chat';
-import { Playground } from '../../components/Playground/Playground';
+import { Chat } from '../../components/Chat/Chat';
+import { Playground, socket } from '../../components/Playground/Playground';
 import { Section } from '../../components/Section/Section';
 import { removeMarkdownFormatting } from '../../utils/content/removeMarkdownFormatting';
 import styles from './Journal.module.css';
@@ -15,10 +16,11 @@ export function JournalSection() {
     // TODO: Make custom hook - event sourced
     const [messages, setMessages] = useState<Array<ChatMessage>>([
         {
+            messageId: 'INITIAL',
             date: new Date(),
             from: 'JOURNAL',
             content: INITIAL_JOURNAL_MESSAGE_TEXT,
-            messageId: 'INITIAL',
+            isComplete: true,
         },
     ]);
 
@@ -32,39 +34,28 @@ export function JournalSection() {
 
             <Chat
                 messages={messages}
-                onMessage={async (messageContent) => {
-                    const journalPreviousMessage: JournalChatMessage = [...messages]
+                onMessage={async (content /* <- TODO: !!! Pass here the message object NOT just text */) => {
+                    // !!! This will be done in <Chat/>
+                    const journalPreviousMessage: BotChatMessage = [...messages]
                         .reverse()
-                        .find(({ from }) => from === 'JOURNAL') as JournalChatMessage;
+                        .find(({ from }) => from === 'JOURNAL') as BotChatMessage;
 
-                    const myMessage: TeacherChatMessage = {
+                    const myMessage: AliceChatMessage & CompleteChatMessage = {
+                        parentMessageId: journalPreviousMessage.messageId,
                         date: new Date(),
                         from: 'TEACHER',
-                        content: messageContent,
+                        content,
+                        isComplete: true,
                     };
 
-                    const response = await fetch(`/api/chat`, {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            requestText: messageContent,
-                            parentMessageId: journalPreviousMessage.messageId,
-                        }),
-                    });
-                    const { responseText, messageId } =
-                        (await response.json()) /* <- TODO: !!! Handle here error: 504 An error occurred with your deployment FUNCTION_INVOCATION_TIMEOUT */ as any;
+                    // TODO: Driver to handle this
 
-                    const replyMessage: ChatMessage = {
-                        date: new Date(),
-                        from: 'JOURNAL',
-                        content: responseText,
-                        messageId,
-                    };
+                    socket.emit('request', myMessage);
+                    const replyMessage: BotChatMessage /* !!! & CompleteChatMessage */ = await new Promise((resolve) =>
+                        socket.once('response', resolve),
+                    );
 
                     setMessages([...messages, myMessage, replyMessage]);
-
-                    if (replyMessage.content.startsWith(`Problem`) /* <- TODO: This is a bit hardcoded */) {
-                        return;
-                    }
 
                     /* not await BUT maybe should be */ speak(
                         removeMarkdownFormatting(replyMessage.content),

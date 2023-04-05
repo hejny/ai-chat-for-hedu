@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react';
 import io, { Socket } from 'socket.io-client';
+import { SocketEventMap } from '../../../interfaces/socket';
 import styles from './Playground.module.css';
-let socket: Socket;
+
+/**
+ * TODO: !!! Make Better - ask
+ */
+export let socket: Socket<SocketEventMap>;
 
 interface PlaygroundProps {}
 
 export function Playground(props: PlaygroundProps) {
     const {} = props;
 
-    const [message, setMessage] = useState('Initial');
+    const [nonce, setNonce] = useState('Hello');
 
     useEffect(() => socketInitializer() as any, []);
 
@@ -22,14 +27,19 @@ export function Playground(props: PlaygroundProps) {
             console.log('connected');
         });
 
-        socket.on('message', (message) => {
-            setMessage(message);
+        socket.on('test', (nonce) => {
+            setNonce(nonce);
+        });
+
+        socket.on('error', (errorMessage) => {
+            console.error(errorMessage);
+            alert(errorMessage /* <- TODO: Do not use blocking code */);
         });
 
         return () => {
-            console.log('destroy !!!');
+            console.log('!!! destroy !!!');
         };
     };
 
-    return <div className={styles.Playground}>{message}</div>;
+    return <div className={styles.Playground}>{nonce}</div>;
 }

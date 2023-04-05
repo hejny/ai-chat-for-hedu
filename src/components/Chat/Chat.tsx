@@ -3,33 +3,17 @@ import { useEffect, useRef } from 'react';
 import spaceTrim from 'spacetrim';
 import { Promisable } from 'type-fest';
 import { INITIAL_TEACHER_MESSAGE_TEXT } from '../../../config';
+import { ChatMessage } from '../../../interfaces/chatMessage';
 import journalAvatar from '../../../public/people/journal.jpeg';
 import teacherAvatar from '../../../public/people/teacher.jpeg';
 import { classNames } from '../../utils/classNames';
 import { Article } from '../Article/Article';
 import { VoiceRecognitionButton } from '../VoiceRecognitionButton/VoiceRecognitionButton';
 import styles from './Chat.module.css';
-export type ChatMessage = JournalChatMessage | TeacherChatMessage /* <- TODO: Extract commons */;
-
-export interface JournalChatMessage {
-    // TODO: Internal ID
-    // TODO: Maybe mark messageId as gptMessageId
-    messageId: string | 'INITIAL';
-    date: Date;
-    from: 'JOURNAL';
-    content: string /*_markdown*/;
-}
-
-export interface TeacherChatMessage {
-    // TODO: Internal ID
-    date: Date;
-    from: 'TEACHER';
-    content: string /*_markdown*/;
-}
 
 interface ChatProps {
     messages: Array<ChatMessage>;
-    onMessage(messageContent: string): Promisable<void>;
+    onMessage(messageContent: string /* <- TODO: !!! Pass here the message object NOT just text */): Promisable<void>;
 }
 
 export function Chat(props: ChatProps) {

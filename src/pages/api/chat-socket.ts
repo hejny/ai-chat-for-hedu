@@ -1,22 +1,90 @@
 import { faker } from '@faker-js/faker';
+import chalk from 'chalk';
 import { Server } from 'socket.io';
+import spaceTrim from 'spacetrim';
 import { forTime } from 'waitasecond';
+import { OPENAI_API_KEY } from '../../../config';
+import { SocketEventMap } from '../../../interfaces/socket';
+import { chatGptApi, getInitialMessageId } from './utils/getInitialMessageId';
 
 const SocketHandler = (req: any, res: any) => {
+    // TODO: !!!! Run in better way in Vercel
     if (res.socket.server.io) {
         console.log('Socket is already running');
     } else {
         console.log('Socket is initializing');
-        const io = new Server(res.socket.server);
+        const io = new Server<SocketEventMap>(res.socket.server);
         res.socket.server.io = io;
 
-        io.on('connection', async (connection) => {
+        io.on('connection', (connection) => {
             console.log('connection');
-            while (true) {
-                await forTime(1000);
-                console.log('message');
-                connection.emit('message', faker.hacker.abbreviation());
-            }
+
+            (async () => {
+                while (true) {
+                    await forTime(1000);
+                    console.log('test');
+                    connection.emit('test', faker.hacker.abbreviation());
+                }
+            })();
+
+            connection.on('request', async ({ content, parentMessageId, isComplete }) => {
+                if (parentMessageId === 'INITIAL') {
+                    parentMessageId = await getInitialMessageId();
+                } else if (!parentMessageId) {
+                    connection.emit('error', `Key parentMessageId is missing in request`);
+                } else if (!isComplete) {
+                    connection.emit('error', `You have send incomplete message`);
+                }
+
+                try {
+                    console.info({ parentMessageId });
+                    console.info(chalk.blue(content));
+
+                    const gptResponse = await chatGptApi.sendMessage(content, {
+                        parentMessageId,
+                        //parentMessageId: res.id
+                    });
+
+                    console.info(gptResponse);
+                    console.info(chalk.blue(gptResponse.text));
+
+                    const responseText = gptResponse.text;
+
+                    connection.emit('response', {
+                        date: new Date(),
+                        from: 'JOURNAL',
+                        messageId: gptResponse.id,
+                        content: responseText,
+                        isComplete: true,
+                    });
+                } catch (error) {
+                    if (!(error instanceof Error)) {
+                        throw error;
+                    }
+
+                    const errorMessage = error.message;
+                    connection.emit(
+                        'error',
+                        spaceTrim(
+                            (block) => `
+                                Problem with OpenAI API:
+                                Using key \`${
+                                    OPENAI_API_KEY!.substring(0, 10) +
+                                    '***' +
+                                    OPENAI_API_KEY!.substring(
+                                        OPENAI_API_KEY!.length - 5,
+                                        OPENAI_API_KEY!.length,
+                                    ) /* <- TODO: Hide key util */
+                                }\`
+            
+                                \`\`\`text
+                                ${block(errorMessage)}
+                                \`\`\`
+                            `,
+                        ),
+                    );
+                }
+            });
         });
     }
     res.end();
