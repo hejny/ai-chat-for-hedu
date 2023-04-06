@@ -43,3 +43,7 @@ export function Playground(props: PlaygroundProps) {
 
     return <div className={styles.Playground}>{nonce}</div>;
 }
+
+/**
+ * TODO: Better place for initialization of socket.io on client
+ */
