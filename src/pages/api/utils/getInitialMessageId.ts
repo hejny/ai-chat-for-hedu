@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { ChatGPTAPI } from 'chatgpt';
-import { writeFile } from 'fs/promises';
+import { readFile, writeFile } from 'fs/promises';
 import { join } from 'path';
 import spaceTrim from 'spacetrim';
 import { INITIAL_SHEM_MESSAGE_TEXT, OPENAI_API_KEY } from '../../../../config';
@@ -13,11 +13,11 @@ export const chatGptApi = new ChatGPTAPI({
     },
 });
 
-let initialMessageId: string | null = null; /* <- !!! Cache ONLY from file */
-
 export async function getInitialMessageId(): Promise<string> {
-    if (initialMessageId !== null) {
-        return initialMessageId;
+    const messageCached = await readFile(join(process.cwd(), 'chat/message.md'), 'utf8').catch(() => null);
+
+    if (messageCached) {
+        return messageCached.match(/<!--\s*(?<messageId>.*)\s*-->/)!.groups!.messageId;
     }
 
     console.info(chalk.blue(INITIAL_SHEM_MESSAGE_TEXT));
@@ -27,25 +27,26 @@ export async function getInitialMessageId(): Promise<string> {
     console.info(chalk.green(gptResponse.text));
 
     await writeFile(
-        join(process.cwd(), 'chat/_initial-shem-message.md'),
+        join(process.cwd(), 'chat/message.md'),
         spaceTrim(
             (block) => `
-    
+
                 ${block(INITIAL_SHEM_MESSAGE_TEXT)}
 
                 ---
 
+                <!-- ${gptResponse.id} -->
+                
                 ${block(gptResponse.text)}
     
             `,
         ),
     );
 
-    initialMessageId = gptResponse.id /* <- !!! Cache ONLY from file */;
-    return initialMessageId;
+    return gptResponse.id;
 }
 
 /**
- * TODO: Make cached wrapper
+ * TODO: [📂] Implement full folder,hierarchical cache
  * TODO: Make separate testing script
  */

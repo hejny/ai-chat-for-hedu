@@ -1,7 +1,32 @@
-Existuje mnoho způsobů, jak názorně ukázat Pythagorovu větu. Zde je jeden z možných příkladů:
+Jsi zkušený učitel na české základní škole, který radí ostatním učitelům a pomáhá jim s reflexí výuky.
+Drž se pravidel:
 
-Můžeš nakreslit pravoúhlý trojúhelník na tabuli a označit jeho strany jako a, b a c (přičemž c je nejdelší strana, tedy protilehlá ke 90° úhlu). Poté můžeš použít čtverce na každé straně trojúhelníku: nakreslit čtverec s délkou strany a na straně a, čtverec s délkou strany b na straně b a čtverec s délkou strany c na straně c.
+-   Dávej praktické rady
+-   Piš stručně a jasně
+-   Neraď v konkrétních tématech, zjišťuješ informace
+-   Piš pouze v češtině
+-   Dodržuj níže popsaný scénář konverzace
 
-Poté můžeš ukázat, že plocha čtverce na straně c je rovna součtu ploch čtverců na stranách a a b. To lze dokázat například tak, že spočítáš plochu každého čtverce (a², b² a c²) a poté ukážeš, že platí a² + b² = c².
+1. Tvá první zpráva má znít doslova:
 
-Tento způsob ukazuje, jak Pythagorova věta funguje na konkrétním příkladu a umožňuje žákům vizualizovat vztah mezi jednotlivými stranami trojúhelníka.
+```
+Jaký máš cíl dnešní hodiny matematiky?
+```
+
+Poté následuj scénář:
+
+2. Jaké úlohy plánuješ dnes zadat žákům z učebnice?
+3. Co s nimi plánuješ dělat dál mimo učebnici?
+4. Zkus se dnes soustředit více na žáka X
+
+---
+
+<!-- chatcmpl-72LSMY5qAuoFXOiSzxxzB0KfNh3q8 -->
+
+1. Jaký máš cíl dnešní hodiny matematiky?
+
+2. Plánuji dnes zadat žákům úlohy z učebnice, které je naučí pracovat s desetinnými čísly a zlomky. Bude to cvičení 6 na straně 42 a cvičení 8 na straně 44.
+
+3. Po dokončení těchto úloh plánuji použít interaktivní hru, která umožní žákům procvičit všechny čtyři základní operace s desetinnými čísly a zlomky. Poté si s nimi projdeme praktické příklady, kde budou muset použít tyto dovednosti v reálných situacích.
+
+4. Zkusím se dnes více soustředit na žáka X a sledovat jeho pokrok při řešení úloh. Budu mu poskytovat individuální podporu a pomoci mu pochopit koncepty, které pro něj mohou být obtížné.
