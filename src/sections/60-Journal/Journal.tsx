@@ -1,26 +1,47 @@
 import { useTranslation } from 'next-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { forTime } from 'waitasecond';
 import { INITIAL_JOURNAL_MESSAGE_TEXT } from '../../../config';
 import { AliceChatMessage, BotChatMessage, ChatMessage, CompleteChatMessage } from '../../../interfaces/chatMessage';
 import { Article } from '../../components/Article/Article';
 import { Chat } from '../../components/Chat/Chat';
 import { Playground, socket } from '../../components/Playground/Playground';
 import { Section } from '../../components/Section/Section';
+import { joinWords } from '../../utils/joinWords';
+import { splitWords } from '../../utils/splitWords';
 import styles from './Journal.module.css';
 
 export function JournalSection() {
     const { t } = useTranslation();
+    const [messages, setMessages] = useState<Array<ChatMessage>>([]);
 
-    // TODO: Make custom hook - event sourced
-    const [messages, setMessages] = useState<Array<ChatMessage>>([
-        {
+    useEffect(() => {
+        const initialMessage = {
             messageId: 'INITIAL',
             date: new Date(),
             from: 'JOURNAL',
-            content: INITIAL_JOURNAL_MESSAGE_TEXT,
+            content: '',
             isComplete: true,
-        },
-    ]);
+        } satisfies BotChatMessage;
+
+        let isDestroyed = false;
+        (async () => {
+            const words = [];
+            for (const word of splitWords(INITIAL_JOURNAL_MESSAGE_TEXT)) {
+                if (isDestroyed) {
+                    return;
+                }
+                await forTime(100);
+
+                words.push(word);
+
+                initialMessage.content = joinWords(words);
+                setMessages([initialMessage]);
+            }
+        })();
+
+        return () => void (isDestroyed = true);
+    }, []);
 
     return (
         <Section id="Journal" className={styles.JournalSection}>
@@ -58,13 +79,6 @@ export function JournalSection() {
                         // TODO: !!! Speech here
                         // TODO: !!! Cancel this listener
                     });
-
-                    /*
-                    /* not await BUT maybe should be * / speak(
-                        removeMarkdownFormatting(replyMessage.content),
-                        'cs',
-                    ) /* <- TODO: !!! Do speech here or inside <Chat/> component * /;
-                    */
                 }}
             />
             {/*<RecordForm/>*/}

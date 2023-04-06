@@ -81,7 +81,7 @@ export function Chat(props: ChatProps) {
                         </div>
 
                         <div className={styles.messageText}>
-                            <Article /* TODO: className={styles.messageText} */ {...{ content }} />
+                            <Article /* TODO: className={styles.messageText} */ {...{ content }} isSpoken />
                         </div>
                     </div>
                 ))}

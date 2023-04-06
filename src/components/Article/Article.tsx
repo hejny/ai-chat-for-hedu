@@ -1,9 +1,12 @@
+import { useEffect } from 'react';
 import { Converter } from 'showdown';
 import showdownHighlight from 'showdown-highlight';
 import spaceTrim from 'spacetrim';
+import { speak } from '../../sections/60-Journal/utils/speak';
 import { emojifyHtml } from '../../utils/content/emojifyHtml';
 import { linkMarkdown } from '../../utils/content/linkMarkdown';
 import { normalizeDashes } from '../../utils/content/normalizeDashes';
+import { removeMarkdownFormatting } from '../../utils/content/removeMarkdownFormatting';
 import { Html } from '../Html/Html';
 import styles from './Article.module.css';
 
@@ -16,7 +19,7 @@ interface IArticleProps {
     /**
      * Make for each heading in markdown unique id and scroll to hash
      */
-    isHashUsed?: boolean;
+    isSpoken?: boolean;
 
     /**
      * Is enhanced by adding links, normalize dashes and emojify
@@ -25,9 +28,7 @@ interface IArticleProps {
 }
 
 export function Article(props: IArticleProps) {
-    const { content /* [0], isHashUsed */, isEnhanced } = props;
-
-    // [0] const hash = useHash();
+    const { content, isSpoken, isEnhanced } = props;
 
     let markdown = spaceTrim(content || '');
 
@@ -38,6 +39,15 @@ export function Article(props: IArticleProps) {
 
     converter.setFlavor('github');
     let html = converter.makeHtml(markdown);
+
+    useEffect(() => {
+        if (!isSpoken) {
+            return;
+        }
+
+        /* not await BUT maybe should be */ speak(removeMarkdownFormatting(markdown), 'cs');
+        return () => {};
+    }, [markdown, isSpoken]);
 
     if (html === '') {
         // Note: Do not make empty div for empty article
