@@ -87,7 +87,7 @@ export default function SocketInitializeHandler(req: any /* <- TODO: NextApiRequ
                                         OPENAI_API_KEY!.length,
                                     ) /* <- TODO: Hide key util */
                                 }\`
-            
+
                                 \`\`\`text
                                 ${block(errorMessage)}
                                 \`\`\`
