@@ -1,5 +1,7 @@
 import { faker } from '@faker-js/faker';
 import chalk from 'chalk';
+import { writeFile } from 'fs/promises';
+import { join } from 'path';
 import { Server } from 'socket.io';
 import spaceTrim from 'spacetrim';
 import { forTime } from 'waitasecond';
@@ -60,6 +62,8 @@ export default function SocketInitializeHandler(req: any /* <- TODO: NextApiRequ
 
                 console.info(gptResponse);
                 console.info(chalk.blue(gptResponse.text));
+
+                await writeFile(join(process.cwd(), 'chat/message.md'), gptResponse.text);
 
                 connection.emit('response', {
                     date: new Date(),
