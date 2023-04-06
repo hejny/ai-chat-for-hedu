@@ -1,5 +1,5 @@
 export default function Page({ lang }: any) {
-    return <></>;
+    return <>Instead of this page should be Socket.io handler initialized in ./api/initialize-socket.ts</>;
 }
 
 /**

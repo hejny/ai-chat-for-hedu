@@ -100,7 +100,3 @@ const SocketHandler = (req: any, res: any) => {
 };
 
 export default SocketHandler;
-
-/**
- * TODO: !!! Rename endpoint to chat
- */
