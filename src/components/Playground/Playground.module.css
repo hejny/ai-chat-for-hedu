@@ -1,6 +1,10 @@
 .Playground {
     /* TODO: Use or remove empty css */
 
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+
     border: 1px solid red;
     background-color: brown;
     color: white;
