@@ -13,7 +13,7 @@ export default function SocketInitializeHandler(req: any /* <- TODO: NextApiRequ
     }
 
     console.log(chalk.green('Socket is initializing'));
-    const io = new Server<SocketEventMap>(res.socket.server);
+    const io = new Server<SocketEventMap>(res.socket.server, { path: '/api/socket.io' });
 
     // TODO: !!!! Run in better way in Vercel
     res.socket.server.io = io;

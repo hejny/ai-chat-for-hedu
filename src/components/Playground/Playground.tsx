@@ -19,7 +19,7 @@ export function Playground(props: PlaygroundProps) {
 
     const socketInitializer = () => {
         /* await */ fetch('/api/initialize-socket');
-        socket = io(/*{ path: '/api/chat-socket/' }*/);
+        socket = io({ path: '/api/socket.io' });
 
         console.log({ socket });
 
@@ -43,3 +43,7 @@ export function Playground(props: PlaygroundProps) {
 
     return <div className={styles.Playground}>{nonce}</div>;
 }
+
+/**
+ * TODO: Better place for initialization of socket.io on client
+ */
