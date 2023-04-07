@@ -16,6 +16,11 @@ export const VERCEL_GIT_COMMIT_SHA = config.get('VERCEL_GIT_COMMIT_SHA').value;
 
 export const OPENAI_API_KEY = config.get('OPENAI_API_KEY').value;
 
+/**
+ * TODO: !!!! Remove all traces of Vercel
+ * TODO: !!!! Remove everything Bellow
+ */
+
 export const INITIAL_JOURNAL_MESSAGE_TEXT = spaceTrim(`
 
     Jaký máš cíl dnešní hodiny matematiky?
