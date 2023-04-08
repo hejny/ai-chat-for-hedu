@@ -3,7 +3,7 @@ import { ChatGPTAPI } from 'chatgpt';
 import { readFile, writeFile } from 'fs/promises';
 import { join } from 'path';
 import spaceTrim from 'spacetrim';
-import { INITIAL_SHEM_MESSAGE_TEXT, OPENAI_API_KEY } from '../../../../config';
+import { INITIAL_SHEM_MESSAGE_TEXT, OPENAI_API_KEY } from '../../config';
 
 export const chatGptApi = new ChatGPTAPI({
     apiKey: OPENAI_API_KEY!,

@@ -5,7 +5,7 @@ import spaceTrim from 'spacetrim';
 import { forTime } from 'waitasecond';
 import { OPENAI_API_KEY } from '../../../config';
 import { SocketEventMap } from '../../../interfaces/socket';
-import { chatGptApi, getInitialMessageId } from './utils/getInitialMessageId';
+import { chatGptApi, getInitialMessageId } from '../../gpt/getInitialMessageId';
 
 export default function SocketInitializeHandler(req: any /* <- TODO: NextApiRequest */, res: any) {
     if (res.socket.server.io) {
