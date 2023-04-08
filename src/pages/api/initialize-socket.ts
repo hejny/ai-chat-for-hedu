@@ -15,7 +15,6 @@ export default function SocketInitializeHandler(req: any /* <- TODO: NextApiRequ
     console.log(chalk.green('Socket is initializing'));
     const io = new Server<SocketEventMap>(res.socket.server);
 
-    // TODO: !!!! Run in better way in Vercel
     res.socket.server.io = io;
 
     io.on('connection', (connection) => {

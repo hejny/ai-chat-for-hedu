@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { VERCEL_GIT_COMMIT_MESSAGE, VERCEL_GIT_COMMIT_SHA, VERSION } from '../../../config';
+import { VERSION } from '../../../config';
 import { Article } from '../../components/Article/Article';
 import { Section } from '../../components/Section/Section';
 import styles from './TechnicalInfo.module.css';
@@ -21,18 +21,20 @@ export function TechnicalInfo() {
             <div className={styles.field}>
                 <span>Repository:</span>
                 <span>
-                    <a href="https://github.com/hejny/hejny/">https://github.com/hejny/hejny/</a>
+                    <a href="https://github.com/hejny/ai-chat-for-hedu/">https://github.com/hejny/ai-chat-for-hedu/</a>
                 </span>
             </div>
 
+            {/*
             <div className={styles.field}>
                 <span>Commit:</span>
                 <span>
-                    <a href={`https://github.com/hejny/hejny/commit/${VERCEL_GIT_COMMIT_SHA}`}>
+                    <a href={`https://github.com/hejny/ai-chat-for-hedu/commit/${VERCEL_GIT_COMMIT_SHA}`}>
                         {VERCEL_GIT_COMMIT_MESSAGE}
                     </a>
                 </span>
             </div>
+            */}
         </Section>
     );
 }
