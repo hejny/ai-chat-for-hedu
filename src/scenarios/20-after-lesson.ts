@@ -1,13 +1,13 @@
 import { ScenarioUtils } from '../model/_';
 
-export async function beforeLessonScenario({ load, ask, rewrite, summary, save, say }: ScenarioUtils): Promise<void> {
+export async function beforeLessonScenario({ load, ask, rewrite, summarize, save, say }: ScenarioUtils): Promise<void> {
     const { lessonPlan } = await load('lessonPlan');
 
     const planResult = await ask(
         rewrite(
             !lessonPlan
                 ? `Jak se podařilo dnešní cíle naplnit?`
-                : `Dneska jsi měl za cíl ${await summary(
+                : `Dneska jsi měl za cíl ${await summarize(
                       lessonPlan,
                   ).content.asPromise()}. Jak s Ti ho podařilo naplnit?`,
         ),

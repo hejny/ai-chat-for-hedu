@@ -44,7 +44,7 @@ export function AppHead(props: AppHeadProps) {
                 <meta property="fb:app_id" content="179993545901102" />
 
                 {/* Twitter */}
-                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:card" content="summarize_large_image" />
                 <meta property="twitter:url" content={homeUrl} />
                 <meta property="twitter:title" content={title} />
                 <meta property="twitter:description" content={description} />
@@ -56,7 +56,7 @@ export function AppHead(props: AppHeadProps) {
 }
 
 /**
- * TODO: Create better summary
+ * TODO: Create better summarize
  * TODO: Maybe import from some JSON
  * TODO: What is ideal viewport value
  */

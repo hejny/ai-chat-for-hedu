@@ -94,7 +94,7 @@ export interface ScenarioUtils {
     /**
      * @@@
      */
-    summary(message: ChatMessage | string): ChatMessage;
+    summarize(message: ChatMessage | string): ChatMessage;
 
     /**
      * @@@
