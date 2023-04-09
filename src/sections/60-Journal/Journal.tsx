@@ -71,8 +71,8 @@ export function JournalSection() {
 
                     // TODO: Driver to handle this
 
-                    socket.emit('request', myMessage);
-                    socket.on('response', (replyMessage) => {
+                    socket.emit('chatRequest', myMessage);
+                    socket.on('chatResponse', (replyMessage) => {
                         setMessages([...messages, myMessage, replyMessage]);
 
                         // TODO: !!! Translate to RxJS object

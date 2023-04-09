@@ -2,9 +2,9 @@ import { AliceChatMessage, BotChatMessage, CompleteChatMessage } from './chatMes
 
 export interface SocketEventMap {
     test(nonce: string): void;
-    request(message: AliceChatMessage & CompleteChatMessage): void;
+    chatRequest(message: AliceChatMessage & CompleteChatMessage): void;
 
-    // TODO: !!! Maybe in different interface
-    response: (message: BotChatMessage) => void;
+    // TODO: Following maybe in different interface
+    chatResponse: (message: BotChatMessage) => void;
     error: (errorMessage: string) => void;
 }
