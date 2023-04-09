@@ -19,6 +19,9 @@ interface Prombservable<T> {
     asCurrentValue(): null | T;
 }
 
+/**
+ * Class representing a chat message ⁘
+ */
 export class ChatMessage {
     // TODO: !!! Extract ChatMessage to separate file
 
@@ -73,6 +76,9 @@ export class ChatMessage {
     private contentAsPromise: Promise<string>;
 }
 
+/**
+ * Interface representing utility methods for use in a Scenario ⁘
+ */
 export interface ScenarioUtils {
     // TODO: !!! Extract ScenarioUtils to separate file
 
