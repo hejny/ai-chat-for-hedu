@@ -2,14 +2,33 @@ import { Socket } from 'socket.io-client';
 import { SocketEventMap } from '../../interfaces/socket';
 
 export function initializeChatSocket(connection: Socket<SocketEventMap>): void {
-    connection.on('chatRequest', async ({ content, parentMessageId, isComplete }) => {
-        if (parentMessageId === 'INITIAL') {
-            parentMessageId = await getInitialMessageId();
-        } else if (!parentMessageId) {
-            connection.emit('error', `Key parentMessageId is missing in request`);
-        } else if (!isComplete) {
-            connection.emit('error', `You have send incomplete message`);
+
+
+
+
+    (async () => {
+        const words = [];
+        for (const word of splitWords(INITIAL_JOURNAL_MESSAGE_TEXT)) {
+            if (isDestroyed) {
+                return;
+            }
+            await forTime(100);
+
+            words.push(word);
+
+            initialMessage.content = joinWords(words);
+            setMessages([initialMessage]);
         }
+    })();
+
+
+    
+
+
+    connection.on('chatRequest', async ({ content, parentMessageId, isComplete }) => {
+    
+
+
 
         try {
             console.info({ parentMessageId });

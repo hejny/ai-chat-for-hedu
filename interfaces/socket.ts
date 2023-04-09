@@ -1,10 +1,10 @@
-import { AliceChatMessage, BotChatMessage, CompleteChatMessage } from './chatMessage';
+import { CompleteChatMessage, JournalChatMessage, TeacherChatMessage } from './chatMessage';
 
 export interface SocketEventMap {
     test(nonce: string): void;
-    chatRequest(message: AliceChatMessage & CompleteChatMessage): void;
+    chatRequest(message: TeacherChatMessage & CompleteChatMessage): void;
 
     // TODO: Following maybe in different interface
-    chatResponse: (message: BotChatMessage) => void;
+    chatResponse: (message: JournalChatMessage) => void;
     error: (errorMessage: string) => void;
 }

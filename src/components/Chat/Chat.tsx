@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import spaceTrim from 'spacetrim';
 import { Promisable } from 'type-fest';
-import { INITIAL_TEACHER_MESSAGE_TEXT } from '../../../config';
 import { ChatMessage } from '../../../interfaces/chatMessage';
 import journalAvatar from '../../../public/people/journal.jpeg';
 import teacherAvatar from '../../../public/people/teacher.jpeg';
@@ -90,8 +89,8 @@ export function Chat(props: ChatProps) {
             <div className={styles.chatInput}>
                 <textarea
                     ref={textareaRef as any}
-                    defaultValue={INITIAL_TEACHER_MESSAGE_TEXT /* <- !!! Do not use this just as a placeholder */}
-                    placeholder={INITIAL_TEACHER_MESSAGE_TEXT}
+                    // defaultValue={INITIAL_TEACHER_MESSAGE_TEXT /* <- !!! Do not use this just as a placeholder */}
+                    // TODO: placeholder={INITIAL_TEACHER_MESSAGE_TEXT}
                     onKeyDown={(event) => {
                         if (event.shiftKey) {
                             return;

@@ -1,18 +1,16 @@
-export type ChatMessage = AliceChatMessage | BotChatMessage /* <- TODO: Extract commons */;
+export type ChatMessage = TeacherChatMessage | JournalChatMessage /* <- TODO: Extract commons */;
 
-export interface AliceChatMessage {
+export interface TeacherChatMessage {
     // TODO: Internal ID
-    parentMessageId: string /* <- TODO: !!! Probbably link full object and make linear-linked array */;
     date: Date;
     from: 'TEACHER';
     content: string /*_markdown*/;
     isComplete: boolean;
 }
 
-export interface BotChatMessage {
+export interface JournalChatMessage {
     // TODO: Internal ID
-    // TODO: Maybe mark messageId as gptMessageId
-    messageId: string | 'INITIAL';
+    // TODO: gptMessageId: string;
     date: Date;
     from: 'JOURNAL';
     content: string /*_markdown*/;
