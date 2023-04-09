@@ -5,6 +5,14 @@ import { forTime } from 'waitasecond';
 import { SocketEventMap } from '../../../interfaces/socket';
 import { initializeChatSocket } from '../../socket/initializeChatSocket';
 
+
+
+
+
+
+
+
+
 export default function SocketInitializeHandler(req: any /* <- TODO: NextApiRequest */, res: any) {
     if (res.socket.server.io) {
         return res.send(`Socket.IO is already initialized`);
@@ -26,7 +34,7 @@ export default function SocketInitializeHandler(req: any /* <- TODO: NextApiRequ
             }
         })();
 
-        initializeChatSocket(connection);
+        /* not await */ initializeChatSocket(connection);
     });
 
     return res.send(`Socket.IO is newly initialized`);

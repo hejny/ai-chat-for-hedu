@@ -112,7 +112,7 @@ export interface ScenarioUtils {
 }
 
 export interface Scenario {
-    (utils: ScenarioUtils): Promise<ChatMessage>;
+    (utils: ScenarioUtils): Promise<void>;
 }
 
 export function toChatMessage(chatMessage: ChatMessage | string): ChatMessage {
@@ -135,6 +135,7 @@ export function stringToChatMessage(chatMessageContent: string): ChatMessage {
 }
 
 /**
+ * TODO: [🧶]
  * TODO: Ask askOptions + askOpenOptions (as variant of askBoolean (which will be internally using askOptions))
  * TODO: Maybe integrate rewrite into ask + integrate spaceTrim
  * TODO: Maybe integrate ask and save
