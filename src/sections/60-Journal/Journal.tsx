@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChatMessage, CompleteChatMessage, TeacherChatMessage } from '../../../interfaces/chatMessage';
 import { Article } from '../../components/Article/Article';
 import { Chat } from '../../components/Chat/Chat';
@@ -11,6 +11,17 @@ export function JournalSection() {
     const { t } = useTranslation();
     const [messages, setMessages] = useState<Array<ChatMessage>>([]);
 
+    useEffect(() => {
+        // !!! Call off on to listener on useEffect destroy
+        socket.on('chatResponse', (replyMessage) => {
+            setMessages([...messages, replyMessage]);
+
+            // TODO: !!! Translate to RxJS object
+            // TODO: !!! Speech here
+            // TODO: !!! Cancel this listener
+        });
+    }, [messages, setMessages]);
+
     return (
         <Section id="Journal" className={styles.JournalSection}>
             <h2>
@@ -20,7 +31,7 @@ export function JournalSection() {
             <Playground />
 
             <Chat
-                messages={messages}
+                {...{ messages }}
                 onMessage={async (content /* <- TODO: !!! Pass here the message object NOT just text */) => {
                     const myMessage: TeacherChatMessage & CompleteChatMessage = {
                         date: new Date(),
@@ -30,17 +41,7 @@ export function JournalSection() {
                     };
 
                     setMessages([...messages, myMessage]);
-
-                    // TODO: Driver to handle this
-
                     socket.emit('chatRequest', myMessage);
-                    socket.on('chatResponse', (replyMessage) => {
-                        setMessages([...messages, myMessage, replyMessage]);
-
-                        // TODO: !!! Translate to RxJS object
-                        // TODO: !!! Speech here
-                        // TODO: !!! Cancel this listener
-                    });
                 }}
             />
             {/*<RecordForm/>*/}
@@ -49,6 +50,7 @@ export function JournalSection() {
 }
 
 /**
+ * TODO: Driver to handle sockets
  * TODO: !!! Pick a voice
  * TODO: !!! Voice is working with markdown
  * TODO: !!! Highlite during a speech

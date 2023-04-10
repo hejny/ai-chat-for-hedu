@@ -1,6 +1,6 @@
 import { ScenarioUtils } from '../model/_';
 
-export async function beforeLessonScenario({ load, ask, rewrite, summarize, save, say }: ScenarioUtils): Promise<void> {
+export async function afterLessonScenario({ load, ask, rewrite, summarize, save, say }: ScenarioUtils): Promise<void> {
     const { lessonPlan } = await load('lessonPlan');
 
     const planResult = await ask(

@@ -90,7 +90,7 @@ export interface ScenarioUtils {
     /**
      * @@@
      */
-    ask(message: ChatMessage | string): ChatMessage;
+    ask(message: ChatMessage | string): Promise<ChatMessage>;
 
     /**
      * @@@
