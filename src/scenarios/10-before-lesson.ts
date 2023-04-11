@@ -4,8 +4,8 @@ export async function beforeLessonScenario({ say, ask, rewrite, save }: Scenario
     // TODO: !!!!1 Both messages must work
     // console.log('beforeLessonScenario', 0);
     await say(rewrite(`Jaký máš cíl dnešní hodiny matematiky?`));
-    await say(rewrite(`Jaký máš cíl dnešní hodiny češtiny?`));
-    await say(rewrite(`Jaký máš cíl dnešní hodiny dějepisu?`));
+    // await say(rewrite(`Jaký máš cíl dnešní hodiny češtiny?`));
+    // await say(rewrite(`Jaký máš cíl dnešní hodiny dějepisu?`));
 
     /*
 

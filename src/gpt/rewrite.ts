@@ -2,9 +2,9 @@ import { Observable } from 'rxjs';
 import spaceTrim from 'spacetrim';
 import { askChatGpt } from './askChatGpt';
 
-export function rewrite(textToRewrite: string): Observable<string>  {
+export function rewrite(textToRewrite: string): Observable<string> {
     return askChatGpt({
-        type: 'rewrite',
+        type: 'rewrite' /* <- TODO: !!! Make type more structural chat/rewrite/before-lesson/math/chat123.md */,
         requestText: spaceTrim(
             (block) => `
 

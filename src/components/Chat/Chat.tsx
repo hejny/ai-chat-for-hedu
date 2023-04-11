@@ -86,7 +86,9 @@ export function Chat(props: ChatProps) {
                             <pre>{JSON.stringify(message, null, 4)}</pre>
                             <Article
                                 /* TODO: className={styles.messageText} */ {...{ content: message.content }}
-                                isSpoken
+                                isSpoken={
+                                    message.isComplete /* <- TODO: !!! Spoke fluently as the tokens go on MAKE some SpeechManager/SpeechSystem */
+                                }
                             />
                         </div>
                     </div>
