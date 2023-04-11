@@ -30,13 +30,13 @@ export class ChatGptThread {
             return messageCached.match(/<!--\s*(?<messageId>.*)\s*-->/)!.groups!.messageId;
         }
 
-        console.info(chalk.blue(INITIAL_SHEM_MESSAGE_TEXT));
+        console.info(chalk.gray(INITIAL_SHEM_MESSAGE_TEXT));
         const gptResponse = await chatGptApi.sendMessage(
             INITIAL_SHEM_MESSAGE_TEXT /*{ stream: true } <- !!! Play with */,
         );
 
         console.info(gptResponse);
-        console.info(chalk.green(gptResponse.text));
+        console.info(chalk.magenta(gptResponse.text));
 
         await writeFile(
             join(process.cwd(), 'chat/message.md'),

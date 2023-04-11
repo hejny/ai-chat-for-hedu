@@ -1,7 +1,7 @@
 export type ChatMessage = TeacherChatMessage | JournalChatMessage /* <- TODO: Extract commons */;
 
 export interface TeacherChatMessage {
-    // TODO: Internal ID
+    id: string;
     date: Date;
     from: 'TEACHER';
     content: string /*_markdown*/;
@@ -9,7 +9,7 @@ export interface TeacherChatMessage {
 }
 
 export interface JournalChatMessage {
-    // TODO: Internal ID
+    id: string;
     // TODO: gptMessageId: string;
     date: Date;
     from: 'JOURNAL';

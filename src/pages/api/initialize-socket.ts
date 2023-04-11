@@ -5,20 +5,12 @@ import { forTime } from 'waitasecond';
 import { SocketEventMap } from '../../../interfaces/socket';
 import { initializeChatSocket } from '../../socket/initializeChatSocket';
 
-
-
-
-
-
-
-
-
 export default function SocketInitializeHandler(req: any /* <- TODO: NextApiRequest */, res: any) {
     if (res.socket.server.io) {
         return res.send(`Socket.IO is already initialized`);
     }
 
-    console.log(chalk.green('Socket is initializing'));
+    console.log(chalk.gray('Socket is initializing'));
     const io = new Server<SocketEventMap>(res.socket.server);
 
     res.socket.server.io = io;

@@ -36,7 +36,7 @@ export function askChatGpt(options: AskChatGptOptions): Observable<string> {
             }
             */
 
-            console.info(chalk.blue(requestText));
+            console.info(chalk.gray(requestText));
             const gptResponse = await chatGptApi.sendMessage(requestText, {
                 onProgress(partialResponse) {
                     subscriber.next(partialResponse.text);
@@ -44,7 +44,7 @@ export function askChatGpt(options: AskChatGptOptions): Observable<string> {
             });
 
             console.info(gptResponse);
-            console.info(chalk.green(gptResponse.text));
+            console.info(chalk.magenta(gptResponse.text));
 
             await writeFile(
                 join(process.cwd(), 'chat', type, `${gptResponse.id}.md`),

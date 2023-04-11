@@ -1,6 +1,12 @@
 import { useTranslation } from 'next-i18next';
-import { useEffect, useState } from 'react';
-import { ChatMessage, CompleteChatMessage, TeacherChatMessage } from '../../../interfaces/chatMessage';
+import { useEffect, useReducer } from 'react';
+import { v4 } from 'uuid';
+import {
+    ChatMessage,
+    CompleteChatMessage,
+    JournalChatMessage,
+    TeacherChatMessage,
+} from '../../../interfaces/chatMessage';
 import { Article } from '../../components/Article/Article';
 import { Chat } from '../../components/Chat/Chat';
 import { Playground, socket } from '../../components/Playground/Playground';
@@ -9,18 +15,36 @@ import styles from './Journal.module.css';
 
 export function JournalSection() {
     const { t } = useTranslation();
-    const [messages, setMessages] = useState<Array<ChatMessage>>([]);
+
+    const [messages, messagesDispatch] = useReducer(
+        (messages: Array<ChatMessage>, action: { type: 'ADD'; message: ChatMessage }) => {
+            // TODO: !!! Extract reducer to separate file
+            switch (action.type) {
+                case 'ADD':
+                    return [...messages.filter((message) => message.id !== action.message.id), action.message];
+
+                default:
+                    throw new Error(`Unknown action "${action.type}".`);
+            }
+        },
+        [],
+    );
 
     useEffect(() => {
+        console.log(`useEffect`, `socket.on chatResponse`);
         // !!! Call off on to listener on useEffect destroy
-        socket.on('chatResponse', (replyMessage) => {
-            setMessages([...messages, replyMessage]);
+
+        const listener = (replyMessage: JournalChatMessage) => {
+            console.log('chatResponse', replyMessage.id, replyMessage.content);
+            messagesDispatch({ type: 'ADD', message: replyMessage });
 
             // TODO: !!! Translate to RxJS object
             // TODO: !!! Speech here
             // TODO: !!! Cancel this listener
-        });
-    }, [messages, setMessages]);
+        };
+        socket.on('chatResponse', listener);
+        return () => void socket.off('chatResponse', listener);
+    });
 
     return (
         <Section id="Journal" className={styles.JournalSection}>
@@ -34,13 +58,14 @@ export function JournalSection() {
                 {...{ messages }}
                 onMessage={async (content /* <- TODO: !!! Pass here the message object NOT just text */) => {
                     const myMessage: TeacherChatMessage & CompleteChatMessage = {
+                        id: v4(),
                         date: new Date(),
                         from: 'TEACHER',
                         content,
                         isComplete: true,
                     };
 
-                    setMessages([...messages, myMessage]);
+                    messagesDispatch({ type: 'ADD', message: myMessage });
                     socket.emit('chatRequest', myMessage);
                 }}
             />

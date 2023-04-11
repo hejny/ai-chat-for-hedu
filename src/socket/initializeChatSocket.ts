@@ -1,5 +1,7 @@
+import chalk from 'chalk';
 import { Subject } from 'rxjs';
 import { Socket } from 'socket.io';
+import { v4 } from 'uuid';
 import { JournalChatMessage, TeacherChatMessage } from '../../interfaces/chatMessage';
 import { SocketEventMap } from '../../interfaces/socket';
 import { ChatMessage, Scenario, ScenarioUtils, toChatMessage } from '../model/_';
@@ -15,6 +17,7 @@ class SocketScenarioUtils implements ScenarioUtils {
         // TODO: !!! Not request/response but out/in or sth semantically better
 
         let outMessage: JournalChatMessage = {
+            id: v4(),
             date: new Date(),
             from: 'JOURNAL',
             content: '',
@@ -27,22 +30,23 @@ class SocketScenarioUtils implements ScenarioUtils {
             this.connection.emit('chatResponse', outMessage);
         };
 
+        const requestMessage = toChatMessage(requestMessageOrContent);
+
         return new Promise((resolve, reject) =>
-            toChatMessage(requestMessageOrContent)
-                .content.asObservable()
-                .subscribe({
-                    next(content) {
-                        updateMessage({ content });
-                    },
-                    complete() {
-                        updateMessage({ isComplete: true });
-                        resolve();
-                    },
-                    error: (error: Error) => {
-                        this.connection.emit('error', error.message);
-                        reject();
-                    },
-                }),
+            requestMessage.content.asObservable().subscribe({
+                next(content) {
+                    updateMessage({ content });
+                },
+                complete() {
+                    console.log(chalk.green(requestMessage.content.asCurrentValue()));
+                    updateMessage({ isComplete: true });
+                    resolve();
+                },
+                error: (error: Error) => {
+                    this.connection.emit('error', error.message);
+                    reject();
+                },
+            }),
         );
     }
 
@@ -53,6 +57,8 @@ class SocketScenarioUtils implements ScenarioUtils {
 
         const listener = (inMessage: TeacherChatMessage) => {
             console.log('chatRequest', inMessage);
+
+            console.log(chalk.blue(inMessage.content));
 
             responseMessageContent.next(inMessage.content);
 
@@ -116,44 +122,6 @@ export async function initializeChatSocket(connection: Socket<SocketEventMap>): 
 
         connection.emit('error', error.message);
     }
-
-    /*
-    connection.on('chatRequest', async ({ content, parentMessageId, isComplete }) => {
-
-            console.info({ parentMessageId });
-            console.info(chalk.blue(content));
-
-            const gptResponse = await chatGptApi.sendMessage(content, {
-                parentMessageId,
-                //parentMessageId: res.id
-
-                onProgress(gptPartialResponse) {
-                    console.info(chalk.blue(gptPartialResponse.text));
-                    connection.emit('chatResponse', {
-                        date: new Date(),
-                        from: 'JOURNAL',
-                        messageId: gptPartialResponse.id,
-                        content: gptPartialResponse.text,
-                        isComplete: false,
-                    });
-                },
-            });
-
-            console.info(gptResponse);
-            console.info(chalk.blue(gptResponse.text));
-
-
-            connection.emit('chatResponse', {
-                date: new Date(),
-                from: 'JOURNAL',
-                messageId: gptResponse.id,
-                content: gptResponse.text,
-                isComplete: true,
-            });
-      
-    });
-
-    */
 }
 
 /*

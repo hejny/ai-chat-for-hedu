@@ -70,6 +70,7 @@
         "@types/seedrandom": "3.0.4",
         "@types/showdown": "2.0.0",
         "@types/styled-components": "5.1.26",
+        "@types/uuid": "^9.0.1",
         "chalk": "4.1.2",
         "commander": "9.4.1",
         "cypress": "12.3.0",
@@ -84,6 +85,7 @@
         "prettier": "2.8.1",
         "ts-jest": "29.0.5",
         "ts-node": "10.9.1",
-        "type-fest": "3.7.1"
+        "type-fest": "3.7.1",
+        "uuid": "^9.0.0"
     }
 }
