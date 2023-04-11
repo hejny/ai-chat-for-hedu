@@ -15,7 +15,7 @@ export function summarize(options: SummarizeOptions): Observable<string> {
         requestText: spaceTrim(
             (block) => `
 
-                Sumarizuj následující text:
+                TLDR / Ve zkratce sumarizuj následující text:
 
                 \`\`\`
                 ${block(textToSummarize)}
@@ -33,4 +33,5 @@ export function summarize(options: SummarizeOptions): Observable<string> {
 /**
  * TODO: Maybe use "TL;DR"
  * TODO: [🎍] Do with ChatGptResponse and cache
+ * TODO: [🥽] It is but ugly-prectise to name summarize and rewrite by same name as standalone functions and also a methods of ScenarioUtils - figure out two sets of unique names
  */

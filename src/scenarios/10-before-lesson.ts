@@ -1,12 +1,13 @@
 import { ScenarioUtils } from '../model/_';
 
-export async function beforeLessonScenario({ say, ask, rewrite, save }: ScenarioUtils): Promise<void> {
+export async function beforeLessonScenario({ say, ask, rewrite, save, summarize }: ScenarioUtils): Promise<void> {
     // TODO: !!!!1 Both messages must work
     // console.log('beforeLessonScenario', 0);
-    
-    await ask(rewrite(`Jaký máš cíl dnešní hodiny matematiky?`));
-    await ask(rewrite(`Jaký máš cíl dnešní hodiny češtiny?`));
-    await ask(rewrite(`Jaký máš cíl dnešní hodiny dějepisu?`));
+
+    //const lessonPlan = await ask(rewrite(`Jaký máš cíl dnešní hodiny matematiky?`));
+    const lessonPlan =
+        'Rád bych se věnoval pythagorově větě - nevím jak to vysvětlit všem tak, aby to Tondu nenudilo a Adam stíhal. Rád bych to ukázal geometricky a také pomocí objemu vody.';
+    await say(await summarize(lessonPlan));
 
     /*
 

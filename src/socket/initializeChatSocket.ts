@@ -7,6 +7,7 @@ import { v4 } from 'uuid';
 import { JournalChatMessage, TeacherChatMessage } from '../../interfaces/chatMessage';
 import { SocketEventMap } from '../../interfaces/socket';
 import { rewrite } from '../gpt/rewrite';
+import { summarize } from '../gpt/summarize';
 import { ChatMessage, Scenario, ScenarioUtils, toChatMessage } from '../model/_';
 import { beforeLessonScenario } from '../scenarios/10-before-lesson';
 
@@ -116,8 +117,31 @@ class SocketScenarioUtils implements ScenarioUtils {
 
     public summarize(messageOrContent: ChatMessage | string): ChatMessage {
         const message = toChatMessage(messageOrContent);
-        // TODO: !!! Implement
-        return message;
+
+        const summarizedContent = new Subject<string>();
+
+        message.content.asPromise().then((content) => {
+            summarize({
+                textToSummarize: content,
+                cache: [this.scenarioName, sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(content))],
+            }).subscribe({
+                next(value) {
+                    summarizedContent.next(value);
+                },
+                complete() {
+                    summarizedContent.complete();
+                },
+                error(error) {
+                    summarizedContent.error(error);
+                },
+            });
+        });
+
+        return new ChatMessage(
+            message.parentMessage,
+            message.from,
+            summarizedContent /* <- Note: No need to convert .asObservable() */,
+        );
     }
 
     public async load(
@@ -179,5 +203,6 @@ export async function initializeChatSocket(connection: Socket<SocketEventMap>): 
 */
 
 /**
+ * TODO: [🥽] It is but ugly-prectise to name summarize and rewrite by same name as standalone functions and also a methods of ScenarioUtils - figure out two sets of unique names
  * TODO: !!! ScenarioUtils to model
  */

@@ -145,4 +145,5 @@ export function stringToChatMessage(chatMessageContent: string): ChatMessage {
  * TODO: Ask askOptions + askOpenOptions (as variant of askBoolean (which will be internally using askOptions))
  * TODO: Maybe integrate rewrite into ask + integrate spaceTrim
  * TODO: Maybe integrate ask and save
+ * TODO: [🥽] It is but ugly-prectise to name summarize and rewrite by same name as standalone functions and also a methods of ScenarioUtils - figure out two sets of unique names
  */
