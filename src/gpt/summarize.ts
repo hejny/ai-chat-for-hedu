@@ -1,7 +1,8 @@
+import { Observable } from 'rxjs';
 import spaceTrim from 'spacetrim';
 import { askChatGpt } from './askChatGpt';
 
-export function summarize(textToSummarizee: string) {
+export function summarize(textToSummarizee: string): Observable<string> {
     return askChatGpt({
         type: 'rewrite',
         requestText: spaceTrim(
@@ -23,5 +24,6 @@ export function summarize(textToSummarizee: string) {
 }
 
 /**
+ * TODO: Maybe use "TL;DR"
  * TODO: [🎍] Do with ChatGptResponse and cache
  */

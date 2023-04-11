@@ -31,11 +31,11 @@ export function JournalSection() {
     );
 
     useEffect(() => {
-        console.log(`useEffect`, `socket.on chatResponse`);
+        // console.log(`useEffect`, `socket.on chatResponse`);
         // !!! Call off on to listener on useEffect destroy
 
         const listener = (replyMessage: JournalChatMessage) => {
-            console.log('chatResponse', replyMessage.id, replyMessage.content);
+            // console.log('chatResponse', replyMessage.id, replyMessage.content);
             messagesDispatch({ type: 'ADD', message: replyMessage });
 
             // TODO: !!! Translate to RxJS object

@@ -3,10 +3,9 @@ import { ScenarioUtils } from '../model/_';
 export async function beforeLessonScenario({ say, ask, rewrite, save }: ScenarioUtils): Promise<void> {
     // TODO: !!!!1 Both messages must work
     // console.log('beforeLessonScenario', 0);
-    say(`test test test test 1`);
+    say(rewrite(`Náhodná první věta`));
     await say(`test test test test 2`);
     await say(`test test test test 3`);
-
 
     /*
 

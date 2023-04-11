@@ -4,6 +4,7 @@ import { Socket } from 'socket.io';
 import { v4 } from 'uuid';
 import { JournalChatMessage, TeacherChatMessage } from '../../interfaces/chatMessage';
 import { SocketEventMap } from '../../interfaces/socket';
+import { rewrite } from '../gpt/rewrite';
 import { ChatMessage, Scenario, ScenarioUtils, toChatMessage } from '../model/_';
 import { beforeLessonScenario } from '../scenarios/10-before-lesson';
 
@@ -74,10 +75,32 @@ class SocketScenarioUtils implements ScenarioUtils {
         return new ChatMessage(requestMessage, 'JOURNAL', responseMessageContent);
     }
 
+    // TODO: DRY rewrite and summarize
+
     public rewrite(messageOrContent: ChatMessage | string): ChatMessage {
         const message = toChatMessage(messageOrContent);
-        // TODO: !!! Implement
-        return message;
+
+        const rewrittenContent = new Subject<string>();
+
+        message.content.asPromise().then((content) => {
+            rewrite(content).subscribe({
+                next(value) {
+                    rewrittenContent.next(value);
+                },
+                complete() {
+                    rewrittenContent.complete();
+                },
+                error(error) {
+                    rewrittenContent.error(error);
+                },
+            });
+        });
+
+        return new ChatMessage(
+            message.parentMessage,
+            message.from,
+            rewrittenContent /* <- Note: No need to convert .asObservable() */,
+        );
     }
 
     public summarize(messageOrContent: ChatMessage | string): ChatMessage {

@@ -1,7 +1,8 @@
+import { Observable } from 'rxjs';
 import spaceTrim from 'spacetrim';
 import { askChatGpt } from './askChatGpt';
 
-export function rewrite(textToRewrite: string) {
+export function rewrite(textToRewrite: string): Observable<string>  {
     return askChatGpt({
         type: 'rewrite',
         requestText: spaceTrim(
