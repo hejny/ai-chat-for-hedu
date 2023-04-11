@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { ChatGPTAPI, openai } from 'chatgpt';
-import { writeFile } from 'fs/promises';
+import { mkdir, writeFile } from 'fs/promises';
 import { join } from 'path';
 import { Observable } from 'rxjs';
 import spaceTrim from 'spacetrim';
@@ -46,8 +46,12 @@ export function askChatGpt(options: AskChatGptOptions): Observable<string> {
             console.info(gptResponse);
             console.info(chalk.magenta(gptResponse.text));
 
+            const cacheDirPath = join(process.cwd(), 'chat', type);
+            const cacheFilePath = join(cacheDirPath, `${gptResponse.id}.md`);
+
+            await mkdir(cacheDirPath, { recursive: true });
             await writeFile(
-                join(process.cwd(), 'chat', type, `${gptResponse.id}.md`),
+                cacheFilePath,
                 spaceTrim(
                     (block) => `
     

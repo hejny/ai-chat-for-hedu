@@ -21,7 +21,9 @@ export function JournalSection() {
             // TODO: !!! Extract reducer to separate file
             switch (action.type) {
                 case 'ADD':
-                    return [...messages.filter((message) => message.id !== action.message.id), action.message];
+                    return [...messages.filter((message) => message.id !== action.message.id), action.message].sort(
+                        (message1, message2) => (message1.date.valueOf() > message2.date.valueOf() ? 1 : -1),
+                    );
 
                 default:
                     throw new Error(`Unknown action "${action.type}".`);
