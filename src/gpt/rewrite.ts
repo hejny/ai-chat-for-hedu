@@ -2,9 +2,16 @@ import { Observable } from 'rxjs';
 import spaceTrim from 'spacetrim';
 import { askChatGpt } from './askChatGpt';
 
-export function rewrite(textToRewrite: string): Observable<string> {
+interface RewriteOptions {
+    cache: Array<string>;
+    textToRewrite: string;
+}
+
+export function rewrite(options: RewriteOptions): Observable<string> {
+    const { cache, textToRewrite } = options;
+
     return askChatGpt({
-        type: 'rewrite' /* <- TODO: !!! Make type more structural chat/rewrite/before-lesson/math/chat123.md */,
+        cache: ['rewrite', ...cache],
         requestText: spaceTrim(
             (block) => `
 

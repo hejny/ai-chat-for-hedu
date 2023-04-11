@@ -7,7 +7,7 @@ import spaceTrim from 'spacetrim';
 import { OPENAI_API_KEY } from '../../config';
 
 interface AskChatGptOptions {
-    type: string;
+    cache: Array<string>;
     requestText: string;
     completionParams: Partial<
         Omit<openai.CreateChatCompletionRequest, 'messages' | 'n' | 'stream'>
@@ -18,7 +18,7 @@ interface AskChatGptOptions {
  * One message reply from ChatGPT
  */
 export function askChatGpt(options: AskChatGptOptions): Observable<string> {
-    const { type, requestText, completionParams } = options;
+    const { cache, requestText, completionParams } = options;
 
     const chatGptApi = new ChatGPTAPI({
         apiKey: OPENAI_API_KEY!,
@@ -46,7 +46,7 @@ export function askChatGpt(options: AskChatGptOptions): Observable<string> {
             console.info(gptResponse);
             console.info(chalk.magenta(gptResponse.text));
 
-            const cacheDirPath = join(process.cwd(), 'chat', type);
+            const cacheDirPath = join(process.cwd(), 'chat', ...cache);
             const cacheFilePath = join(cacheDirPath, `${gptResponse.id}.md`);
 
             await mkdir(cacheDirPath, { recursive: true });

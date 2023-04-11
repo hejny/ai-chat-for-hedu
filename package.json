@@ -49,13 +49,15 @@
         "sharp": "0.31.3",
         "showdown": "2.1.0",
         "showdown-highlight": "3.1.0",
+        "sjcl": "^1.0.8",
         "socket.io": "4.6.1",
         "socket.io-client": "4.6.1",
         "spacetrim": "0.9.0",
         "typescript": "4.9.4",
         "utf-8-validate": "5.0.10",
         "waitasecond": "1.11.1",
-        "xyzt": "5.4.0"
+        "xyzt": "5.4.0",
+        "uuid": "^9.0.0"
     },
     "devDependencies": {
         "@total-typescript/ts-reset": "0.4.2",
@@ -69,6 +71,7 @@
         "@types/react-dom": "18.0.10",
         "@types/seedrandom": "3.0.4",
         "@types/showdown": "2.0.0",
+        "@types/sjcl": "^1.0.30",
         "@types/styled-components": "5.1.26",
         "@types/uuid": "^9.0.1",
         "chalk": "4.1.2",
@@ -76,7 +79,6 @@
         "cypress": "12.3.0",
         "eslint": "8.31.0",
         "eslint-config-next": "13.1.1",
-        "gh-pages": "4.0.0",
         "glob-promise": "6.0.1",
         "jest": "29.4.0",
         "jest-environment-jsdom": "29.4.0",
@@ -85,7 +87,6 @@
         "prettier": "2.8.1",
         "ts-jest": "29.0.5",
         "ts-node": "10.9.1",
-        "type-fest": "3.7.1",
-        "uuid": "^9.0.0"
+        "type-fest": "3.7.1"
     }
 }

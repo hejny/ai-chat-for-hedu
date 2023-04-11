@@ -1,5 +1,7 @@
 import chalk from 'chalk';
+import { normalizeToKebabCase } from 'n12';
 import { Subject } from 'rxjs';
+import sjcl from 'sjcl';
 import { Socket } from 'socket.io';
 import { v4 } from 'uuid';
 import { JournalChatMessage, TeacherChatMessage } from '../../interfaces/chatMessage';
@@ -9,7 +11,10 @@ import { ChatMessage, Scenario, ScenarioUtils, toChatMessage } from '../model/_'
 import { beforeLessonScenario } from '../scenarios/10-before-lesson';
 
 class SocketScenarioUtils implements ScenarioUtils {
-    constructor(private readonly connection: Socket<Pick<SocketEventMap, 'chatRequest' | 'chatResponse' | 'error'>>) {}
+    constructor(
+        private readonly connection: Socket<Pick<SocketEventMap, 'chatRequest' | 'chatResponse' | 'error'>>,
+        private readonly scenarioName: string,
+    ) {}
 
     public say(requestMessageOrContent: ChatMessage | string): Promise<void> {
         // console.log('say', requestMessageOrContent);
@@ -83,7 +88,10 @@ class SocketScenarioUtils implements ScenarioUtils {
         const rewrittenContent = new Subject<string>();
 
         message.content.asPromise().then((content) => {
-            rewrite(content).subscribe({
+            rewrite({
+                textToRewrite: content,
+                cache: [this.scenarioName, sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(content))],
+            }).subscribe({
                 next(value) {
                     rewrittenContent.next(value);
                 },
@@ -126,7 +134,7 @@ class SocketScenarioUtils implements ScenarioUtils {
 
 export async function initializeChatSocket(connection: Socket<SocketEventMap>): Promise<void> {
     const scenario: Scenario = beforeLessonScenario; /* <- TODO: !!! Test also beforeLessonScenario */
-    const scenarioUtils = new SocketScenarioUtils(connection);
+    const scenarioUtils = new SocketScenarioUtils(connection, normalizeToKebabCase(beforeLessonScenario.name));
 
     try {
         await scenario({

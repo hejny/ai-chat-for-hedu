@@ -2,16 +2,23 @@ import { Observable } from 'rxjs';
 import spaceTrim from 'spacetrim';
 import { askChatGpt } from './askChatGpt';
 
-export function summarize(textToSummarizee: string): Observable<string> {
+interface SummarizeOptions {
+    cache: Array<string>;
+    textToSummarize: string;
+}
+
+export function summarize(options: SummarizeOptions): Observable<string> {
+    const { cache, textToSummarize } = options;
+
     return askChatGpt({
-        type: 'rewrite',
+        cache: ['summarize', ...cache],
         requestText: spaceTrim(
             (block) => `
 
                 Sumarizuj následující text:
 
                 \`\`\`
-                ${block(textToSummarizee)}
+                ${block(textToSummarize)}
                 \`\`\`
         
             `,
