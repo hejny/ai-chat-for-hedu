@@ -3,9 +3,10 @@ import { ScenarioUtils } from '../model/_';
 export async function beforeLessonScenario({ say, ask, rewrite, save }: ScenarioUtils): Promise<void> {
     // TODO: !!!!1 Both messages must work
     // console.log('beforeLessonScenario', 0);
-    await say(rewrite(`Jaký máš cíl dnešní hodiny matematiky?`));
-    await say(rewrite(`Jaký máš cíl dnešní hodiny češtiny?`));
-    await say(rewrite(`Jaký máš cíl dnešní hodiny dějepisu?`));
+    
+    await ask(rewrite(`Jaký máš cíl dnešní hodiny matematiky?`));
+    await ask(rewrite(`Jaký máš cíl dnešní hodiny češtiny?`));
+    await ask(rewrite(`Jaký máš cíl dnešní hodiny dějepisu?`));
 
     /*
 

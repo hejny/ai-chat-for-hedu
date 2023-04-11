@@ -83,11 +83,12 @@ export function Chat(props: ChatProps) {
                         </div>
 
                         <div className={styles.messageText}>
-                            <pre>{JSON.stringify(message, null, 4)}</pre>
+                            {/* <pre>{JSON.stringify(message, null, 4)}</pre> */}
                             <Article
                                 /* TODO: className={styles.messageText} */ {...{ content: message.content }}
                                 isSpoken={
-                                    message.isComplete /* <- TODO: !!! Spoke fluently as the tokens go on MAKE some SpeechManager/SpeechSystem */
+                                    message.isComplete /* <- TODO: !!! Spoke fluently as the tokens go on MAKE some SpeechManager/SpeechSystem */ &&
+                                    message.from === 'JOURNAL'
                                 }
                             />
                         </div>

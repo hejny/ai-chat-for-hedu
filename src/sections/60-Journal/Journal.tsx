@@ -22,7 +22,7 @@ export function JournalSection() {
             switch (action.type) {
                 case 'ADD':
                     return [...messages.filter((message) => message.id !== action.message.id), action.message].sort(
-                        (message1, message2) => (message1.date.valueOf() > message2.date.valueOf() ? 1 : -1),
+                        (message1, message2) => (message1.date.valueOf() > message2.date.valueOf() ? -1 : 1),
                     );
 
                 default:

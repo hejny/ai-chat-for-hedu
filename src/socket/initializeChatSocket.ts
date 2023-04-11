@@ -77,7 +77,10 @@ class SocketScenarioUtils implements ScenarioUtils {
         await this.say(requestMessage);
 
         this.connection.on('chatRequest', listener);
-        return new ChatMessage(requestMessage, 'JOURNAL', responseMessageContent);
+        const responseMessage = new ChatMessage(requestMessage, 'JOURNAL', responseMessageContent);
+
+        await responseMessage.content.asPromise();
+        return responseMessage;
     }
 
     // TODO: DRY rewrite and summarize
