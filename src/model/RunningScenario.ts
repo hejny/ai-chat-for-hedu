@@ -23,6 +23,7 @@ export class RunningScenario extends Destroyable implements IDestroyable {
                 // TODO: Util to bing every method at once
                 say: scenarioUtils.say.bind(scenarioUtils),
                 ask: scenarioUtils.ask.bind(scenarioUtils),
+                askOptions: scenarioUtils.askOptions.bind(scenarioUtils),
                 rewrite: scenarioUtils.rewrite.bind(scenarioUtils),
                 summarize: scenarioUtils.summarize.bind(scenarioUtils),
                 load: scenarioUtils.load.bind(scenarioUtils),

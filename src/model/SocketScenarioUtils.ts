@@ -2,10 +2,11 @@ import chalk from 'chalk';
 import { mkdir, readFile, writeFile } from 'fs/promises';
 import { normalizeToKebabCase } from 'n12';
 import { dirname, join } from 'path';
-import { of, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import sjcl from 'sjcl';
 import { Socket } from 'socket.io';
 import { v4 } from 'uuid';
+import { forTime } from 'waitasecond';
 import YAML from 'yaml';
 import { JournalChatMessage, TeacherChatMessage } from '../../interfaces/chatMessage';
 import { SocketEventMap } from '../../interfaces/socket';
@@ -59,29 +60,64 @@ export class SocketScenarioUtils implements ScenarioUtils {
 
     public async ask(requestMessageOrContent: ChatMessage | string): Promise<ChatMessage> {
         const requestMessage = toChatMessage(requestMessageOrContent);
+        await this.say(requestMessage);
+        const responseMessage = new ChatMessage(requestMessage, 'JOURNAL', this.listenResponse());
+        await responseMessage.content.asPromise();
+        return responseMessage;
+    }
 
+    public listenResponse(): Observable<string> {
         const responseMessageContent = new Subject<string>();
-
         const listener = (inMessage: TeacherChatMessage) => {
             console.log('chatRequest', inMessage);
-
             console.log(chalk.blue(inMessage.content));
-
             responseMessageContent.next(inMessage.content);
-
             if (inMessage.isComplete) {
                 responseMessageContent.complete();
                 this.connection.off('chatRequest', listener);
             }
         };
-
-        await this.say(requestMessage);
-
         this.connection.on('chatRequest', listener);
-        const responseMessage = new ChatMessage(requestMessage, 'JOURNAL', responseMessageContent);
+        return responseMessageContent;
+    }
 
-        await responseMessage.content.asPromise();
-        return responseMessage;
+    public async askOptions<optionKey extends string>(
+        question: ChatMessage | string,
+        options: Record<optionKey, ChatMessage | string>,
+    ): Promise<optionKey> {
+        await this.say(question);
+        await forTime(700);
+
+        let i = 0;
+        for (const [key, option] of Object.entries<ChatMessage | string>(options)) {
+            const order = i++; /* <- TODO: Use letters */
+            await this.say(toChatMessage(option).modifyContent((content) => `${order}) ${content}`));
+        }
+
+        while (true) {
+            const response = await this.listenResponse();
+            const responseContent = await new Promise<string>((resolve) =>
+                response.subscribe(resolve),
+            ); /* <- TODO: use here Prombservable */
+
+            const responseContentAsNumber = parseInt(responseContent);
+
+            if (
+                !isNaN(responseContentAsNumber) &&
+                responseContentAsNumber > 0 &&
+                responseContentAsNumber <= Object.keys(options).length
+            ) {
+                // TODO: !!! Check that is in range
+                return Object.keys(options)[responseContentAsNumber - 1] as optionKey;
+            }
+
+            // TODO: Same with a-z A-Z
+            // TODO: Same literal responses (case insensitive, trimmed)
+
+            await this.say(
+                `Bohužel ti nerozumím, napíšem mi to ještě jednou nebo klikneš na jednu z možností.` /* <- TODO: !!!!!!!!!!!!!!!!!!!!!!!!!! Use rewrite */,
+            );
+        }
     }
 
     // TODO: DRY rewrite and summarize

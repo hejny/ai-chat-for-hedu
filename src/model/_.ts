@@ -10,6 +10,7 @@ export class ChatThread{
 }
 */
 
+import { map } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 
 // TODO: !!! Better name
@@ -74,6 +75,10 @@ export class ChatMessage {
 
     private contentLastValue: null | string;
     private contentAsPromise: Promise<string>;
+
+    public modifyContent(modifier: (content: string) => string): ChatMessage {
+        return new ChatMessage(this.parentMessage, this.from, this.contentAsObservable.pipe(map(modifier)));
+    }
 }
 
 /**
@@ -91,6 +96,14 @@ export interface ScenarioUtils {
      * @@@
      */
     ask(message: ChatMessage | string): Promise<ChatMessage>;
+
+    /**
+     * @@@
+     */
+    askOptions<optionKey extends string>(
+        question: ChatMessage | string,
+        options: Record<optionKey, ChatMessage | string>,
+    ): Promise<optionKey>;
 
     /**
      * @@@
@@ -118,7 +131,7 @@ export interface ScenarioUtils {
 }
 
 export interface Scenario {
-    (utils: ScenarioUtils): Promise<void>;
+    (utils: ScenarioUtils): Promise<void | Scenario>;
 }
 
 export function toChatMessage(chatMessage: ChatMessage | string): ChatMessage {

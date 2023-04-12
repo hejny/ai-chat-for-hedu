@@ -1,12 +1,37 @@
+import spaceTrim from 'spacetrim';
 import { ScenarioUtils } from '../model/_';
 
-export async function beforeLessonScenario({ say, ask, rewrite, save, load, summarize }: ScenarioUtils): Promise<void> {
-    const { helloWorld } = await load('helloWorld');
-    if (helloWorld) {
-        await say(helloWorld);
-        await say(helloWorld);
-        await say(helloWorld);
+export async function beforeLessonScenario({
+    say,
+    ask,
+    askOptions,
+    rewrite,
+    save,
+    load,
+    summarize,
+}: ScenarioUtils): Promise<void> {
+    while (true) {
+        await say(`A`);
+        await say(`B`);
+        await say(`C`);
+        const response = await ask(`Napiš cokoliv`);
+        await say(
+            await spaceTrim(
+                async (block) => `
+                    Napsal jsi:
+
+                    \`\`\`
+                    ${block(await response.content.asPromise())}
+                    \`\`\`
+                `,
+            ),
+        );
     }
+
+    /*
+    const response = await askOptions(`V jaké fázi jsi?`, { beforeLesson: `Před hodinou`, afterLesson: `Po hodině` });
+    await say(`Zvolena možnost "${response}"`);
+
     /*
     // TODO: !!! Make following scenario active:
 
@@ -21,6 +46,9 @@ export async function beforeLessonScenario({ say, ask, rewrite, save, load, summ
     console.log('beforeLessonScenario', 3);
     const secondaryLearningMaterial = await ask(rewrite(`Co s nimi plánuješ dělat dál mimo učebnici?`));
     await save({ secondaryLearningMaterial });
+
+    await say(`...hmm...`);
+    await forTime(1000);
 
     console.log('beforeLessonScenario', 4);
     await say(rewrite(`Zkus se dnes soustředit více na žáka X`));

@@ -1,13 +1,10 @@
 import { Socket } from 'socket.io';
 import { SocketEventMap } from '../../interfaces/socket';
 import { RunningScenario } from '../model/RunningScenario';
-import { beforeLessonScenario } from '../scenarios/10-before-lesson';
+import { echoScenario } from '../scenarios/samples/echo';
 
 export async function initializeChatSocket(connection: Socket<SocketEventMap>): Promise<void> {
-    const runningScenario = new RunningScenario(
-        beforeLessonScenario,
-        connection /* <- TODO: !!! Test also beforeLessonScenario */,
-    );
+    const runningScenario = new RunningScenario(echoScenario /* <- TODO: !!! Put here lessonScenario */, connection);
 
     connection.on('disconnect', () => {
         /* not await */ runningScenario.destroy();
