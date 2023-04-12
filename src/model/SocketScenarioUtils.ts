@@ -1,8 +1,8 @@
 import chalk from 'chalk';
-import { mkdir, writeFile } from 'fs/promises';
+import { mkdir, readFile, writeFile } from 'fs/promises';
 import { normalizeToKebabCase } from 'n12';
-import { join } from 'path';
-import { Subject } from 'rxjs';
+import { dirname, join } from 'path';
+import { of, Subject } from 'rxjs';
 import sjcl from 'sjcl';
 import { Socket } from 'socket.io';
 import { v4 } from 'uuid';
@@ -143,15 +143,18 @@ export class SocketScenarioUtils implements ScenarioUtils {
         );
     }
 
+    private keyToSaveFilePath(key: string) {
+        return join(process.cwd(), 'data', 'user', 'sample', `${normalizeToKebabCase(key)}.yaml`);
+    }
+
     public async save(messages: Record<string, ChatMessage>): Promise<void> {
         for (const [key, message] of Object.entries(messages)) {
             const content = await message.content.asPromise();
             const { from /* <- TODO: Also save other things like date and parentMessage */ } = message;
 
-            const saveDirPath = join(process.cwd(), 'data', 'user', 'sample');
-            const saveFilePath = join(saveDirPath, `${normalizeToKebabCase(key)}.yaml`);
+            const saveFilePath = this.keyToSaveFilePath(key);
+            await mkdir(dirname(saveFilePath), { recursive: true });
 
-            await mkdir(saveDirPath, { recursive: true });
             await writeFile(
                 saveFilePath,
                 YAML.stringify(
@@ -170,8 +173,29 @@ export class SocketScenarioUtils implements ScenarioUtils {
     ): Promise<
         Record<string, ChatMessage | null> /* <- TODO: Better generic typing same as requesting systems in Collboard */
     > {
-        return {
-            /* TODO: !!! Implement */
-        };
+        const result: Record<string, ChatMessage | null> = {};
+
+        for (const key of keys) {
+            const filePath = this.keyToSaveFilePath(key);
+            let message: ChatMessage | null = null;
+
+            try {
+                const fileContent = await readFile(filePath, 'utf8');
+                const data = YAML.parse(fileContent);
+                const { from, content } = data;
+
+                message = new ChatMessage(null /* <- TODO: Hydrate parentMessage */, from, of(content));
+            } catch (error) {
+                if (!(error instanceof Error)) {
+                    throw error;
+                }
+
+                console.error(`Error loading chat message ${key}: ${error.message}`);
+            }
+
+            result[key] = message;
+        }
+
+        return result;
     }
 }

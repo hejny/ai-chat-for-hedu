@@ -1,9 +1,12 @@
 import { ScenarioUtils } from '../model/_';
 
-export async function beforeLessonScenario({ say, ask, rewrite, save, summarize }: ScenarioUtils): Promise<void> {
-    const helloWorld = await ask('Hello');
-    await save({ helloWorld });
-
+export async function beforeLessonScenario({ say, ask, rewrite, save, load, summarize }: ScenarioUtils): Promise<void> {
+    const { helloWorld } = await load('helloWorld');
+    if (helloWorld) {
+        await say(helloWorld);
+        await say(helloWorld);
+        await say(helloWorld);
+    }
     /*
     // TODO: !!! Make following scenario active:
 
