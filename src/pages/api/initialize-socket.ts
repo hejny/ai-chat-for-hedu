@@ -19,7 +19,7 @@ export default function SocketInitializeHandler(req: any /* <- TODO: NextApiRequ
     }
 
     console.log(chalk.green('Socket is initializing'));
-    const io = new Server<SocketEventMap>(res.socket.server);
+    const io = new Server<SocketEventMap>(res.socket.server, { path: '/api/socket.io' });
 
     res.socket.server.io = io;
 

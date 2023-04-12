@@ -19,7 +19,7 @@ export function Playground(props: PlaygroundProps) {
 
     const socketInitializer = () => {
         /* await */ fetch('/api/initialize-socket');
-        socket = io(/*{ path: '/api/chat-socket/' }*/);
+        socket = io({ path: '/api/socket.io' });
 
         console.log({ socket });
 
