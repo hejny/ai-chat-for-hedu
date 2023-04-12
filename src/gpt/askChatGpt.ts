@@ -46,7 +46,7 @@ export function askChatGpt(options: AskChatGptOptions): Observable<string> {
             console.info(gptResponse);
             console.info(chalk.magenta(gptResponse.text));
 
-            const cacheDirPath = join(process.cwd(), 'chat', ...cache);
+            const cacheDirPath = join(process.cwd(), 'data', 'chat', ...cache);
             const cacheFilePath = join(cacheDirPath, `${gptResponse.id}.md`);
 
             await mkdir(cacheDirPath, { recursive: true });
