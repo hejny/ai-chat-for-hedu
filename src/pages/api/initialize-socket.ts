@@ -2,8 +2,8 @@ import { faker } from '@faker-js/faker';
 import chalk from 'chalk';
 import { Server } from 'socket.io';
 import { forTime } from 'waitasecond';
-import { SocketEventMap } from '../../../interfaces/socket';
 import { initializeChatSocket } from '../../socket/initializeChatSocket';
+import { SocketEventMap } from '../../socket/SocketEventMap';
 
 export default function SocketInitializeHandler(req: any /* <- TODO: NextApiRequest */, res: any) {
     if (res.socket.server.io) {

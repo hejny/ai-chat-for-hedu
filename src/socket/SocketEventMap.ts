@@ -1,4 +1,4 @@
-import { CompleteChatMessage, JournalChatMessage, TeacherChatMessage } from './chatMessage';
+import { CompleteChatMessage, JournalChatMessage, TeacherChatMessage } from '../model/chatMessage';
 
 export interface SocketEventMap {
     test(nonce: string): void;
@@ -8,3 +8,7 @@ export interface SocketEventMap {
     chatResponse: (message: JournalChatMessage) => void;
     error: (errorMessage: string) => void;
 }
+
+/**
+ * TODO: !!!!!!!!!! In socket types CAN NOT be Dates
+ */

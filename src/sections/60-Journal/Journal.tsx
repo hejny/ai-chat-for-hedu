@@ -1,16 +1,11 @@
 import { useTranslation } from 'next-i18next';
 import { useEffect, useReducer } from 'react';
 import { v4 } from 'uuid';
-import {
-    ChatMessage,
-    CompleteChatMessage,
-    JournalChatMessage,
-    TeacherChatMessage,
-} from '../../../interfaces/chatMessage';
 import { Article } from '../../components/Article/Article';
 import { Chat } from '../../components/Chat/Chat';
 import { Playground, socket } from '../../components/Playground/Playground';
 import { Section } from '../../components/Section/Section';
+import { ChatMessage, CompleteChatMessage, JournalChatMessage, TeacherChatMessage } from '../../model/chatMessage';
 import styles from './Journal.module.css';
 
 export function JournalSection() {

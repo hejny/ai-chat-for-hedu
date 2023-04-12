@@ -1,7 +1,7 @@
 import { Socket } from 'socket.io';
-import { SocketEventMap } from '../../interfaces/socket';
 import { RunningScenario } from '../model/RunningScenario';
 import { infiniteScenario } from '../scenarios/samples/infinite';
+import { SocketEventMap } from './SocketEventMap';
 
 export async function initializeChatSocket(connection: Socket<SocketEventMap>): Promise<void> {
     const runningScenario = new RunningScenario(

@@ -2,7 +2,7 @@ import { IDestroyable } from 'destroyable';
 import { Destroyable } from 'destroyable/dist/Destroyable';
 import { normalizeToKebabCase } from 'n12';
 import { Socket } from 'socket.io';
-import { SocketEventMap } from '../../interfaces/socket';
+import { SocketEventMap } from '../socket/SocketEventMap';
 import { SocketScenarioUtils } from './SocketScenarioUtils';
 import { Scenario } from './_';
 

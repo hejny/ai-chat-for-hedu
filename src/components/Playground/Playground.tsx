@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import io, { Socket } from 'socket.io-client';
-import { SocketEventMap } from '../../../interfaces/socket';
+import { SocketEventMap } from '../../socket/SocketEventMap';
 import styles from './Playground.module.css';
 
 /**

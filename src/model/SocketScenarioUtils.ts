@@ -8,10 +8,10 @@ import { Socket } from 'socket.io';
 import { v4 } from 'uuid';
 import { forTime } from 'waitasecond';
 import YAML from 'yaml';
-import { JournalChatMessage, TeacherChatMessage } from '../../interfaces/chatMessage';
-import { SocketEventMap } from '../../interfaces/socket';
 import { rewrite } from '../gpt/rewrite';
 import { summarize } from '../gpt/summarize';
+import { SocketEventMap } from '../socket/SocketEventMap';
+import { JournalChatMessage, TeacherChatMessage } from './chatMessage';
 import { ChatMessage, ScenarioUtils, toChatMessage } from './_';
 
 export class SocketScenarioUtils implements ScenarioUtils {

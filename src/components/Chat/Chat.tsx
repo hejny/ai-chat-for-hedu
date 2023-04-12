@@ -2,9 +2,9 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import spaceTrim from 'spacetrim';
 import { Promisable } from 'type-fest';
-import { ChatMessage } from '../../../interfaces/chatMessage';
 import journalAvatar from '../../../public/people/journal.jpeg';
 import teacherAvatar from '../../../public/people/teacher.jpeg';
+import { ChatMessage } from '../../model/chatMessage';
 import { classNames } from '../../utils/classNames';
 import { Article } from '../Article/Article';
 import { VoiceRecognitionButton } from '../VoiceRecognitionButton/VoiceRecognitionButton';
@@ -74,6 +74,7 @@ export function Chat(props: ChatProps) {
                     <div
                         key={i}
                         className={classNames(styles.chatMessage, message.from === 'TEACHER' && styles.sender)}
+                        onClick={() => console.info(message)}
                     >
                         <div className={styles.avatar}>
                             <Image

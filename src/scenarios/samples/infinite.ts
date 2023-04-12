@@ -21,5 +21,10 @@ export async function infiniteScenario({
 }
 
 /**
+ * TODO: !!! Make ordering of messages work
+ * TODO: !!! Automatically scroll in chat
+ * TODO: !!! Better design of scrollbar
  * TODO: !!!!!!!!!! Make this work
+ * TODO: Use here isDestroyed
+ * TODO: Make it server-restart resistant
  */
