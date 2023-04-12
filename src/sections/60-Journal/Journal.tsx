@@ -87,5 +87,5 @@ export function JournalSection() {
  * TODO: !!! Allow to listen
  * TODO: !!! Imitate conversation
  * TODO: !!! Use momentjs for dates
- * TODO: !!! (How) Should be initial message spokem?
+ * TODO: !!! (How) Should be initial message spoken?
  */

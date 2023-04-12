@@ -69,7 +69,16 @@ export function Chat(props: ChatProps) {
 
     return (
         <div className={styles.Chat}>
-            <div className={styles.chatMessages}>
+            <div
+                className={styles.chatMessages}
+                ref={(element) => {
+                    if (!element) {
+                        return;
+                    }
+
+                    element.scrollBy(0, 10000);
+                }}
+            >
                 {messages.map((message, i) => (
                     <div
                         key={i}
