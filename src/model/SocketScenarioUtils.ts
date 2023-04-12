@@ -199,3 +199,26 @@ export class SocketScenarioUtils implements ScenarioUtils {
         return result;
     }
 }
+
+/*
+    TODO: [🧶] util streamMessage
+
+    (async () => {
+        const words = [];
+        for (const word of splitWords(INITIAL_JOURNAL_MESSAGE_TEXT)) {
+            if (isDestroyed) {
+                return;
+            }
+            await forTime(100);
+
+            words.push(word);
+
+            initialMessage.content = joinWords(words);
+            setMessages([initialMessage]);
+        }
+    })();
+
+*/
+/**
+ * TODO: [🥽] It is but ugly-prectise to name summarize and rewrite by same name as standalone functions and also a methods of ScenarioUtils - figure out two sets of unique names
+ */
