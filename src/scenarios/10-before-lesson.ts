@@ -1,18 +1,11 @@
 import { ScenarioUtils } from '../model/_';
 
 export async function beforeLessonScenario({ say, ask, rewrite, save, summarize }: ScenarioUtils): Promise<void> {
-    // TODO: !!!!1 Both messages must work
-    // console.log('beforeLessonScenario', 0);
-
-    //const lessonPlan = await ask(rewrite(`Jaký máš cíl dnešní hodiny matematiky?`));
-    const lessonPlan =
-        'Rád bych se věnoval pythagorově větě - nevím jak to vysvětlit všem tak, aby to Tondu nenudilo a Adam stíhal. Rád bych to ukázal geometricky a také pomocí objemu vody.';
-    await say(await summarize(lessonPlan));
+    const helloWorld = await ask('Hello');
+    await save({ helloWorld });
 
     /*
-
-    // TODO: !!!!2 Make All bellow active:
-
+    // TODO: !!! Make following scenario active:
 
     console.log('beforeLessonScenario', 1);
     const lessonPlan = await ask(rewrite(`Jaký máš cíl dnešní hodiny matematiky?`));

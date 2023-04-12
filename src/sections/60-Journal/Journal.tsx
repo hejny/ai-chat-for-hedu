@@ -61,7 +61,7 @@ export function JournalSection() {
                 onMessage={async (content /* <- TODO: !!! Pass here the message object NOT just text */) => {
                     const myMessage: TeacherChatMessage & CompleteChatMessage = {
                         id: v4(),
-                        date: new Date(),
+                        date: new Date() /* <- TODO: Rename+split into created+modified */,
                         from: 'TEACHER',
                         content,
                         isComplete: true,
