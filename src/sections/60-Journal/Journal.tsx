@@ -17,7 +17,7 @@ export function JournalSection() {
             switch (action.type) {
                 case 'ADD':
                     return [...messages.filter((message) => message.id !== action.message.id), action.message].sort(
-                        (message1, message2) => (message1.date.valueOf() > message2.date.valueOf() ? -1 : 1),
+                        (message1, message2) => (message1.date.valueOf() > message2.date.valueOf() ? 1 : -1),
                     );
 
                 default:
@@ -33,7 +33,15 @@ export function JournalSection() {
 
         const listener = (replyMessage: JournalChatMessage) => {
             // console.log('chatResponse', replyMessage.id, replyMessage.content);
-            messagesDispatch({ type: 'ADD', message: replyMessage });
+            messagesDispatch({
+                type: 'ADD',
+                message: {
+                    ...replyMessage,
+                    date: new Date(
+                        replyMessage.date,
+                    ) /* <- TODO: Some smarter hydration of unserializable JSON types */,
+                },
+            });
 
             // TODO: !!! Translate to RxJS object
             // TODO: !!! Speech here

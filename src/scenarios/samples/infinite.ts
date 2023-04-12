@@ -21,7 +21,6 @@ export async function infiniteScenario({
 }
 
 /**
- * TODO: !!! Make ordering of messages work
  * TODO: !!! Automatically scroll in chat
  * TODO: !!! Better design of scrollbar
  * TODO: !!!!!!!!!! Make this work
