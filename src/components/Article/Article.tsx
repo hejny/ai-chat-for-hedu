@@ -41,6 +41,8 @@ export function Article(props: IArticleProps) {
     let html = converter.makeHtml(markdown);
 
     useEffect(() => {
+        return; /* <- TODO: !!! */
+
         if (!isSpoken) {
             return;
         }

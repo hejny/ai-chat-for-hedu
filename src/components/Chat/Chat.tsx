@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import spaceTrim from 'spacetrim';
 import { Promisable } from 'type-fest';
 import journalAvatar from '../../../public/people/journal.jpeg';
@@ -18,6 +18,7 @@ interface ChatProps {
 export function Chat(props: ChatProps) {
     const { messages, onMessage } = props;
 
+    const [isAutoScrolling, setAutoScrolling] = useState(true);
     const textareaRef = useRef<HTMLTextAreaElement>();
     const buttonSendRef = useRef<HTMLButtonElement>();
 
@@ -76,7 +77,20 @@ export function Chat(props: ChatProps) {
                         return;
                     }
 
+                    if (!isAutoScrolling) {
+                        return;
+                    }
+
                     element.scrollBy(0, 10000);
+                }}
+                onScroll={(event) => {
+                    const element = event.target;
+
+                    if (!(element instanceof HTMLDivElement)) {
+                        return;
+                    }
+
+                    setAutoScrolling(element.scrollTop + element.clientHeight === element.scrollHeight);
                 }}
             >
                 {messages.map((message, i) => (
@@ -105,6 +119,21 @@ export function Chat(props: ChatProps) {
                     </div>
                 ))}
             </div>
+
+            {!isAutoScrolling && (
+                <button
+                    className={styles.scrollToBottom}
+                    onClick={(event) => {
+                        const chatMessagesElement = (event.target as HTMLDivElement)
+                            .previousElementSibling as HTMLDivElement;
+                        chatMessagesElement.style.scrollBehavior = 'smooth';
+                        chatMessagesElement.scrollBy(0, 10000);
+                        chatMessagesElement.style.scrollBehavior = 'auto';
+                    }}
+                >
+                    ↓
+                </button>
+            )}
 
             <div className={styles.chatInput}>
                 <textarea
