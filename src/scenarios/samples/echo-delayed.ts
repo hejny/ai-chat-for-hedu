@@ -1,7 +1,8 @@
 import spaceTrim from 'spacetrim';
+import { forTime } from 'waitasecond';
 import { ScenarioUtils } from '../../model/_';
 
-export async function echoScenario({
+export async function echoDelayedScenario({
     say,
     ask,
     askOptions,
@@ -10,7 +11,9 @@ export async function echoScenario({
     load,
     summarize,
 }: ScenarioUtils): Promise<void> {
-    const response = await ask(`Napiš cokoliv`);
+    await say(`Ahoj,\nzatím tě ignoruju`);
+    await forTime(3000);
+    const response = await ask(`A teď napiš cokoliv`);
     await say(
         await spaceTrim(
             async (block) => `
@@ -23,7 +26,3 @@ export async function echoScenario({
         ),
     );
 }
-
-/**
- * TODO: !!! Do not speech "zpětný apostrof, zpětný apostrof, zpětný apostrof,...",
- */
