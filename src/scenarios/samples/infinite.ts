@@ -21,7 +21,6 @@ export async function infiniteScenario({
 }
 
 /**
- * TODO: !!!!!!!!!! Make this work
  * TODO: Use here isDestroyed
  * TODO: Make it server-restart resistant
  */
