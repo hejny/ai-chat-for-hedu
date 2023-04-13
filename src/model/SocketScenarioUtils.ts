@@ -7,6 +7,7 @@ import sjcl from 'sjcl';
 import { Socket } from 'socket.io';
 import spaceTrim from 'spacetrim';
 import { v4 } from 'uuid';
+import { forTime } from 'waitasecond';
 import YAML from 'yaml';
 import { rewrite } from '../gpt/rewrite';
 import { summarize } from '../gpt/summarize';
@@ -18,7 +19,42 @@ export class SocketScenarioUtils implements ScenarioUtils {
     constructor(
         private readonly connection: Socket<Pick<SocketEventMap, 'chatRequest' | 'chatResponse' | 'error'>>,
         private readonly scenarioName: string,
-    ) {}
+    ) {
+        /* not await */ this.runOutQueue();
+    }
+
+    private outQueue: Array<JournalChatMessage> = [];
+
+    private async runOutQueue(): Promise<never> {
+        // TODO: !!! This should be destroyable
+        while (true) {
+            await forTime(16 /* <- TODO: What is the best tick time for the out queue? */);
+
+            if (this.outQueue.length === 0) {
+                continue;
+            }
+
+            const outMessage = this.outQueue.shift();
+
+            if (!outMessage) {
+                continue;
+            }
+
+            this.connection.emit('chatResponse', {
+                ...outMessage,
+                date: new Date() /* <- TODO: Here should be only modified OR sent */,
+            });
+        }
+    }
+
+    private pushOutQueue(outMessage: JournalChatMessage): void {
+        this.outQueue = this.outQueue.filter(
+            ({ id }) =>
+                id !==
+                outMessage.id /* <- Note: Removing all previous versions of the same message waiting in the queue */,
+        );
+        this.outQueue.push(outMessage);
+    }
 
     public say(requestMessageOrContent: ChatMessage | string): Promise<void> {
         // console.log('say', requestMessageOrContent);
@@ -34,8 +70,10 @@ export class SocketScenarioUtils implements ScenarioUtils {
 
         const updateMessage = (partialOutMessage: Partial<JournalChatMessage>) => {
             outMessage = { ...outMessage, ...partialOutMessage };
-            // console.log('updateMessage', outMessage);
-            this.connection.emit('chatResponse', outMessage);
+            if (outMessage.content === '') {
+                return;
+            }
+            this.pushOutQueue(outMessage);
         };
 
         const requestMessage = toChatMessage(requestMessageOrContent);
@@ -46,7 +84,7 @@ export class SocketScenarioUtils implements ScenarioUtils {
                     updateMessage({ content });
                 },
                 complete() {
-                    console.log(chalk.green(requestMessage.content.asCurrentValue()));
+                    console.info(chalk.green(requestMessage.content.asCurrentValue()));
                     updateMessage({ isComplete: true });
                     resolve();
                 },
@@ -69,8 +107,8 @@ export class SocketScenarioUtils implements ScenarioUtils {
     public listenResponse(): Observable<string> {
         const responseMessageContent = new Subject<string>();
         const listener = (inMessage: TeacherChatMessage) => {
-            console.log('chatRequest', inMessage);
-            console.log(chalk.blue(inMessage.content));
+            // console.log('chatRequest', inMessage);
+            console.info(chalk.blue(inMessage.content));
             responseMessageContent.next(inMessage.content);
             if (inMessage.isComplete) {
                 responseMessageContent.complete();
