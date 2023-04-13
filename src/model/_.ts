@@ -10,8 +10,9 @@ export class ChatThread{
 }
 */
 
-import { map } from 'rxjs';
+import { map, of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
+import spaceTrim from 'spacetrim';
 
 // TODO: !!! Better name
 interface Prombservable<T> {
@@ -143,14 +144,7 @@ export function toChatMessage(chatMessage: ChatMessage | string): ChatMessage {
 }
 
 export function stringToChatMessage(chatMessageContent: string): ChatMessage {
-    return new ChatMessage(
-        null /* <- !!! allow to pass parent */,
-        'JOURNAL',
-        new Observable((subscriber) => {
-            subscriber.next(chatMessageContent);
-            subscriber.complete();
-        }),
-    );
+    return new ChatMessage(null /* <- !!! allow to pass parent */, 'JOURNAL', of(spaceTrim(chatMessageContent)));
 }
 
 /**

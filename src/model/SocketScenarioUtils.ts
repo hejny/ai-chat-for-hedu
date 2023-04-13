@@ -1,12 +1,12 @@
 import chalk from 'chalk';
 import { mkdir, readFile, writeFile } from 'fs/promises';
-import { normalizeToKebabCase } from 'n12';
+import { normalizeToKebabCase, normalizeTo_SCREAMING_CASE, removeDiacritics } from 'n12';
 import { dirname, join } from 'path';
 import { Observable, of, Subject } from 'rxjs';
 import sjcl from 'sjcl';
 import { Socket } from 'socket.io';
+import spaceTrim from 'spacetrim';
 import { v4 } from 'uuid';
-import { forTime } from 'waitasecond';
 import YAML from 'yaml';
 import { rewrite } from '../gpt/rewrite';
 import { summarize } from '../gpt/summarize';
@@ -86,36 +86,54 @@ export class SocketScenarioUtils implements ScenarioUtils {
         options: Record<optionKey, ChatMessage | string>,
     ): Promise<optionKey> {
         await this.say(question);
-        await forTime(700);
-
-        let i = 0;
-        for (const [key, option] of Object.entries<ChatMessage | string>(options)) {
-            const order = i++; /* <- TODO: Use letters */
-            await this.say(toChatMessage(option).modifyContent((content) => `${order}) ${content}`));
-        }
 
         while (true) {
+            let i = 0;
+            const optionsAsNormalizedStrings: Array<string> = [];
+            for (const [key, option] of Object.entries<ChatMessage | string>(options)) {
+                const order = String.fromCharCode(i++ + 97).toUpperCase();
+                const optionAsMessage = toChatMessage(option);
+                await this.say(optionAsMessage.modifyContent((content) => `${order}) ${content}`));
+                optionsAsNormalizedStrings.push(
+                    normalizeTo_SCREAMING_CASE(removeDiacritics(spaceTrim(await optionAsMessage.content.asPromise()))),
+                );
+            }
+
             const response = await this.listenResponse();
-            const responseContent = await new Promise<string>((resolve) =>
-                response.subscribe(resolve),
+            const responseContent = spaceTrim(
+                await new Promise<string>((resolve) => response.subscribe(resolve)),
             ); /* <- TODO: use here Prombservable */
+            let responseContentAsNumber = parseInt(responseContent);
 
-            const responseContentAsNumber = parseInt(responseContent);
+            // Note: Check if response correspond to letter (case-insensitive)
+            if (/^[a-z]$/i.test(responseContent)) {
+                responseContentAsNumber = responseContent.toLowerCase().charCodeAt(0) - 97 + 1;
+            }
 
+            // Note: Check if response correspond to number
             if (
                 !isNaN(responseContentAsNumber) &&
                 responseContentAsNumber > 0 &&
                 responseContentAsNumber <= Object.keys(options).length
             ) {
-                // TODO: !!! Check that is in range
                 return Object.keys(options)[responseContentAsNumber - 1] as optionKey;
             }
 
-            // TODO: Same with a-z A-Z
-            // TODO: Same literal responses (case insensitive, trimmed)
+            // Note: Check if response correspond literal response option (case insensitive)
+            const optionIndex = optionsAsNormalizedStrings.indexOf(
+                normalizeTo_SCREAMING_CASE(removeDiacritics(responseContent)),
+            );
+            if (optionIndex !== -1) {
+                return Object.keys(options)[optionIndex] as optionKey;
+            }
 
             await this.say(
-                `Bohužel ti nerozumím, napíšem mi to ještě jednou nebo klikneš na jednu z možností.` /* <- TODO: !!!!!!!!!!!!!!!!!!!!!!!!!! Use rewrite */,
+                `
+                    Bohužel ti nerozumím.
+                    Napiš mi to prosím ještě jednou.
+                `,
+                // <- TODO: nebo **klikneš na jednu z možností**
+                // <- TODO: Use rewrite
             );
         }
     }
