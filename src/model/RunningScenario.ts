@@ -19,7 +19,7 @@ export class RunningScenario extends Destroyable implements IDestroyable {
         const scenarioUtils = new SocketScenarioUtils(this.connection, normalizeToKebabCase(this.scenario.name));
 
         try {
-            await this.scenario({
+            const nextScenario = await this.scenario({
                 // TODO: Util to bing every method at once
                 say: scenarioUtils.say.bind(scenarioUtils),
                 ask: scenarioUtils.ask.bind(scenarioUtils),
@@ -30,6 +30,10 @@ export class RunningScenario extends Destroyable implements IDestroyable {
                 save: scenarioUtils.save.bind(scenarioUtils),
                 // <- TODO: Pass here isDestroyed method
             });
+
+            if (nextScenario) {
+                this.addSubdestroyable(new RunningScenario(nextScenario, this.connection));
+            }
         } catch (error) {
             if (!(error instanceof Error)) {
                 throw error;
