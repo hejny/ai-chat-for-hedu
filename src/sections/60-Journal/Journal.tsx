@@ -6,7 +6,11 @@ import { Chat } from '../../components/Chat/Chat';
 import { Playground, socket } from '../../components/Playground/Playground';
 import { Section } from '../../components/Section/Section';
 import { ChatMessage, CompleteChatMessage, JournalChatMessage, TeacherChatMessage } from '../../model/chatMessage';
+import { removeMarkdownFormatting } from '../../utils/content/removeMarkdownFormatting';
 import styles from './Journal.module.css';
+import { speak } from './utils/speak';
+
+const spoken = new Set<string>(/* <- TODO: Make instead some SpeechManager */);
 
 export function JournalSection() {
     const { t } = useTranslation();
@@ -16,6 +20,14 @@ export function JournalSection() {
             // TODO: !!! Extract reducer to separate file
             switch (action.type) {
                 case 'ADD':
+                    if (
+                        !spoken.has(action.message.id) &&
+                        action.message.from === 'JOURNAL' &&
+                        action.message.isComplete /* <- TODO: !!! SPEAK fluently NOT just when complete */
+                    ) {
+                        spoken.add(action.message.id);
+                        speak(removeMarkdownFormatting(action.message.content), 'cs');
+                    }
                     return [...messages.filter((message) => message.id !== action.message.id), action.message].sort(
                         (message1, message2) => (message1.date.valueOf() > message2.date.valueOf() ? 1 : -1),
                     );
