@@ -17,5 +17,5 @@ testChat()
 
 async function testChat() {
     console.info(`🗯  Test chat`);
-    rewrite(`Testovací zpráva`);
+    rewrite({ textToRewrite: `Testovací zpráva`, cache: [`testChat`] });
 }
