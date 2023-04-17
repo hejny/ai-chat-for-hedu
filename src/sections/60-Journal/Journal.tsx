@@ -1,47 +1,67 @@
 import { useTranslation } from 'next-i18next';
-import { useEffect, useState } from 'react';
-import { forTime } from 'waitasecond';
-import { INITIAL_JOURNAL_MESSAGE_TEXT } from '../../../config';
-import { AliceChatMessage, BotChatMessage, ChatMessage, CompleteChatMessage } from '../../../interfaces/chatMessage';
+import { useEffect, useReducer } from 'react';
+import { v4 } from 'uuid';
 import { Article } from '../../components/Article/Article';
 import { Chat } from '../../components/Chat/Chat';
 import { Playground, socket } from '../../components/Playground/Playground';
 import { Section } from '../../components/Section/Section';
-import { joinWords } from '../../utils/joinWords';
-import { splitWords } from '../../utils/splitWords';
+import { ChatMessage, CompleteChatMessage, JournalChatMessage, TeacherChatMessage } from '../../model/chatMessage';
+import { removeMarkdownFormatting } from '../../utils/content/removeMarkdownFormatting';
 import styles from './Journal.module.css';
+import { speak } from './utils/speak';
+
+const spoken = new Set<string>(/* <- TODO: Make instead some SpeechManager */);
 
 export function JournalSection() {
     const { t } = useTranslation();
-    const [messages, setMessages] = useState<Array<ChatMessage>>([]);
+
+    const [messages, messagesDispatch] = useReducer(
+        (messages: Array<ChatMessage>, action: { type: 'ADD'; message: ChatMessage }) => {
+            // TODO: !!! Extract reducer to separate file
+            switch (action.type) {
+                case 'ADD':
+                    if (
+                        !spoken.has(action.message.id) &&
+                        action.message.from === 'JOURNAL' &&
+                        action.message.isComplete /* <- TODO: !!! SPEAK fluently NOT just when complete */
+                    ) {
+                        spoken.add(action.message.id);
+                        speak(removeMarkdownFormatting(action.message.content), 'cs');
+                    }
+                    return [...messages.filter((message) => message.id !== action.message.id), action.message].sort(
+                        (message1, message2) => (message1.date.valueOf() > message2.date.valueOf() ? 1 : -1),
+                    );
+
+                default:
+                    throw new Error(`Unknown action "${action.type}".`);
+            }
+        },
+        [],
+    );
 
     useEffect(() => {
-        const initialMessage = {
-            messageId: 'INITIAL',
-            date: new Date(),
-            from: 'JOURNAL',
-            content: '',
-            isComplete: true,
-        } satisfies BotChatMessage;
+        // console.log(`useEffect`, `socket.on chatResponse`);
+        // !!! Call off on to listener on useEffect destroy
 
-        let isDestroyed = false;
-        (async () => {
-            const words = [];
-            for (const word of splitWords(INITIAL_JOURNAL_MESSAGE_TEXT)) {
-                if (isDestroyed) {
-                    return;
-                }
-                await forTime(100);
+        const listener = (replyMessage: JournalChatMessage) => {
+            // console.log('chatResponse', replyMessage.id, replyMessage.content);
+            messagesDispatch({
+                type: 'ADD',
+                message: {
+                    ...replyMessage,
+                    date: new Date(
+                        replyMessage.date,
+                    ) /* <- TODO: Some smarter hydration of unserializable JSON types */,
+                },
+            });
 
-                words.push(word);
-
-                initialMessage.content = joinWords(words);
-                setMessages([initialMessage]);
-            }
-        })();
-
-        return () => void (isDestroyed = true);
-    }, []);
+            // TODO: !!! Translate to RxJS object
+            // TODO: !!! Speech here
+            // TODO: !!! Cancel this listener
+        };
+        socket.on('chatResponse', listener);
+        return () => void socket.off('chatResponse', listener);
+    });
 
     return (
         <Section id="Journal" className={styles.JournalSection}>
@@ -52,33 +72,18 @@ export function JournalSection() {
             <Playground />
 
             <Chat
-                messages={messages}
+                {...{ messages }}
                 onMessage={async (content /* <- TODO: !!! Pass here the message object NOT just text */) => {
-                    // !!! This will be done in <Chat/>
-                    const journalPreviousMessage: BotChatMessage = [...messages]
-                        .reverse()
-                        .find(({ from }) => from === 'JOURNAL') as BotChatMessage;
-
-                    const myMessage: AliceChatMessage & CompleteChatMessage = {
-                        parentMessageId: journalPreviousMessage.messageId,
-                        date: new Date(),
+                    const myMessage: TeacherChatMessage & CompleteChatMessage = {
+                        id: v4(),
+                        date: new Date() /* <- TODO: Rename+split into created+modified */,
                         from: 'TEACHER',
                         content,
                         isComplete: true,
                     };
 
-                    setMessages([...messages, myMessage]);
-
-                    // TODO: Driver to handle this
-
-                    socket.emit('request', myMessage);
-                    socket.on('response', (replyMessage) => {
-                        setMessages([...messages, myMessage, replyMessage]);
-
-                        // TODO: !!! Translate to RxJS object
-                        // TODO: !!! Speech here
-                        // TODO: !!! Cancel this listener
-                    });
+                    messagesDispatch({ type: 'ADD', message: myMessage });
+                    socket.emit('chatRequest', myMessage);
                 }}
             />
             {/*<RecordForm/>*/}
@@ -87,11 +92,12 @@ export function JournalSection() {
 }
 
 /**
+ * TODO: Driver to handle sockets
  * TODO: !!! Pick a voice
  * TODO: !!! Voice is working with markdown
  * TODO: !!! Highlite during a speech
  * TODO: !!! Allow to listen
  * TODO: !!! Imitate conversation
  * TODO: !!! Use momentjs for dates
- * TODO: !!! (How) Should be initial message spokem?
+ * TODO: !!! (How) Should be initial message spoken?
  */

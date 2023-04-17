@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import io, { Socket } from 'socket.io-client';
-import { SocketEventMap } from '../../../interfaces/socket';
+import { SocketEventMap } from '../../socket/SocketEventMap';
 import styles from './Playground.module.css';
 
 /**
@@ -24,7 +24,7 @@ export function Playground(props: PlaygroundProps) {
         console.log({ socket });
 
         socket.on('connect', () => {
-            console.log('connected');
+            // console.log('connected');
         });
 
         socket.on('test', (nonce) => {
@@ -37,7 +37,7 @@ export function Playground(props: PlaygroundProps) {
         });
 
         return () => {
-            console.log('!!! destroy !!!');
+            // console.log('!!! destroy !!!');
         };
     };
 

@@ -40,14 +40,17 @@ export function Article(props: IArticleProps) {
     converter.setFlavor('github');
     let html = converter.makeHtml(markdown);
 
+    /*
+    TODO: !!! Just clean speech from here
     useEffect(() => {
         if (!isSpoken) {
             return;
         }
 
-        /* not await BUT maybe should be */ speak(removeMarkdownFormatting(markdown), 'cs');
+        /* not await BUT maybe should be * / speak(removeMarkdownFormatting(markdown), 'cs');
         return () => {};
     }, [markdown, isSpoken]);
+    */
 
     if (html === '') {
         // Note: Do not make empty div for empty article

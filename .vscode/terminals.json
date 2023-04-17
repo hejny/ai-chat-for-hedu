@@ -3,8 +3,11 @@
     "terminals": [
         {
             "name": "👨🏽‍💻 Develop",
-            "command": "npm run dev",
-            "focus": true
+            "command": "npm run dev"
+        },
+        {
+            "name": "🌍 Expose",
+            "command": "npx lt --port 4466 --subdomain hedu-chat"
         },
         {
             "name": "🧪 Lint",
