@@ -2,7 +2,7 @@ module.exports = {
     apps: [
         {
             name: 'ai-chat-for-hedu',
-            exec_mode: 'cluster',
+            exec_mode: 'cluster' /* <- TODO: Maybe 'fork' would be enough */,
             instances: 1,
             script: 'node_modules/next/dist/bin/next',
             args: 'start -p 4466',
