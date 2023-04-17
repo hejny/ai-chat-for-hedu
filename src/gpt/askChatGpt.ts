@@ -54,15 +54,15 @@ export function askChatGpt(options: AskChatGptOptions): Observable<string> {
                 cacheFilePath,
                 spaceTrim(
                     (block) => `
-    
+
                     ${block(requestText)}
-    
+
                     ---
-    
+
                     <!-- ${gptResponse.id} -->
-                    
+
                     ${block(gptResponse.text)}
-        
+
                 `,
                 ),
             );

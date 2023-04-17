@@ -42,15 +42,15 @@ export class ChatGptThread {
             join(process.cwd(), 'chat/message.md'),
             spaceTrim(
                 (block) => `
-    
+
                     ${block(INITIAL_SHEM_MESSAGE_TEXT)}
-    
+
                     ---
-    
+
                     <!-- ${gptResponse.id} -->
-                    
+
                     ${block(gptResponse.text)}
-        
+
                 `,
             ),
         );

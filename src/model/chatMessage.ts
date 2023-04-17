@@ -20,5 +20,3 @@ export interface JournalChatMessage {
 export interface CompleteChatMessage {
     isComplete: true;
 }
-
-

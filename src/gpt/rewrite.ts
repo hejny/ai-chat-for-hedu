@@ -20,7 +20,7 @@ export function rewrite(options: RewriteOptions): Observable<string> {
                 \`\`\`
                 ${block(textToRewrite)}
                 \`\`\`
-        
+
             `,
         ),
         completionParams: {

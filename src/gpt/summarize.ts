@@ -20,7 +20,7 @@ export function summarize(options: SummarizeOptions): Observable<string> {
                 \`\`\`
                 ${block(textToSummarize)}
                 \`\`\`
-        
+
             `,
         ),
         completionParams: {
