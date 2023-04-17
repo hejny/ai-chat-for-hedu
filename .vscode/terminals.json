@@ -51,6 +51,21 @@
             "focus": true
         },
         {
+            "name": "🌍🔥 SSH tunel to collboard.com",
+            "command": "bash ./scripts/ssh-tunel.sh"
+        },
+        {
+            "name": "🌍 SSH to collboard.com",
+            "command": "ssh root@134.122.86.6",
+            "execute": false
+        },
+        {
+            "name": "🌍🚥 Restart MySQL on server",
+            "commands": ["ssh root@134.122.86.6;", "service mysql restart"],
+            "onlySingle": true,
+            "focus": true
+        },
+        {
             "name": "🔼👑 Release major version",
             "command": "npm version major",
             "onlySingle": true,
