@@ -4,6 +4,7 @@ const { i18n } = require('./next-i18next.config');
 const nextConfig = {
     i18n,
     reactStrictMode: true,
+    // Note: [🎁] Use if using docker in future> output: 'standalone',
     experimental: {
         appDir: true,
     },
