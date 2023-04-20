@@ -1,12 +1,9 @@
-import { useEffect } from 'react';
 import { Converter } from 'showdown';
 import showdownHighlight from 'showdown-highlight';
 import spaceTrim from 'spacetrim';
-import { speak } from '../../sections/60-Journal/utils/speak';
 import { emojifyHtml } from '../../utils/content/emojifyHtml';
 import { linkMarkdown } from '../../utils/content/linkMarkdown';
 import { normalizeDashes } from '../../utils/content/normalizeDashes';
-import { removeMarkdownFormatting } from '../../utils/content/removeMarkdownFormatting';
 import { Html } from '../Html/Html';
 import styles from './Article.module.css';
 

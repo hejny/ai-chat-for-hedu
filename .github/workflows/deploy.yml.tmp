@@ -1,0 +1,45 @@
+name: Deploy new version
+
+on:
+    push:
+        tags:
+            - 'v*'
+
+jobs:
+    test:
+        name: Test + Lint
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 17
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Lint
+              run: npm run lint
+
+            - name: Test
+              run: npm run test
+              env:
+                  NODE_OPTIONS: --openssl-legacy-provider
+
+    publish-on-collboard-server:
+        name: Publish on Collboard server
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 17
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Publish
+              run: docker build -t nextjs-docker .
+
+            # Upload to server @see https://zellwk.com/blog/github-actions-deploy/
