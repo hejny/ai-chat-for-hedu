@@ -2,3 +2,29 @@
     /*/
     outline: 1px dotted red; /**/
 }
+
+.day,
+.lesson {
+    padding-left: 20px;
+    text-align: left;
+}
+
+.title {
+    border: 1px solid #777;
+    margin: 5px;
+    padding: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.day {
+}
+
+.day > .title {
+}
+
+.lesson {
+}
+
+.lesson > .title {
+}

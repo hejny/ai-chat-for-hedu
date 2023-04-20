@@ -19,8 +19,21 @@ export function RecordsSection(props: RecordsProps) {
             <h2>{t('Records.title')}</h2>
             <Article content={t('Records.content')} isEnhanced />
             <RecordsFilter />
-            17.4.2023
-            <Link href={`/chat`}>Napsat</Link>
+
+            <div className={styles.day}>
+                <h2 className={styles.title}>17.4.2023</h2>
+
+                <div className={styles.lesson}>
+                    <h3 className={styles.title}>Prvouka 1.B</h3>
+                    <div>Cíle: Pythagorova věta</div>
+                    <div>
+                        Poznámka k žákovi:{' '}
+                        <Link href={`/chat`} className="button">
+                            Napsat
+                        </Link>
+                    </div>
+                </div>
+            </div>
         </Section>
     );
 }
