@@ -2,11 +2,11 @@ import { useTranslation } from 'next-i18next';
 import { useEffect, useReducer } from 'react';
 import { v4 } from 'uuid';
 import { Article } from '../../components/Article/Article';
-import { Chat } from '../../components/Chat/Chat';
 import { Playground, socket } from '../../components/Playground/Playground';
 import { Section } from '../../components/Section/Section';
 import { ChatMessage, CompleteChatMessage, JournalChatMessage, TeacherChatMessage } from '../../model/chatMessage';
 import { removeMarkdownFormatting } from '../../utils/content/removeMarkdownFormatting';
+import { Chat } from './Chat/Chat';
 import styles from './Journal.module.css';
 import { speak } from './utils/speak';
 

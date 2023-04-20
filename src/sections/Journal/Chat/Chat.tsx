@@ -2,11 +2,11 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import spaceTrim from 'spacetrim';
 import { Promisable } from 'type-fest';
-import journalAvatar from '../../../public/people/journal.jpeg';
-import teacherAvatar from '../../../public/people/teacher.jpeg';
-import { ChatMessage } from '../../model/chatMessage';
-import { classNames } from '../../utils/classNames';
-import { Article } from '../Article/Article';
+import journalAvatar from '../../../../public/people/journal.jpeg';
+import teacherAvatar from '../../../../public/people/teacher.jpeg';
+import { Article } from '../../../components/Article/Article';
+import { ChatMessage } from '../../../model/chatMessage';
+import { classNames } from '../../../utils/classNames';
 import { VoiceRecognitionButton } from '../VoiceRecognitionButton/VoiceRecognitionButton';
 import styles from './Chat.module.css';
 
