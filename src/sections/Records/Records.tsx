@@ -20,20 +20,33 @@ export function RecordsSection(props: RecordsProps) {
             <Article content={t('Records.content')} isEnhanced />
             <RecordsFilter />
 
-            <div className={styles.day}>
-                <h2 className={styles.title}>17.4.2023</h2>
+            {['17.4.2023', '18.4.2023', '19.4.2023', '20.4.2023'].map((dateTitle) => (
+                <div key={dateTitle} className={styles.day}>
+                    <h2 className={styles.title}>{dateTitle}</h2>
 
-                <div className={styles.lesson}>
-                    <h3 className={styles.title}>Prvouka 1.B</h3>
-                    <div>Cíle: Pythagorova věta</div>
-                    <div>
-                        Poznámka k žákovi:{' '}
-                        <Link href={`/chat`} className="button">
-                            Napsat
-                        </Link>
+                    <div className={styles.lesson}>
+                        <h3 className={styles.title}>Prvouka 1.B</h3>
+                        <div>Cíle: Obratlovci</div>
+                        <div>
+                            Poznámka k žákovi:{' '}
+                            <Link href={`/chat`} className="button">
+                                Napsat
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className={styles.lesson}>
+                        <h3 className={styles.title}>Matematika 2.A</h3>
+                        <div>Cíle: Pythagorova věta</div>
+                        <div>
+                            Poznámka k žákovi:{' '}
+                            <Link href={`/chat`} className="button">
+                                Napsat
+                            </Link>
+                        </div>
                     </div>
                 </div>
-            </div>
+            ))}
         </Section>
     );
 }

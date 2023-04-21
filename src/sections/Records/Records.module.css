@@ -5,13 +5,15 @@
 
 .day,
 .lesson {
-    padding-left: 20px;
+    padding: 10px;
+    padding-left: 30px;
     text-align: left;
 }
 
 .title {
+    display: inline-block;
     border: 1px solid #777;
-    margin: 5px;
+    /*margin: 5px;*/
     padding: 5px;
     font-size: 1.1em;
     font-weight: bold;
