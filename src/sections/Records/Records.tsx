@@ -6,11 +6,11 @@ import styles from './Records.module.css';
 import { RecordsFilter } from './RecordsFilter/RecordsFilter';
 
 interface RecordsProps {
-    variant: 'SHORT' | 'FULL';
+    //variant: 'SHORT' | 'FULL';
 }
 
 export function RecordsSection(props: RecordsProps) {
-    const { variant } = props;
+    //const { variant } = props;
 
     const { t } = useTranslation();
 
