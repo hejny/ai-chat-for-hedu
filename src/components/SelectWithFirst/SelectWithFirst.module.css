@@ -9,3 +9,8 @@
 .selected {
     border: 2px solid red;
 }
+
+.title {
+    display: inline-block;
+    width: 70px;
+}
