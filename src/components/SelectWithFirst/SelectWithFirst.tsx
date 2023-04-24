@@ -9,7 +9,7 @@ interface SelectWithFirstProps<TValue> {
     options: Array<{ id: TValue; title: string }>;
 }
 
-export function SelectWithFirst<TValue extends string | number>(props: SelectWithFirstProps<TValue>) {
+export function SelectWithFirst<TValue>(props: SelectWithFirstProps<TValue>) {
     const { title, value, onChange, numberOfButtons = 1 } = props;
 
     const options = [...props.options];
@@ -22,7 +22,7 @@ export function SelectWithFirst<TValue extends string | number>(props: SelectWit
 
             {firstOptions.map((option) => (
                 <button
-                    key={option.id}
+                    key={(option.id || 'EMPTY').toString()}
                     onClick={() => void onChange(option.id)}
                     className={classNames(value === option.id && styles.selected)}
                 >
@@ -32,11 +32,11 @@ export function SelectWithFirst<TValue extends string | number>(props: SelectWit
 
             {restOptions.length !== 0 && (
                 <select
-                    onChange={(event) => void onChange(parseInt(event.target.value) as any)}
+                    onChange={(event) => void onChange(restOptions[parseInt(event.target.value)].id)}
                     className={classNames(!firstOptions.some(({ id }) => id === value) && styles.selected)}
                 >
-                    {restOptions.map((option) => (
-                        <option key={option.id} selected={value === option.id} value={option.id}>
+                    {restOptions.map((option, i) => (
+                        <option key={i} selected={value === option.id} value={i}>
                             {option.title}
                         </option>
                     ))}
