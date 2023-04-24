@@ -31,12 +31,14 @@ export function RecordsSection(props: RecordsProps) {
                     <div className={styles.lesson}>
                         <h3 className={styles.title}>Prvouka 1.B</h3>
                         <div>Cíle: Obratlovci</div>
-                        <div>
-                            Poznámka k žákovi:{' '}
-                            <Link href={`/chat`} className="button">
-                                Napsat
-                            </Link>
-                        </div>
+                        {person && (
+                            <div>
+                                Poznámka k žákovi:{' '}
+                                <Link href={`/chat`} className="button">
+                                    Napsat
+                                </Link>
+                            </div>
+                        )}
                     </div>
 
                     <div className={styles.lesson}>
