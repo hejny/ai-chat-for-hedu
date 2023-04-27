@@ -147,7 +147,11 @@ export function stringToChatMessage(chatMessageContent: string): ChatMessage {
     return new ChatMessage(null /* <- !!! allow to pass parent */, 'JOURNAL', of(spaceTrim(chatMessageContent)));
 }
 
+
+
+
 /**
+ * TODO: !!! Break into files
  * TODO: [🧶]
  * TODO: Ask askOptions + askOpenOptions (as variant of askBoolean (which will be internally using askOptions))
  * TODO: Maybe integrate rewrite into ask + integrate spaceTrim
