@@ -60,6 +60,18 @@ export const MOCKED_RECORDS: Array<IRecord> = [
     },
 ];
 
+export function getPupilName(pupilId: IPupilId): string {
+    return [
+        `Franta Opička`,
+        `Jana Havlíčková`,
+        `Marie Němcová`,
+        `Jiří Kratochvíl`,
+        `Kateřina Kšírová`,
+        `Josef Urban`,
+        `Josef Červenka`,
+    ][pupilId];
+}
+
 /**
  * TODO: !!! Use Branded types
  * TODO: !!! Break into files

@@ -45,3 +45,5 @@ export function SelectWithFirst<TValue>(props: SelectWithFirstProps<TValue>) {
         </div>
     );
 }
+
+// !!! Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.

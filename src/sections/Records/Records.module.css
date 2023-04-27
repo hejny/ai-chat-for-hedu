@@ -19,6 +19,14 @@
     font-weight: bold;
 }
 
+.subtitle {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 1em;
+    color: #777;
+}
+
 .day {
 }
 

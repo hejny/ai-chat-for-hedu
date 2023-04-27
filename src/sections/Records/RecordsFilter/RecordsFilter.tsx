@@ -1,8 +1,11 @@
+import { useTranslation } from 'next-i18next';
 import { Dispatch, SetStateAction } from 'react';
 import { SelectWithFirst } from '../../../components/SelectWithFirst/SelectWithFirst';
-import { IPupilId, ISubjectId, ISumarizationStyle } from '../../../model/__IRecord';
+import { getPupilName, IPupilId, ISubjectId, ISumarizationStyle } from '../../../model/__IRecord';
 
 interface RecordsFilterProps {
+    pupils: Set<IPupilId>;
+    subjects: Set<ISubjectId>;
     pupil: IPupilId | null;
     setPupil: Dispatch<SetStateAction<IPupilId | null>>;
     sumarizationStyle: ISumarizationStyle;
@@ -12,7 +15,9 @@ interface RecordsFilterProps {
 }
 
 export function RecordsFilter(props: RecordsFilterProps) {
-    const { pupil, setPupil, sumarizationStyle, setSumarizationStyle, subject, setSubject } = props;
+    const { pupils, subjects, pupil, setPupil, sumarizationStyle, setSumarizationStyle, subject, setSubject } = props;
+
+    const { t } = useTranslation();
 
     return (
         <div>
@@ -22,14 +27,11 @@ export function RecordsFilter(props: RecordsFilterProps) {
                 value={pupil}
                 onChange={(newPerson) => void setPupil(newPerson)}
                 options={[
-                    { id: null, title: `Můj` },
-                    { id: 1, title: `Franta Opička` },
-                    { id: 2, title: `Jana Havlíčková` },
-                    { id: 3, title: `Marie Němcová` },
-                    { id: 4, title: `Jiří Kratochvíl` },
-                    { id: 5, title: `Kateřina Kšírová` },
-                    { id: 6, title: `Josef Urban` },
-                    { id: 7, title: `Josef Červenka` },
+                    { id: null, title: 'Můj' },
+                    ...Array.from(pupils).map((pupilId) => ({
+                        id: pupilId,
+                        title: getPupilName(pupilId),
+                    })),
                 ]}
             />
             <SelectWithFirst
@@ -47,11 +49,11 @@ export function RecordsFilter(props: RecordsFilterProps) {
                 value={subject}
                 onChange={(newSubject) => void setSubject(newSubject)}
                 options={[
-                    { id: null, title: `Vše` },
-                    { id: 'MATH', title: `Matematika` },
-                    { id: 'FOCANS', title: `Prvouka` },
-                    { id: 'CZECH_LANGUAGE', title: `Český jazyk` },
-                    { id: 'ENGLISH_LANGUAGE', title: `Anglický jazyk` },
+                    { id: null, title: 'Vše' },
+                    ...Array.from(subjects).map((subjectId) => ({
+                        id: subjectId,
+                        title: t(`subjects.${subjectId}`),
+                    })),
                 ]}
             />
         </div>
