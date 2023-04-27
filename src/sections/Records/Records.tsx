@@ -6,7 +6,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Article } from '../../components/Article/Article';
 import { Section } from '../../components/Section/Section';
-import { IPupilId, IRecord, ISubjectId, ISumarizationStyle, MOCKED_RECORDS } from '../../model/__IRecord';
+import { MOCKED_RECORDS } from '../../mocks/records';
+import { IPupilId, IRecord, ISubjectId, ISumarizationStyle } from '../../model/__IRecord';
 import styles from './Records.module.css';
 import { RecordsFilter } from './RecordsFilter/RecordsFilter';
 
