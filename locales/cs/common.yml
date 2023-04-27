@@ -4,8 +4,15 @@ title: >
 description: >
     AI deník pro učitele od [H-edu](https://h-edu.cz/)
 
+Records:
+    title: Záznamy
+    content: Zde se zobrazují Vaše učitelské zápisky
+
 subjects:
+    HISTORY: Dějepis
     MATH: Matematika
-    FOCANS: Prvouka
+    PHYSICS: Fyzika
+    GEOGRAPHY: Zeměpis
+    SCIENCE: Prvouka
     CZECH_LANGUAGE: Český jazyk
     ENGLISH_LANGUAGE: Anglický jazyk

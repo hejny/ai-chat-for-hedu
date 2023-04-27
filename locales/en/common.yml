@@ -3,3 +3,16 @@ title: >
 
 description: >
     AI powered journal for teachers by [H-edu](https://h-edu.org/)
+
+Records:
+    title: Records
+    content: Your teacher notes are displayed here
+
+subjects:
+    HISTORY: History
+    MATH: Mathematics
+    PHYSICS: Physics
+    GEOGRAPHY: Geography
+    SCIENCE: Science
+    CZECH_LANGUAGE: Český jazyk
+    ENGLISH_LANGUAGE: English
