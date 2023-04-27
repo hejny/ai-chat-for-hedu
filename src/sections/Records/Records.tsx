@@ -44,6 +44,8 @@ export function RecordsSection(props: RecordsProps) {
 
                     {records
                         .filter((record) => moment(record.lessonDate).isSame(date, 'day'))
+                        .filter((record) => subject === null || record.lessonSubjectId === subject)
+                        .filter((record) => record.pupilId === pupil)
                         .map((record) => (
                             <div className={styles.lesson} key={record.lessonClassId + record.lessonSubjectId}>
                                 <h3 className={styles.title}>
@@ -53,7 +55,14 @@ export function RecordsSection(props: RecordsProps) {
                                 {pupil && (
                                     <div>
                                         Poznámka k žákovi:{' '}
-                                        <Link href={`/chat`} className="button">
+                                        <Link
+                                            href={`/chat?date=${date}&subject=${encodeURIComponent(
+                                                record.lessonSubjectId!,
+                                            )}&class=${encodeURIComponent(
+                                                record.lessonClassId!,
+                                            )}&pupil=${encodeURIComponent(record.pupilId!)}`}
+                                            className="button"
+                                        >
                                             Napsat
                                         </Link>
                                     </div>
