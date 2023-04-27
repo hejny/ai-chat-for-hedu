@@ -1,0 +1,50 @@
+;;
+;; Domain:     proedu.cz.
+;; Exported:   2023-04-27 13:54:03
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+proedu.cz	3600	IN	SOA	james.ns.cloudflare.com dns.cloudflare.com 2043427024 10000 2400 604800 3600
+
+;; NS Records
+proedu.cz.	86400	IN	NS	james.ns.cloudflare.com.
+proedu.cz.	86400	IN	NS	tess.ns.cloudflare.com.
+
+;; A Records
+ai.proedu.cz.	1	IN	A	134.122.86.6 ; IP směřuje na Collboard server
+proedu.cz.	1	IN	A	173.249.53.142 ; IP směřuje na server delta.commity.cz
+
+;; CNAME Records
+*.proedu.cz.	1	IN	CNAME	proedu.cz.
+www.proedu.cz.	1	IN	CNAME	proedu.cz.
+
+;; MX Records
+proedu.cz.	3600	IN	MX	10 alt4.aspmx.l.google.com.
+proedu.cz.	3600	IN	MX	1 aspmx.l.google.com.
+proedu.cz.	3600	IN	MX	10 alt3.aspmx.l.google.com.
+proedu.cz.	3600	IN	MX	5 alt1.aspmx.l.google.com.
+proedu.cz.	3600	IN	MX	5 alt2.aspmx.l.google.com.
+
+;; TXT Records
+proedu.cz.	3600	IN	TXT	"v=spf1 include:_spf.google.com -all"
+proedu.cz.	3600	IN	TXT	"google-site-verification=3fFiLX6kjzIv5AuTfVT3Aefe8HtPzodfrR2zUYOUkcw"
