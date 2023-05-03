@@ -5,7 +5,7 @@ export type ISumarizationStyle = 'FULL' | 'SUMMARIZE';
 export type IClassId = string;
 export type ISubjectId = string;
 
-const RecordType = {
+export const RecordType = {
     // !!! Or just as array of strings
     LessonGoal: 'LESSON_GOAL',
     LessonEvaluation: 'LESSON_EVALUATION',

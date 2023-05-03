@@ -7,7 +7,15 @@ import { useState } from 'react';
 import { Article } from '../../components/Article/Article';
 import { Section } from '../../components/Section/Section';
 import { MOCKED_RECORDS } from '../../mocks/records';
-import { IPupilId, IRecord, ISubjectId, ISumarizationStyle } from '../../model/__IRecord';
+import {
+    IClassId,
+    IPupilId,
+    IRecord,
+    ISubjectId,
+    ISumarizationStyle,
+    RecordType,
+    string_markdown,
+} from '../../model/__IRecord';
 import styles from './Records.module.css';
 import { RecordsFilter } from './RecordsFilter/RecordsFilter';
 
@@ -109,6 +117,29 @@ function extractUniqueDates(records: IRecord[]): Set<string> {
     );
 
     return uniqueDates;
+}
+
+type ICalendar = Array<{
+    date: Date;
+    subjectsAndClasses: Array<{
+        // Note: Now there are just listed records for subjectId+classId combination "Matematika 2.A" with whole class + each pupil
+        //       Records just for class without subject are not possible yet in ICalendar
+        //       Records just for pupil are not possible yet in ICalendar
+        classId: IClassId;
+        subjectId: ISubjectId;
+        pupils: Array<{
+            pupilId: IPupilId | null;
+            records: Array<{
+                type: keyof typeof RecordType;
+                content: string_markdown | null;
+                contentSummarized?: string_markdown | null;
+            }>;
+        }>;
+    }>;
+}>;
+
+function recordsToCalendar(...records: IRecord[]): ICalendar {
+    // !!! Implement
 }
 
 // TODO: !!! Extract function into files
