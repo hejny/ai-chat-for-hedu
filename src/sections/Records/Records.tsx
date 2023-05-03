@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import 'moment/locale/cs';
 import { capitalize } from 'n12';
 import { useTranslation } from 'next-i18next';
@@ -98,10 +98,16 @@ function extractPupils(records: IRecord[]): Set<IPupilId> {
 }
 
 function extractUniqueDates(records: IRecord[]): Set<string> {
-    const uniqueDates = new Set<string>();
+    const dates: Array<Moment> = [];
     records.forEach((record) => {
-        uniqueDates.add(moment(record.lessonDate).format('YYYY/MM/DD'));
+        dates.push(moment(record.lessonDate));
     });
+
+    // Note: Sort dates from newest to oldest
+    const uniqueDates = new Set(
+        dates.sort((date1, date2) => date2.diff(date1)).map((date) => date.format('YYYY/MM/DD')),
+    );
+
     return uniqueDates;
 }
 
