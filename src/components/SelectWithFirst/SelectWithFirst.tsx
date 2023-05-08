@@ -22,7 +22,7 @@ export function SelectWithFirst<TValue>(props: SelectWithFirstProps<TValue>) {
 
             {firstOptions.map((option) => (
                 <button
-                    key={(option.id || 'EMPTY').toString()}
+                    key={(option.id === null ? 'null' : option.id === undefined ? 'undefined' : option.id).toString()}
                     onClick={() => void onChange(option.id)}
                     className={classNames(value === option.id && styles.selected)}
                 >

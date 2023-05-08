@@ -15,6 +15,7 @@ export const RecordType = {
 } as const;
 
 export interface IRecord {
+    id: string;
     lessonDate: Date;
     lessonClassId: IClassId;
     lessonSubjectId: ISubjectId | null;

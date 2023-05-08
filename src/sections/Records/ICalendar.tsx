@@ -11,6 +11,7 @@ export type ICalendar = Array<{
         pupils: Array<{
             pupilId: IPupilId | null;
             records: Array<{
+                id: string;
                 type: keyof typeof RecordType;
                 content: string_markdown | null;
                 contentSummarized?: string_markdown | null;

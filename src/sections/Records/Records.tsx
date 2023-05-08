@@ -5,8 +5,8 @@ import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 import { Article } from '../../components/Article/Article';
 import { Section } from '../../components/Section/Section';
-import { MOCKED_RECORDS } from '../../mocks/records';
 import { getPupilName, getTypeName, IPupilId, ISubjectId, ISumarizationStyle } from '../../model/__IRecord';
+import { useFetchRecords } from '../../utils/hooks/useFetchRecords';
 import { extractPupils } from './extractPupils';
 import { extractSubjects } from './extractSubjects';
 import styles from './Records.module.css';
@@ -18,7 +18,7 @@ interface RecordsProps {}
 export function RecordsSection(props: RecordsProps) {
     const { t } = useTranslation();
 
-    const records = MOCKED_RECORDS;
+    const records = useFetchRecords();
 
     const subjects = extractSubjects(records);
     const pupils = extractPupils(records);
@@ -58,11 +58,8 @@ export function RecordsSection(props: RecordsProps) {
                             {pupils.map(({ pupilId, records }) => {
                                 const recordsJsx = (
                                     <ul className={styles.records}>
-                                        {records.map(({ type, content, contentSummarized }, i) => (
-                                            <li
-                                                className={styles.record}
-                                                key={i /* <- TODO: Here should be recordId */}
-                                            >
+                                        {records.map(({ id, type, content, contentSummarized }, i) => (
+                                            <li className={styles.record} key={id}>
                                                 {content}
                                                 <div className="button">
                                                     {content === null || content.trim() === '' ? 'Napsat' : 'Upravit'}{' '}

@@ -1,8 +1,10 @@
 import moment from 'moment';
+import { v4 } from 'uuid';
 import { IRecord } from '../model/__IRecord';
 
 export const MOCKED_RECORDS: Array<IRecord> = [
     {
+        id: '1',
         lessonDate: moment('2023/05/2').toDate(),
         lessonClassId: '2.A',
         lessonSubjectId: 'MATH',
@@ -11,6 +13,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
         content: null,
     },
     {
+        id: '2',
         lessonDate: moment('2023/04/21').toDate(),
         lessonClassId: '2.A',
         lessonSubjectId: 'HISTORY',
@@ -22,6 +25,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'Tato hodina dějepisu bude zkoumat starověkou egyptskou civilizaci a její vliv na svět. Podíváme se na jejich sociální, ekonomické a politické struktury a pochopíme, jak přispěly k rozvoji lidské civilizace.',
     },
     {
+        id: '3',
         lessonDate: moment('2023/04/22').toDate(),
         lessonClassId: '3.B',
         lessonSubjectId: 'SCIENCE',
@@ -33,6 +37,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'Tato hodina přírodopisu se bude zaměřovat na různá skupenství látek a jejich vlastnosti. Budeme zkoumat charakteristiky pevných látek, kapalin a plynů a provádět experimenty k pozorování změn látek.',
     },
     {
+        id: '4',
         lessonDate: moment('2023/04/23').toDate(),
         lessonClassId: '4.C',
         lessonSubjectId: 'ENGLISH_LANGUAGE',
@@ -44,6 +49,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'This English lesson will focus on developing students’ reading comprehension skills through analyzing a short story and discussing literary devices.',
     },
     {
+        id: '5',
         lessonDate: moment('2023/04/27').toDate(),
         lessonClassId: '2.B',
         lessonSubjectId: 'PHYSICS',
@@ -55,6 +61,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'V této hodině fyziky se budeme učit o zákonech pohybu a diskutovat o jejich aplikaci na různé situace. Provedeme experimenty, abychom si lépe představili pohyb pod vlivem různých sil a diskutujeme o významu zákonů pohybu v každodenním životě.',
     },
     {
+        id: '6',
         lessonDate: moment('2023/04/28').toDate(),
         lessonClassId: '2.B',
         lessonSubjectId: 'GEOGRAPHY',
@@ -69,6 +76,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
     // Note: From this point records are just Ctrl+C/V from non-pupil ones
 
     {
+        id: '7',
         lessonDate: moment('2023/04/21').toDate(),
         lessonClassId: '2.A',
         lessonSubjectId: 'HISTORY',
@@ -80,6 +88,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'Žák Tato hodina dějepisu bude zkoumat starověkou egyptskou civilizaci a její vliv na svět. Podíváme se na jejich sociální, ekonomické a politické struktury a pochopíme, jak přispěly k rozvoji lidské civilizace.',
     },
     {
+        id: '8',
         lessonDate: moment('2023/04/22').toDate(),
         lessonClassId: '3.B',
         lessonSubjectId: 'SCIENCE',
@@ -91,6 +100,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'Žák Tato hodina přírodopisu se bude zaměřovat na různá skupenství látek a jejich vlastnosti. Budeme zkoumat charakteristiky pevných látek, kapalin a plynů a provádět experimenty k pozorování změn látek.',
     },
     {
+        id: '9',
         lessonDate: moment('2023/04/23').toDate(),
         lessonClassId: '4.C',
         lessonSubjectId: 'ENGLISH_LANGUAGE',
@@ -102,6 +112,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'Žák This English lesson will focus on developing students’ reading comprehension skills through analyzing a short story and discussing literary devices.',
     },
     {
+        id: '10',
         lessonDate: moment('2023/04/27').toDate(),
         lessonClassId: '2.B',
         lessonSubjectId: 'PHYSICS',
@@ -113,6 +124,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'Žák V této hodině fyziky se budeme učit o zákonech pohybu a diskutovat o jejich aplikaci na různé situace. Provedeme experimenty, abychom si lépe představili pohyb pod vlivem různých sil a diskutujeme o významu zákonů pohybu v každodenním životě.',
     },
     {
+        id: '11',
         lessonDate: moment('2023/04/28').toDate(),
         lessonClassId: '2.B',
         lessonSubjectId: 'GEOGRAPHY',
@@ -125,6 +137,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
     },
 
     {
+        id: '12',
         lessonDate: moment('2023/04/21').toDate(),
         lessonClassId: '2.A',
         lessonSubjectId: 'HISTORY',
@@ -136,6 +149,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'Žák Tato hodina dějepisu bude zkoumat starověkou egyptskou civilizaci a její vliv na svět. Podíváme se na jejich sociální, ekonomické a politické struktury a pochopíme, jak přispěly k rozvoji lidské civilizace.',
     },
     {
+        id: '13',
         lessonDate: moment('2023/04/22').toDate(),
         lessonClassId: '3.B',
         lessonSubjectId: 'SCIENCE',
@@ -147,6 +161,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'Žák Tato hodina přírodopisu se bude zaměřovat na různá skupenství látek a jejich vlastnosti. Budeme zkoumat charakteristiky pevných látek, kapalin a plynů a provádět experimenty k pozorování změn látek.',
     },
     {
+        id: '14',
         lessonDate: moment('2023/04/23').toDate(),
         lessonClassId: '4.C',
         lessonSubjectId: 'ENGLISH_LANGUAGE',
@@ -158,6 +173,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'Žák This English lesson will focus on developing students’ reading comprehension skills through analyzing a short story and discussing literary devices.',
     },
     {
+        id: '15',
         lessonDate: moment('2023/04/27').toDate(),
         lessonClassId: '2.B',
         lessonSubjectId: 'PHYSICS',
@@ -169,6 +185,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
             'Žák V této hodině fyziky se budeme učit o zákonech pohybu a diskutovat o jejich aplikaci na různé situace. Provedeme experimenty, abychom si lépe představili pohyb pod vlivem různých sil a diskutujeme o významu zákonů pohybu v každodenním životě.',
     },
     {
+        id: '16',
         lessonDate: moment('2023/04/28').toDate(),
         lessonClassId: '2.B',
         lessonSubjectId: 'GEOGRAPHY',
@@ -196,6 +213,7 @@ for (const pupilId of [null, 0, 1, 2, 3, 4, 5, 6]) {
 
                 // Note: Add LessonGoal for each date
                 MOCKED_RECORDS.push({
+                    id: v4(),
                     lessonDate,
                     lessonClassId,
                     lessonSubjectId,
@@ -207,6 +225,7 @@ for (const pupilId of [null, 0, 1, 2, 3, 4, 5, 6]) {
                 // Note: If the date is in the past, add also a LessonEvaluation and a Note
                 if (moment().isAfter(lessonDate)) {
                     MOCKED_RECORDS.push({
+                        id: v4(),
                         lessonDate,
                         lessonClassId,
                         lessonSubjectId,
@@ -216,6 +235,7 @@ for (const pupilId of [null, 0, 1, 2, 3, 4, 5, 6]) {
                     });
 
                     MOCKED_RECORDS.push({
+                        id: v4(),
                         lessonDate,
                         lessonClassId,
                         lessonSubjectId,

@@ -48,6 +48,7 @@ export function recordsToCalendar(...records: IRecord[]): ICalendar {
 
         // Add the record to the pupil's records array
         pupil.records.push({
+            id: record.id,
             type: record.type,
             content: record.content,
             contentSummarized: record.contentSummarized,
