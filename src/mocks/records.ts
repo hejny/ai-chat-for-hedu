@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { IRecord, PUPILS } from '../model/__IRecord';
+import { IRecord, PUPILS, RecordType } from '../model/__IRecord';
 
 export const MOCKED_RECORDS: Array<IRecord> = [
     {
@@ -640,7 +640,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
         lessonClassId,
         lessonSubjectId,
         pupilId,
-        type,
+        type: type as keyof typeof RecordType,
         content,
     };
 });
