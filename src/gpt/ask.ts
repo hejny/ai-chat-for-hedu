@@ -1,18 +1,18 @@
 import { Observable } from 'rxjs';
 import spaceTrim from 'spacetrim';
-import { askChatGpt } from './askChatGpt';
+import { askChatGptThread } from './askChatGptThread';
 
 interface AskOptions {
     cache: Array<string>;
-    textToAsk: string;
+    textsToAsk: Array<string>;
 }
 
 export function ask(options: AskOptions): Observable<string> {
-    const { cache, textToAsk } = options;
+    const { cache, textsToAsk } = options;
 
-    return askChatGpt({
+    return askChatGptThread({
         cache: ['ask', ...cache],
-        requestText: spaceTrim(textToAsk),
+        requestTexts: textsToAsk.map((text) => spaceTrim(text)),
         completionParams: {
             temperature: 0.5,
             top_p: 0.8,

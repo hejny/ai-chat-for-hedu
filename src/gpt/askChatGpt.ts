@@ -74,3 +74,7 @@ export function askChatGpt(options: AskChatGptOptions): Observable<string> {
         return () => void (isDestroyed = true);
     });
 }
+
+/**
+ * TODO: Maybe deprecate in favour of askChatGptThread
+ */

@@ -177,33 +177,25 @@ export class SocketScenarioUtils implements ScenarioUtils {
         }
     }
 
-    public gptAsk(messageOrContent: ChatMessage | string): ChatMessage {
-        const message = toChatMessage(messageOrContent);
+    public gptAsk(...textsToAsk: Array<string>): ChatMessage {
+        const responseContent = new Subject<string>();
 
-        const rewrittenContent = new Subject<string>();
-
-        message.content.asPromise().then((content) => {
-            ask({
-                textToAsk: content,
-                cache: [this.scenarioName, sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(content))],
-            }).subscribe({
-                next(value) {
-                    rewrittenContent.next(value);
-                },
-                complete() {
-                    rewrittenContent.complete();
-                },
-                error(error) {
-                    rewrittenContent.error(error);
-                },
-            });
+        ask({
+            textsToAsk,
+            cache: [this.scenarioName, sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(textsToAsk.join('\n\n\n')))],
+        }).subscribe({
+            next(value) {
+                responseContent.next(value);
+            },
+            complete() {
+                responseContent.complete();
+            },
+            error(error) {
+                responseContent.error(error);
+            },
         });
 
-        return new ChatMessage(
-            message.parentMessage,
-            message.from,
-            rewrittenContent /* <- Note: No need to convert .asObservable() */,
-        );
+        return new ChatMessage(null, 'JOURNAL', responseContent /* <- Note: No need to convert .asObservable() */);
     }
 
     public gptRewrite(messageOrContent: ChatMessage | string): ChatMessage {

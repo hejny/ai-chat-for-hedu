@@ -109,17 +109,17 @@ export interface ScenarioUtils {
     /**
      * @@@
      */
-    gptAsk(message: ChatMessage | string): ChatMessage;
+    gptAsk(...contents: Array<string>): ChatMessage;
 
     /**
      * @@@
      */
-    gptRewrite(message: ChatMessage | string): ChatMessage;
+    gptRewrite(messageOrContent: ChatMessage | string): ChatMessage;
 
     /**
      * @@@
      */
-    gptSummarize(message: ChatMessage | string): ChatMessage;
+    gptSummarize(messageOrContent: ChatMessage | string): ChatMessage;
 
     /**
      * @@@
