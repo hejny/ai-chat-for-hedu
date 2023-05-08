@@ -9,7 +9,7 @@
 
 /* Chat messages area */
 .chatMessages {
-    height: calc(100vh - 300px);
+    height: calc(100vh - 500px);
     overflow-y: scroll;
     margin-bottom: 10px;
 }

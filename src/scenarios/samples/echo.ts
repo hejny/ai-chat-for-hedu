@@ -5,10 +5,10 @@ export async function echoScenario({
     say,
     ask,
     askOptions,
-    rewrite,
+    gptRewrite: rewrite,
     save,
     load,
-    summarize,
+    gptSummarize: summarize,
 }: ScenarioUtils): Promise<void> {
     const response = await ask(`Napiš cokoliv`);
     await say(

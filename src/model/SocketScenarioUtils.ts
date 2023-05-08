@@ -177,7 +177,7 @@ export class SocketScenarioUtils implements ScenarioUtils {
     }
 
     // TODO: DRY rewrite and summarize
-    public rewrite(messageOrContent: ChatMessage | string): ChatMessage {
+    public gptRewrite(messageOrContent: ChatMessage | string): ChatMessage {
         const message = toChatMessage(messageOrContent);
 
         const rewrittenContent = new Subject<string>();
@@ -206,7 +206,7 @@ export class SocketScenarioUtils implements ScenarioUtils {
         );
     }
 
-    public summarize(messageOrContent: ChatMessage | string): ChatMessage {
+    public gptSummarize(messageOrContent: ChatMessage | string): ChatMessage {
         const message = toChatMessage(messageOrContent);
 
         const summarizedContent = new Subject<string>();

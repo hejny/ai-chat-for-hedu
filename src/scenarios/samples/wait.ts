@@ -5,10 +5,10 @@ export async function waitScenario({
     say,
     ask,
     askOptions,
-    rewrite,
+    gptRewrite: rewrite,
     save,
     load,
-    summarize,
+    gptSummarize: summarize,
 }: ScenarioUtils): Promise<void> {
     /* not await */ say(`Říkám`);
     /* not await */ say(`Najednou`);

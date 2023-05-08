@@ -1,7 +1,14 @@
 import { ScenarioUtils } from '../model/_';
 import { getRecords } from '../pages/api/utils/getRecords';
 
-export async function recordsScenario({ load, ask, rewrite, summarize, save, say }: ScenarioUtils): Promise<void> {
+export async function recordsScenario({
+    load,
+    ask,
+    gptRewrite: rewrite,
+    gptSummarize: summarize,
+    save,
+    say,
+}: ScenarioUtils): Promise<void> {
     const records = (await getRecords()).filter(({ content }) => content);
 
     let isFirst = true;
@@ -28,5 +35,7 @@ export async function recordsScenario({ load, ask, rewrite, summarize, save, say
         isFirst = false;
 
         await say('Přemýšlím...');
+
+        // await say('');
     }
 }

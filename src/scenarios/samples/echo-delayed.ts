@@ -6,10 +6,10 @@ export async function echoDelayedScenario({
     say,
     ask,
     askOptions,
-    rewrite,
+    gptRewrite: rewrite,
     save,
     load,
-    summarize,
+    gptSummarize: summarize,
 }: ScenarioUtils): Promise<void> {
     await say(`Ahoj,\nzatím tě ignoruju`);
     await forTime(3000);

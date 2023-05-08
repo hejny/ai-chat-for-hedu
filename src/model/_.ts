@@ -109,12 +109,12 @@ export interface ScenarioUtils {
     /**
      * @@@
      */
-    rewrite(message: ChatMessage | string): ChatMessage;
+    gptRewrite(message: ChatMessage | string): ChatMessage;
 
     /**
      * @@@
      */
-    summarize(message: ChatMessage | string): ChatMessage;
+    gptSummarize(message: ChatMessage | string): ChatMessage;
 
     /**
      * @@@
@@ -146,9 +146,6 @@ export function toChatMessage(chatMessage: ChatMessage | string): ChatMessage {
 export function stringToChatMessage(chatMessageContent: string): ChatMessage {
     return new ChatMessage(null /* <- !!! allow to pass parent */, 'JOURNAL', of(spaceTrim(chatMessageContent)));
 }
-
-
-
 
 /**
  * TODO: !!! Break into files

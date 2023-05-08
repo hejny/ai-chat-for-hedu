@@ -5,10 +5,10 @@ export async function beforeLessonScenario({
     say,
     ask,
     askOptions,
-    rewrite,
+    gptRewrite: rewrite,
     save,
     load,
-    summarize,
+    gptSummarize: summarize,
 }: ScenarioUtils): Promise<void> {
     const lessonPlan = await ask(rewrite(`Jaký máš cíl dnešní hodiny matematiky?`));
     await save({ lessonPlan });

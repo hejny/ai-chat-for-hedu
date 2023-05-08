@@ -4,7 +4,7 @@
   lessonSubjectId: MATH
   pupilId: null
   type: Note
-  content: Test
+  content: ahoj bhoj
 - id: "2"
   lessonDate: 2023-04-20T22:00:00.000Z
   lessonClassId: 2.A
