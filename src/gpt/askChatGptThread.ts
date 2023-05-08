@@ -20,8 +20,9 @@ export function askChatGptThread(options: AskChatGptThreadOptions): Observable<s
     });
 
     return new Observable((subscriber) => {
+        let isDestroyed = false;
+
         (async () => {
-            let isDestroyed = false;
             const responses: Array<{ requestText: string; responseText: string; responseId: string }> = [];
             let parentMessageId: undefined | string = undefined;
 
