@@ -70,7 +70,7 @@ export function JournalSection() {
             <Article content={t('Journal.content')} isEnhanced />
 
             <Link href={'/'} className="button">
-                Zadat informace
+                Zadat další informace
             </Link>
 
             <Playground />

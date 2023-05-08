@@ -1,10 +1,10 @@
 import { Socket } from 'socket.io';
 import { RunningScenario } from '../model/RunningScenario';
-import { afterLessonScenario } from '../scenarios/20-after-lesson';
+import { recordsScenario } from '../scenarios/recordsScenario';
 import { SocketEventMap } from './SocketEventMap';
 
 export async function initializeChatSocket(connection: Socket<SocketEventMap>): Promise<void> {
-    const runningScenario = new RunningScenario(afterLessonScenario, connection);
+    const runningScenario = new RunningScenario(recordsScenario, connection);
 
     connection.on('disconnect', () => {
         /* not await */ runningScenario.destroy();

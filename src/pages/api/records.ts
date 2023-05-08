@@ -1,17 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { MOCKED_RECORDS } from '../../mocks/records';
-import { IRecord } from '../../model/__IRecord';
-
-let records: Array<IRecord>;
+import { getRecords, updateRecord } from './utils/getRecords';
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
-    if (!records) {
-        console.log(`Creating new records`);
-        records = MOCKED_RECORDS;
-    }
-
     if (request.method === 'GET') {
-        return response.status(200).json({ records });
+        return response.status(200).json({ records: getRecords() });
     } else if (request.method === 'PUT') {
         console.log(`Updating record`);
         try {
@@ -21,14 +13,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
                 throw new Error('No record');
             }
 
-            const oldRecord = records.find((record) => record.id === newRecord.id);
-
-            if (!oldRecord) {
-                throw new Error(`No existing record with id "${newRecord.id}"`);
-            }
-
-            const index = records.indexOf(oldRecord);
-            records[index] = { ...oldRecord, ...newRecord };
+            updateRecord(newRecord);
 
             return response.status(200).json({ message: 'Record saved successfully' });
         } catch (error) {
