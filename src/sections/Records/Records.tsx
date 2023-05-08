@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Article } from '../../components/Article/Article';
 import { Section } from '../../components/Section/Section';
 import { MOCKED_RECORDS } from '../../mocks/records';
-import { IPupilId, ISubjectId, ISumarizationStyle } from '../../model/__IRecord';
+import { getPupilName, getTypeName, IPupilId, ISubjectId, ISumarizationStyle } from '../../model/__IRecord';
 import { extractPupils } from './extractPupils';
 import { extractSubjects } from './extractSubjects';
 import styles from './Records.module.css';
@@ -23,13 +23,13 @@ export function RecordsSection(props: RecordsProps) {
     const subjects = extractSubjects(records);
     const pupils = extractPupils(records);
 
-    const [pupil, setPupil] = useState<IPupilId | null>(null);
+    const [pupil, setPupil] = useState<IPupilId | null | undefined>(null);
     const [sumarizationStyle, setSumarizationStyle] = useState<ISumarizationStyle>('SUMMARIZE');
-    const [subject, setSubject] = useState<ISubjectId | null>(null);
+    const [subject, setSubject] = useState<ISubjectId | undefined>(undefined);
 
     const filteredRecords = records
-        .filter((record) => subject === null || record.lessonSubjectId === subject)
-        .filter((record) => record.pupilId === pupil);
+        .filter((record) => subject === undefined || record.lessonSubjectId === subject)
+        .filter((record) => pupil === undefined || record.pupilId === pupil);
     const calendar = recordsToCalendar(...filteredRecords);
 
     return (
@@ -50,7 +50,7 @@ export function RecordsSection(props: RecordsProps) {
                     {subjectsAndClasses.map(({ classId, subjectId, pupils }) => (
                         <div className={styles.lesson} key={subjectId + classId}>
                             <h3 className={styles.title}>
-                                {subjectId} {classId}
+                                {t(`subjects.${subjectId}`)} {classId}
                             </h3>
 
                             {/* TODO: !!! <div>{sumarizationStyle === 'FULL' ? record.content : record.contentSummarized}</div>*/}
@@ -65,23 +65,25 @@ export function RecordsSection(props: RecordsProps) {
                                             >
                                                 {content}
                                                 <div className="button">
-                                                    {content === null || content.trim() === '' ? 'Napsat' : 'Upravit'}
+                                                    {content === null || content.trim() === '' ? 'Napsat' : 'Upravit'}{' '}
+                                                    {getTypeName(type)}
                                                 </div>
                                             </li>
                                         ))}
                                     </ul>
                                 );
 
-                                if (!pupilId) {
+                                if (pupilId === null) {
                                     return (
                                         <div key={'WHOLE_CLASS'} className={styles.wholeClass}>
+                                            <h4 className={styles.title}>👥 Celá třída:</h4>
                                             {recordsJsx}
                                         </div>
                                     );
                                 } else {
                                     return (
                                         <div key={'WHOLE_CLASS'} className={styles.wholeClass}>
-                                            <h4 className={styles.title}>Záznamy k žákovi {pupilId}:</h4>
+                                            <h4 className={styles.title}>👤 {getPupilName(pupilId)}:</h4>
                                             {recordsJsx}
                                         </div>
                                     );
@@ -91,43 +93,6 @@ export function RecordsSection(props: RecordsProps) {
                     ))}
                 </div>
             ))}
-
-            {/* TODO: Remove> Array.from(uniqueDates).map((date) => (
-                <div key={date} className={styles.day}>
-                    <h2 className={styles.title}>{moment(date).format('D.M.YYYY')}</h2>
-                    <i className={styles.subtitle}>
-                        {capitalize(moment(date).locale('cs').calendar().split(' v ')[0])}
-                    </i>
-
-                    {records
-                        .filter((record) => moment(record.lessonDate).isSame(date, 'day'))
-                        .filter((record) => subject === null || record.lessonSubjectId === subject)
-                        .filter((record) => record.pupilId === pupil)
-                        .map((record) => (
-                            <div className={styles.lesson} key={record.lessonClassId + record.lessonSubjectId}>
-                                <h3 className={styles.title}>
-                                    {record.lessonSubjectId} {record.lessonClassId}
-                                </h3>
-                                <div>{sumarizationStyle === 'FULL' ? record.content : record.contentSummarized}</div>
-                                {pupil && (
-                                    <div>
-                                        Poznámka k žákovi:{' '}
-                                        <Link
-                                            href={`/chat?date=${date}&subject=${encodeURIComponent(
-                                                record.lessonSubjectId!,
-                                            )}&class=${encodeURIComponent(
-                                                record.lessonClassId!,
-                                            )}&pupil=${encodeURIComponent(record.pupilId!)}`}
-                                            className="button"
-                                        >
-                                            Napsat
-                                        </Link>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                </div>
-            ))*/}
         </Section>
     );
 }

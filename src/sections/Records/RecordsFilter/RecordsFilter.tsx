@@ -6,12 +6,12 @@ import { getPupilName, IPupilId, ISubjectId, ISumarizationStyle } from '../../..
 interface RecordsFilterProps {
     pupils: Set<IPupilId>;
     subjects: Set<ISubjectId>;
-    pupil: IPupilId | null;
-    setPupil: Dispatch<SetStateAction<IPupilId | null>>;
+    pupil: IPupilId | null | undefined;
+    setPupil: Dispatch<SetStateAction<IPupilId | null | undefined>>;
     sumarizationStyle: ISumarizationStyle;
     setSumarizationStyle: Dispatch<SetStateAction<ISumarizationStyle>>;
-    subject: ISubjectId | null;
-    setSubject: Dispatch<SetStateAction<ISubjectId | null>>;
+    subject: ISubjectId /*| null*/ | undefined;
+    setSubject: Dispatch<SetStateAction<ISubjectId /*| null*/ | undefined>>;
 }
 
 export function RecordsFilter(props: RecordsFilterProps) {
@@ -26,8 +26,10 @@ export function RecordsFilter(props: RecordsFilterProps) {
                 title={`Deník`}
                 value={pupil}
                 onChange={(newPerson) => void setPupil(newPerson)}
+                numberOfButtons={2}
                 options={[
-                    { id: null, title: 'Celá třída' },
+                    { id: null, title: 'Pouze celá třída' },
+                    { id: undefined, title: 'Celá třída a všichni žáci' },
                     ...Array.from(pupils).map((pupilId) => ({
                         id: pupilId,
                         title: getPupilName(pupilId),
@@ -49,7 +51,7 @@ export function RecordsFilter(props: RecordsFilterProps) {
                 value={subject}
                 onChange={(newSubject) => void setSubject(newSubject)}
                 options={[
-                    { id: null, title: 'Vše' },
+                    { id: undefined, title: 'Všechny předměty' },
                     ...Array.from(subjects).map((subjectId) => ({
                         id: subjectId,
                         title: t(`subjects.${subjectId}`),

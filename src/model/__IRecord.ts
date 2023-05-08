@@ -44,6 +44,14 @@ export function getPupilName(pupilId: IPupilId): string {
     ][pupilId];
 }
 
+export function getTypeName(type: keyof typeof RecordType): string {
+    return {
+        LessonGoal: 'cíl hodiny',
+        LessonEvaluation: 'hodnocení hodiny',
+        Note: 'poznámku',
+    }[type];
+}
+
 /**
  * TODO: !!! Use Branded types
  * TODO: !!! Break into files
