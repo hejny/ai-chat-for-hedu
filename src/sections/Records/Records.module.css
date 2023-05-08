@@ -1,0 +1,57 @@
+.RecordsSection {
+    /*/
+    outline: 1px dotted red; /**/
+}
+
+.day,
+.lesson {
+    padding: 10px;
+    padding-left: 30px;
+    text-align: left;
+}
+
+.title {
+    display: inline-block;
+    border: 1px solid #777;
+    /*margin: 5px;*/
+    padding: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.subtitle {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 1em;
+    color: #777;
+}
+
+.day {
+}
+
+.day > .title {
+}
+
+.lesson {
+}
+
+.lesson > .title {
+}
+
+.wholeClass{
+    
+}
+
+.pupil{
+    
+}
+
+
+ul.records{
+
+}
+
+li.record{
+
+}

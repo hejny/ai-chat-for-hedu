@@ -109,12 +109,17 @@ export interface ScenarioUtils {
     /**
      * @@@
      */
-    rewrite(message: ChatMessage | string): ChatMessage;
+    gptAsk(message: ChatMessage | string): ChatMessage;
 
     /**
      * @@@
      */
-    summarize(message: ChatMessage | string): ChatMessage;
+    gptRewrite(message: ChatMessage | string): ChatMessage;
+
+    /**
+     * @@@
+     */
+    gptSummarize(message: ChatMessage | string): ChatMessage;
 
     /**
      * @@@
@@ -148,6 +153,7 @@ export function stringToChatMessage(chatMessageContent: string): ChatMessage {
 }
 
 /**
+ * TODO: !!! Break into files
  * TODO: [🧶]
  * TODO: Ask askOptions + askOpenOptions (as variant of askBoolean (which will be internally using askOptions))
  * TODO: Maybe integrate rewrite into ask + integrate spaceTrim

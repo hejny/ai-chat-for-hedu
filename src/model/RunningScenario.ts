@@ -24,8 +24,9 @@ export class RunningScenario extends Destroyable implements IDestroyable {
                 say: scenarioUtils.say.bind(scenarioUtils),
                 ask: scenarioUtils.ask.bind(scenarioUtils),
                 askOptions: scenarioUtils.askOptions.bind(scenarioUtils),
-                rewrite: scenarioUtils.rewrite.bind(scenarioUtils),
-                summarize: scenarioUtils.summarize.bind(scenarioUtils),
+                gptAsk: scenarioUtils.gptAsk.bind(scenarioUtils),
+                gptRewrite: scenarioUtils.gptRewrite.bind(scenarioUtils),
+                gptSummarize: scenarioUtils.gptSummarize.bind(scenarioUtils),
                 load: scenarioUtils.load.bind(scenarioUtils),
                 save: scenarioUtils.save.bind(scenarioUtils),
                 // <- TODO: Pass here isDestroyed method

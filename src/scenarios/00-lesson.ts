@@ -6,10 +6,10 @@ export async function lessonScenario({
     say,
     ask,
     askOptions,
-    rewrite,
+    gptRewrite,
     save,
     load,
-    summarize,
+    gptSummarize,
 }: ScenarioUtils): Promise<Scenario> {
     const response = await askOptions(`V jaké fázi jsi?`, { beforeLesson: `Před hodinou`, afterLesson: `Po hodině` });
 

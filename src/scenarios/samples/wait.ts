@@ -5,10 +5,10 @@ export async function waitScenario({
     say,
     ask,
     askOptions,
-    rewrite,
+    gptRewrite,
     save,
     load,
-    summarize,
+    gptSummarize,
 }: ScenarioUtils): Promise<void> {
     /* not await */ say(`Říkám`);
     /* not await */ say(`Najednou`);
@@ -16,7 +16,7 @@ export async function waitScenario({
     /* not await */ say(`Různých`);
     /* not await */ say(`Věcí`);
 
-    await say(rewrite(`Ale teď budu čekat než dopíšu zprávu`));
+    await say(gptRewrite(`Ale teď budu čekat než dopíšu zprávu`));
     await say(`A budu čekat 5 vteřin...`);
 
     await forTime(5000);
