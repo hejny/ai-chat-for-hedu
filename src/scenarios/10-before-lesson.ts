@@ -5,23 +5,23 @@ export async function beforeLessonScenario({
     say,
     ask,
     askOptions,
-    gptRewrite: rewrite,
+    gptRewrite,
     save,
     load,
-    gptSummarize: summarize,
+    gptSummarize,
 }: ScenarioUtils): Promise<void> {
-    const lessonPlan = await ask(rewrite(`Jaký máš cíl dnešní hodiny matematiky?`));
+    const lessonPlan = await ask(gptRewrite(`Jaký máš cíl dnešní hodiny matematiky?`));
     await save({ lessonPlan });
 
-    const primaryLearningMaterial = await ask(rewrite(`Jaké úlohy plánuješ dnes zadat žákům z učebnice?`));
+    const primaryLearningMaterial = await ask(gptRewrite(`Jaké úlohy plánuješ dnes zadat žákům z učebnice?`));
     await save({ primaryLearningMaterial });
 
-    const secondaryLearningMaterial = await ask(rewrite(`Co s nimi plánuješ dělat dál mimo učebnici?`));
+    const secondaryLearningMaterial = await ask(gptRewrite(`Co s nimi plánuješ dělat dál mimo učebnici?`));
     await save({ secondaryLearningMaterial });
 
     await say(`...hmm...`);
     await forTime(1000);
 
     console.log('beforeLessonScenario', 4);
-    await say(rewrite(`Zkus se dnes soustředit více na žáka X`));
+    await say(gptRewrite(`Zkus se dnes soustředit více na žáka X`));
 }

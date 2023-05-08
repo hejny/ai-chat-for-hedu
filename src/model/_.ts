@@ -109,6 +109,11 @@ export interface ScenarioUtils {
     /**
      * @@@
      */
+    gptAsk(message: ChatMessage | string): ChatMessage;
+
+    /**
+     * @@@
+     */
     gptRewrite(message: ChatMessage | string): ChatMessage;
 
     /**

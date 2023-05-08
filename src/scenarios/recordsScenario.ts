@@ -1,11 +1,14 @@
+import spaceTrim from 'spacetrim';
 import { ScenarioUtils } from '../model/_';
+import { getPupilName } from '../model/__IRecord';
 import { getRecords } from '../pages/api/utils/getRecords';
 
 export async function recordsScenario({
     load,
     ask,
-    gptRewrite: rewrite,
-    gptSummarize: summarize,
+    gptAsk,
+    gptRewrite,
+    gptSummarize,
     save,
     say,
 }: ScenarioUtils): Promise<void> {
@@ -13,7 +16,7 @@ export async function recordsScenario({
 
     let isFirst = true;
     while (true) {
-        const question = await ask(
+        const userQuestion = await ask(
             isFirst
                 ? `
                     Zeptej se na cokoliv ohledně tvých ${records.length} záznamů a já ti pomohu.
@@ -36,6 +39,31 @@ export async function recordsScenario({
 
         await say('Přemýšlím...');
 
-        // await say('');
+        const userQuestionText = await userQuestion.content.asPromise();
+
+        await say(
+            gptAsk(
+                spaceTrim(
+                    (block) => `
+                        Odpověz na otázku:
+                        
+                        ${block(userQuestionText)}
+
+                        Zde jsou záznamy na základě kterých odpovíš:
+                        ${block(
+                            records
+                                .map(
+                                    ({ lessonClassId, lessonSubjectId, pupilId, content }) =>
+                                        `-  ${lessonSubjectId} ${lessonClassId} ${
+                                            pupilId ? getPupilName(pupilId) : 'Celá třída'
+                                        }: ${content}`,
+                                )
+                                .join('\n'),
+                        )}
+                    
+                    `,
+                ),
+            ),
+        );
     }
 }

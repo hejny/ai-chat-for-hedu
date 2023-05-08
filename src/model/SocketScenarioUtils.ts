@@ -9,6 +9,7 @@ import spaceTrim from 'spacetrim';
 import { v4 } from 'uuid';
 import { forTime } from 'waitasecond';
 import YAML from 'yaml';
+import { ask } from '../gpt/ask';
 import { rewrite } from '../gpt/rewrite';
 import { summarize } from '../gpt/summarize';
 import { SocketEventMap } from '../socket/SocketEventMap';
@@ -176,7 +177,35 @@ export class SocketScenarioUtils implements ScenarioUtils {
         }
     }
 
-    // TODO: DRY rewrite and summarize
+    public gptAsk(messageOrContent: ChatMessage | string): ChatMessage {
+        const message = toChatMessage(messageOrContent);
+
+        const rewrittenContent = new Subject<string>();
+
+        message.content.asPromise().then((content) => {
+            ask({
+                textToAsk: content,
+                cache: [this.scenarioName, sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(content))],
+            }).subscribe({
+                next(value) {
+                    rewrittenContent.next(value);
+                },
+                complete() {
+                    rewrittenContent.complete();
+                },
+                error(error) {
+                    rewrittenContent.error(error);
+                },
+            });
+        });
+
+        return new ChatMessage(
+            message.parentMessage,
+            message.from,
+            rewrittenContent /* <- Note: No need to convert .asObservable() */,
+        );
+    }
+
     public gptRewrite(messageOrContent: ChatMessage | string): ChatMessage {
         const message = toChatMessage(messageOrContent);
 
@@ -311,6 +340,8 @@ export class SocketScenarioUtils implements ScenarioUtils {
     })();
 
 */
+
 /**
+ * TODO: DRY gptAsk, gptRewrite and gptSummarize
  * TODO: [🥽] It is but ugly-prectise to name summarize and rewrite by same name as standalone functions and also a methods of ScenarioUtils - figure out two sets of unique names
  */

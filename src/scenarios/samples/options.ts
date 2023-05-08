@@ -4,10 +4,10 @@ export async function optionsScenario({
     say,
     ask,
     askOptions,
-    gptRewrite: rewrite,
+    gptRewrite,
     save,
     load,
-    gptSummarize: summarize,
+    gptSummarize,
 }: ScenarioUtils): Promise<void> {
     const response = await askOptions(`Jaké je tvé oblíbené zvíře?`, {
         bunny: `Králík`,

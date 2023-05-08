@@ -7,10 +7,10 @@ export async function randomScenario({
     say,
     ask,
     askOptions,
-    gptRewrite: rewrite,
+    gptRewrite,
     save,
     load,
-    gptSummarize: summarize,
+    gptSummarize,
 }: ScenarioUtils): Promise<Scenario> {
     await say('Vyberu náhodný scénář 🎲 ');
     await forTime(1000);

@@ -5,10 +5,10 @@ export async function infiniteScenario({
     say,
     ask,
     askOptions,
-    gptRewrite: rewrite,
+    gptRewrite,
     save,
     load,
-    gptSummarize: summarize,
+    gptSummarize,
 }: ScenarioUtils): Promise<void> {
     for (let i = 0; i < Infinity; i++) {
         await say(`${i + 1}. zpráva`);
