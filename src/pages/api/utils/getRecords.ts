@@ -1,18 +1,25 @@
+import { mkdir, readFile, writeFile } from 'fs/promises';
+import { dirname, join } from 'path';
+import YAML from 'yaml';
 import { MOCKED_RECORDS } from '../../../mocks/records';
-import { IRecord } from '../../../model/__IRecord';
+import { deserializeRecord, IRecord, IRecordData, serializeRecord } from '../../../model/__IRecord';
+import { isFileExisting } from './isFileExisting';
 
-let records: Array<IRecord>;
+let recordsFilePath = join(process.cwd(), 'data', 'records', 'records.yaml');
 
-export function getRecords(): Array<IRecord> {
-    if (!records) {
-        console.log(`Creating new records`);
-        records = MOCKED_RECORDS;
+export async function getRecords(): Promise<Array<IRecord>> {
+    if (!(await isFileExisting(recordsFilePath))) {
+        console.log(`Creating new records file`);
+        await mkdir(dirname(recordsFilePath), { recursive: true });
+        await writeFile(recordsFilePath, YAML.stringify(MOCKED_RECORDS.map(serializeRecord), { indent: 4 }), 'utf8');
     }
 
-    return records;
+    return (YAML.parse(await readFile(recordsFilePath, 'utf8')) as Array<IRecordData>).map(deserializeRecord);
 }
 
-export function updateRecord(newRecord: Partial<IRecord>): void {
+export async function updateRecord(newRecord: Partial<IRecord>): Promise<void> {
+    const records = await getRecords();
+
     const oldRecord = records.find((record) => record.id === newRecord.id);
 
     if (!oldRecord) {
@@ -21,4 +28,6 @@ export function updateRecord(newRecord: Partial<IRecord>): void {
 
     const index = records.indexOf(oldRecord);
     records[index] = { ...oldRecord, ...newRecord };
+
+    await writeFile(recordsFilePath, YAML.stringify(records.map(serializeRecord), { indent: 4 }), 'utf8');
 }

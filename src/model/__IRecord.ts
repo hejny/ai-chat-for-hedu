@@ -33,6 +33,22 @@ export interface IRecord {
     contentSummarized?: string_markdown | null;
 }
 
+export type IRecordData = Omit<IRecord, 'lessonDate'> & { lessonDate: string };
+
+export function serializeRecord(record: IRecord): IRecordData {
+    return {
+        ...record,
+        lessonDate: record.lessonDate.toISOString(),
+    };
+}
+
+export function deserializeRecord(record: IRecordData): IRecord {
+    return {
+        ...record,
+        lessonDate: new Date(record.lessonDate),
+    };
+}
+
 export function getPupilName(pupilId: IPupilId): string {
     return [
         `Franta Opička`,

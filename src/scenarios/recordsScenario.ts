@@ -2,7 +2,7 @@ import { ScenarioUtils } from '../model/_';
 import { getRecords } from '../pages/api/utils/getRecords';
 
 export async function recordsScenario({ load, ask, rewrite, summarize, save, say }: ScenarioUtils): Promise<void> {
-    const records = getRecords().filter(({ content }) => content);
+    const records = (await getRecords()).filter(({ content }) => content);
 
     let isFirst = true;
     while (true) {

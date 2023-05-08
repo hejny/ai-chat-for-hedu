@@ -1,15 +1,12 @@
-import { IRecord } from '../../model/__IRecord';
+import { deserializeRecord, IRecord, IRecordData } from '../../model/__IRecord';
 import { useFetchData } from './useFetchData';
 
 export function useFetchRecords(): Array<IRecord> {
-    const data = useFetchData<{ records: Array<IRecord> }>('/api/records');
+    const data = useFetchData<{ records: Array<IRecordData> }>('/api/records');
 
     if (data === null) {
         return [];
     }
 
-    return data.records.map((record) => ({
-        ...record,
-        lessonDate: new Date(record.lessonDate),
-    }));
+    return data.records.map(deserializeRecord);
 }
