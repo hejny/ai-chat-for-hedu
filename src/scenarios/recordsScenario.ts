@@ -1,6 +1,6 @@
 import spaceTrim from 'spacetrim';
 import { ScenarioUtils } from '../model/_';
-import { getPupilName, getSubjectName, PUPILS } from '../model/__IRecord';
+import { getPupilName, getSubjectName } from '../model/__IRecord';
 import { getRecords } from '../pages/api/utils/getRecords';
 
 export async function recordsScenario({
@@ -45,28 +45,32 @@ export async function recordsScenario({
             gptAsk(
                 spaceTrim(
                     (block) => `
-                        Odpověz na otázku:
-                        
-                        ${block(userQuestionText)}
+       
+                                    ${block(
+                                        records
+                                            // .filter(({ lessonSubjectId }) => lessonSubjectId === 'GEOGRAPHY')
+                                            /*
+                                            .filter(
+                                                ({ pupilId }) =>
+                                                    pupilId === PUPILS.findIndex((name) => name === `Tereza Mojžíšová`),
+                                            )
+                                            */
+                                            .map(
+                                                ({ lessonClassId, lessonSubjectId, pupilId, content }) =>
+                                                    `- ${
+                                                        lessonSubjectId ? getSubjectName(lessonSubjectId) : ''
+                                                    } ${lessonClassId} ${
+                                                        pupilId ? getPupilName(pupilId) : 'Celá třída'
+                                                    }: ${content}`,
+                                            )
+                                            .join('\n'),
+                                    )}
 
-                        Zde jsou záznamy na základě kterých odpovíš:
-                        ${block(
-                            records
-                                // .filter(({ lessonSubjectId }) => lessonSubjectId === 'GEOGRAPHY')
-                                .filter(
-                                    ({ pupilId }) =>
-                                        pupilId === PUPILS.findIndex((name) => name === `Tereza Mojžíšová`),
-                                )
-                                .map(
-                                    ({ lessonClassId, lessonSubjectId, pupilId, content }) =>
-                                        `- ${lessonSubjectId ? getSubjectName(lessonSubjectId) : ''} ${lessonClassId} ${
-                                            pupilId ? getPupilName(pupilId) : 'Celá třída'
-                                        }: ${content}`,
-                                )
-                                .join('\n'),
-                        )}
-                    
-                    `,
+                                    ---
+
+                                    ${block(userQuestionText)}
+                                
+                                `,
                 ),
             ),
         );
