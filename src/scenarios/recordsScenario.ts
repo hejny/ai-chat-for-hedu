@@ -1,6 +1,6 @@
 import spaceTrim from 'spacetrim';
 import { ScenarioUtils } from '../model/_';
-import { getPupilName } from '../model/__IRecord';
+import { getPupilName, getSubjectName } from '../model/__IRecord';
 import { getRecords } from '../pages/api/utils/getRecords';
 
 export async function recordsScenario({
@@ -24,7 +24,7 @@ export async function recordsScenario({
                     Například:
 
                     \`\`\`
-                    Jak se daří Janě Havlíčkové? v matematice?
+                    Jak se daří Janě Havlíčkové v zeměpisu?
                     \`\`\`
                 
                 
@@ -54,7 +54,9 @@ export async function recordsScenario({
                             records
                                 .map(
                                     ({ lessonClassId, lessonSubjectId, pupilId, content }) =>
-                                        `-  ${lessonSubjectId} ${lessonClassId} ${
+                                        `-  ${
+                                            lessonSubjectId ? getSubjectName(lessonSubjectId) : ''
+                                        } ${lessonClassId} ${
                                             pupilId ? getPupilName(pupilId) : 'Celá třída'
                                         }: ${content}`,
                                 )

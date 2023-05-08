@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Article } from '../../components/Article/Article';
 import { Section } from '../../components/Section/Section';
-import { getPupilName, IPupilId, ISubjectId, ISumarizationStyle } from '../../model/__IRecord';
+import { getPupilName, getSubjectName, IPupilId, ISubjectId, ISumarizationStyle } from '../../model/__IRecord';
 import { useFetchRecords } from '../../utils/hooks/useFetchRecords';
 import { extractPupils } from './extractPupils';
 import { extractSubjects } from './extractSubjects';
@@ -57,7 +57,7 @@ export function RecordsSection(props: RecordsProps) {
                     {subjectsAndClasses.map(({ classId, subjectId, pupils }) => (
                         <div className={styles.lesson} key={subjectId + classId}>
                             <h3 className={styles.title}>
-                                {t(`subjects.${subjectId}`)} {classId}
+                                {getSubjectName(subjectId)} {classId}
                             </h3>
 
                             {/* TODO: !!! <div>{sumarizationStyle === 'FULL' ? record.content : record.contentSummarized}</div>*/}

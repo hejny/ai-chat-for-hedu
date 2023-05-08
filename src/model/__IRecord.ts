@@ -61,6 +61,18 @@ export function getPupilName(pupilId: IPupilId): string {
     ][pupilId];
 }
 
+export function getSubjectName(subjectId: ISubjectId): string {
+    return {
+        HISTORY: `Dějepis`,
+        MATH: `Matematika`,
+        PHYSICS: `Fyzika`,
+        GEOGRAPHY: `Zeměpis`,
+        SCIENCE: `Prvouka`,
+        CZECH_LANGUAGE: `Český jazyk`,
+        ENGLISH_LANGUAGE: `Anglický jazyk`,
+    }[subjectId] as string;
+}
+
 export function getTypeName(type: keyof typeof RecordType): string {
     return {
         LessonGoal: 'cíl hodiny',

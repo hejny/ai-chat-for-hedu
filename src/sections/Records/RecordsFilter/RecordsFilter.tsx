@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { Dispatch, SetStateAction } from 'react';
 import { SelectWithFirst } from '../../../components/SelectWithFirst/SelectWithFirst';
-import { getPupilName, IPupilId, ISubjectId, ISumarizationStyle } from '../../../model/__IRecord';
+import { getPupilName, getSubjectName, IPupilId, ISubjectId, ISumarizationStyle } from '../../../model/__IRecord';
 
 interface RecordsFilterProps {
     pupils: Set<IPupilId>;
@@ -56,7 +56,7 @@ export function RecordsFilter(props: RecordsFilterProps) {
                     { id: undefined, title: 'Všechny předměty' },
                     ...Array.from(subjects).map((subjectId) => ({
                         id: subjectId,
-                        title: t(`subjects.${subjectId}`),
+                        title: getSubjectName(subjectId),
                     })),
                 ]}
             />

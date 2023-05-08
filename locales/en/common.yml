@@ -12,11 +12,11 @@ Journal:
     title: Žurnál
     content: Zde se můžete ptát na otázky ohledně vašich záznamů
 
-subjects:
-    HISTORY: History
-    MATH: Mathematics
-    PHYSICS: Physics
-    GEOGRAPHY: Geography
-    SCIENCE: Science
-    CZECH_LANGUAGE: Český jazyk
-    ENGLISH_LANGUAGE: English
+# subjects:
+#     HISTORY: History
+#     MATH: Mathematics
+#     PHYSICS: Physics
+#     GEOGRAPHY: Geography
+#     SCIENCE: Science
+#     CZECH_LANGUAGE: Český jazyk
+#     ENGLISH_LANGUAGE: English
