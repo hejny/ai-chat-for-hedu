@@ -2,9 +2,9 @@ import { Oswald } from '@next/font/google';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Vector } from 'xyzt';
 import { DebugGrid } from '../components/DebugGrid/DebugGrid';
-import { JournalSection } from '../sections/Journal/Journal';
 import { AppHead } from '../sections/AppHead/AppHead';
 import { FooterSection } from '../sections/Footer/Footer';
+import { JournalSection } from '../sections/Journal/Journal';
 import styles from '../styles/common.module.css';
 import { classNames } from '../utils/classNames';
 
