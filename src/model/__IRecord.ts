@@ -49,16 +49,21 @@ export function deserializeRecord(record: IRecordData): IRecord {
     };
 }
 
+export const PUPILS = [
+    `Petr Čech`,
+    `Tereza Mojžíšová`,
+    `Jakub Jurásek`,
+    `Franta Opička`,
+    `Jana Havlíčková`,
+    `Marie Němcová`,
+    `Jiří Kratochvíl`,
+    `Kateřina Kšírová`,
+    `Josef Urban`,
+    `Josef Červenka`,
+]
+
 export function getPupilName(pupilId: IPupilId): string {
-    return [
-        `Franta Opička`,
-        `Jana Havlíčková`,
-        `Marie Němcová`,
-        `Jiří Kratochvíl`,
-        `Kateřina Kšírová`,
-        `Josef Urban`,
-        `Josef Červenka`,
-    ][pupilId];
+    return PUPILS[pupilId];
 }
 
 export function getSubjectName(subjectId: ISubjectId): string {

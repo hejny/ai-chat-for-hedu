@@ -1,6 +1,6 @@
 import spaceTrim from 'spacetrim';
 import { ScenarioUtils } from '../model/_';
-import { getPupilName, getSubjectName } from '../model/__IRecord';
+import { getPupilName, getSubjectName, PUPILS } from '../model/__IRecord';
 import { getRecords } from '../pages/api/utils/getRecords';
 
 export async function recordsScenario({
@@ -24,7 +24,7 @@ export async function recordsScenario({
                     Například:
 
                     \`\`\`
-                    Jak se daří Janě Havlíčkové v zeměpisu?
+                    Jak se daří Tereze v Matematice?
                     \`\`\`
                 
                 
@@ -53,12 +53,13 @@ export async function recordsScenario({
                         ${block(
                             records
                                 // .filter(({ lessonSubjectId }) => lessonSubjectId === 'GEOGRAPHY')
-                                // .filter(({ pupilId }) => pupilId === 1)
+                                .filter(
+                                    ({ pupilId }) =>
+                                        pupilId === PUPILS.findIndex((name) => name === `Tereza Mojžíšová`),
+                                )
                                 .map(
                                     ({ lessonClassId, lessonSubjectId, pupilId, content }) =>
-                                        `-  ${
-                                            lessonSubjectId ? getSubjectName(lessonSubjectId) : ''
-                                        } ${lessonClassId} ${
+                                        `- ${lessonSubjectId ? getSubjectName(lessonSubjectId) : ''} ${lessonClassId} ${
                                             pupilId ? getPupilName(pupilId) : 'Celá třída'
                                         }: ${content}`,
                                 )
