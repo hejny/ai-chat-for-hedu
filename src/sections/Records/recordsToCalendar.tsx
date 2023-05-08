@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { IRecord } from '../../model/__IRecord';
 import { ICalendar } from './ICalendar';
 
@@ -8,7 +9,9 @@ export function recordsToCalendar(...records: IRecord[]): ICalendar {
     // Loop through each record
     records.forEach((record) => {
         // Find the date of the record in the calendar
-        let dateEntry = calendar.find((entry) => entry.date.getTime() === record.lessonDate.getTime());
+        let dateEntry = calendar.find(
+            (entry) => moment(entry.date).format('D.M.YYYY') === moment(record.lessonDate).format('D.M.YYYY'),
+        );
 
         // If the date does not exist in the calendar, add it
         if (!dateEntry) {
@@ -56,5 +59,5 @@ export function recordsToCalendar(...records: IRecord[]): ICalendar {
     });
 
     // Return the calendar
-    return calendar;
+    return calendar.sort((a, b) => b.date.getTime() - a.date.getTime());
 }

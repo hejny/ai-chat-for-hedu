@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { v4 } from 'uuid';
 import { IRecord, PUPILS, RecordType } from '../model/__IRecord';
 
 export const MOCKED_RECORDS: Array<IRecord> = [
@@ -636,7 +637,7 @@ export const MOCKED_RECORDS: Array<IRecord> = [
     const pupilId = pupilName === 'všichni' ? null : PUPILS.findIndex((name) => name === pupilName);
     return {
         id,
-        lessonDate: moment(lessonDate, 'DD.MM.YYYY').toDate(),
+        lessonDate: moment(lessonDate, 'DD.MM.YYYY').add(1, 'year').add(5, 'month').add(25, 'days').toDate(),
         lessonClassId,
         lessonSubjectId,
         pupilId,
@@ -645,58 +646,59 @@ export const MOCKED_RECORDS: Array<IRecord> = [
     };
 });
 
-/*
-
-TODO: !!!!!
-
-
 // Note: Add dynamically generated future dates to MOCKED_RECORDS
-for (const pupilId of [null, 0, 1, 2, 3, 4, 5, 6]) {
-    for (const lessonSubjectId of ['ENGLISH_LANGUAGE', 'PHYSICS', 'GEOGRAPHY', 'SCIENCE']) {
-        for (const lessonClassId of ['2.B', '3.B', '4.C']) {
+for (const pupilId of [null, 0, 1, 2]) {
+    for (const lessonSubjectId of ['MATH']) {
+        for (const lessonClassId of ['3.A']) {
             for (let i = 0; i < 27; i++) {
                 const lessonDate = moment().subtract(20, 'day').add(i, 'day').toDate();
 
+                /*
                 // Note: Only some lessons for some days are recorded
                 if (Math.random() > 0.2) {
                     continue;
                 }
+                */
+
+                // Note: Skip weekends
+                if (moment(lessonDate).isoWeekday() > 5) {
+                    continue;
+                }
+
+                const add = (type: keyof typeof RecordType) => {
+                    // Note: Add only if the record for this date does not exist yet
+                    if (
+                        !MOCKED_RECORDS.find(
+                            (record) =>
+                                moment(record.lessonDate).format('D.M.YYYY') ===
+                                    moment(lessonDate).format('D.M.YYYY') &&
+                                record.lessonClassId === lessonClassId &&
+                                record.lessonSubjectId === lessonSubjectId &&
+                                record.pupilId === pupilId &&
+                                record.type === type,
+                        )
+                    ) {
+                        MOCKED_RECORDS.push({
+                            id: v4(),
+                            lessonDate,
+                            lessonClassId,
+                            lessonSubjectId,
+                            pupilId,
+                            type,
+                            content: null,
+                        });
+                    }
+                };
 
                 // Note: Add LessonGoal for each date
-                MOCKED_RECORDS.push({
-                    id: v4(),
-                    lessonDate,
-                    lessonClassId,
-                    lessonSubjectId,
-                    pupilId,
-                    type: 'LessonGoal',
-                    content: null,
-                });
+                add('LessonGoal');
 
                 // Note: If the date is in the past, add also a LessonEvaluation and a Note
                 if (moment().isAfter(lessonDate)) {
-                    MOCKED_RECORDS.push({
-                        id: v4(),
-                        lessonDate,
-                        lessonClassId,
-                        lessonSubjectId,
-                        pupilId,
-                        type: 'LessonEvaluation',
-                        content: null,
-                    });
-
-                    MOCKED_RECORDS.push({
-                        id: v4(),
-                        lessonDate,
-                        lessonClassId,
-                        lessonSubjectId,
-                        pupilId,
-                        type: 'Note',
-                        content: null,
-                    });
+                    add('LessonEvaluation');
+                    add('Note');
                 }
             }
         }
     }
 }
-*/

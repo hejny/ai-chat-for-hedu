@@ -1,12 +1,12 @@
 - id: mocked-0
-  lessonDate: 2021-09-12T22:00:00.000Z
+  lessonDate: 2023-03-09T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
   type: LessonGoal
   content: Žák se seznámí s algoritmem písemného sčítání dvojciferných čísel.
 - id: mocked-1
-  lessonDate: 2021-09-12T22:00:00.000Z
+  lessonDate: 2023-03-09T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -16,14 +16,14 @@
       nejmenšího řádu tedy od jednotek. slabším žákům pomohlo modelovat úlohy na
       mincích. využili jsme 1korunové a desetikorunové mince.
 - id: mocked-2
-  lessonDate: 2021-09-12T22:00:00.000Z
+  lessonDate: 2023-03-09T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 0
   type: Note
   content: Pamětně i písemně sčítá bez problémů.
 - id: mocked-3
-  lessonDate: 2021-09-12T22:00:00.000Z
+  lessonDate: 2023-03-09T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 1
@@ -31,7 +31,7 @@
   content: Terka má problémy s přechodem. Při sčítání s přechodem jí to dělá
       problémy jestli stačí začít sčítání od nejmenšího řádu. to jí činí potíže
 - id: mocked-4
-  lessonDate: 2021-09-12T22:00:00.000Z
+  lessonDate: 2023-03-09T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 2
@@ -39,14 +39,14 @@
   content: Jakub dobře sčítá pamětně a písemný algoritmus byl pro něj nový.
       pochopil jej
 - id: mocked-5
-  lessonDate: 2021-09-14T22:00:00.000Z
+  lessonDate: 2023-03-11T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
   type: LessonGoal
   content: Žák vyřeší slovní úlohy se zlomky
 - id: mocked-6
-  lessonDate: 2021-09-14T22:00:00.000Z
+  lessonDate: 2023-03-11T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -55,7 +55,7 @@
       dramatizovat a vizualizovat. Pro žáky kteří si situaci dokázali představit
       to bylo snadné.
 - id: mocked-7
-  lessonDate: 2021-09-14T22:00:00.000Z
+  lessonDate: 2023-03-11T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 0
@@ -63,14 +63,14 @@
   content: Petr ukázal svoje řešení na modelu zlomku tyče. Jo ale bylo pro něj
       obtížné vysvětlit svoje řešení spolužákům. Při vyjadřování se zasekává
 - id: mocked-8
-  lessonDate: 2021-09-14T22:00:00.000Z
+  lessonDate: 2023-03-11T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 1
   type: Note
   content: Aby Terezka úlohu pochopila museli jsme zmenšit zadaná čísla.
 - id: mocked-9
-  lessonDate: 2021-09-19T22:00:00.000Z
+  lessonDate: 2023-03-16T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -78,14 +78,14 @@
   content: Žák vyřeší krokovou rovnici, propojuje jazyk aritmetiky– šipkový a
       číselný zápis.
 - id: mocked-10
-  lessonDate: 2021-09-19T22:00:00.000Z
+  lessonDate: 2023-03-16T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 0
   type: LessonEvaluation
   content: Petr bez problémů vyřeší krokovou rovnici a přepíše jí do číselného zápisu.
 - id: mocked-11
-  lessonDate: 2021-09-19T22:00:00.000Z
+  lessonDate: 2023-03-16T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 1
@@ -93,7 +93,7 @@
   content: Terka vyřeší krokovou rovnici jen na krok kovacím pásu. potřebuje ji
       dramatizovat s číselným zápisem má ještě potíže.
 - id: mocked-12
-  lessonDate: 2021-09-19T22:00:00.000Z
+  lessonDate: 2023-03-16T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 2
@@ -101,14 +101,14 @@
   content: Kuba vyřeší krokovou rovnici bez krokovací jeho pásu a s přepisem má
       ještě potíže.
 - id: mocked-13
-  lessonDate: 2021-09-21T22:00:00.000Z
+  lessonDate: 2023-03-18T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
   type: LessonGoal
   content: Žák vyřeší slovní úlohu s operátory změny.
 - id: mocked-14
-  lessonDate: 2021-09-21T22:00:00.000Z
+  lessonDate: 2023-03-18T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -116,14 +116,14 @@
   content: Někteří žáci se nechali nachytat na anti signál slovo snědla a odčítali
       místo sčítání
 - id: mocked-15
-  lessonDate: 2021-09-21T22:00:00.000Z
+  lessonDate: 2023-03-18T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 1
   type: Note
   content: Terka se nechala zmást slovem snědla a odčítala místo sčítání
 - id: mocked-16
-  lessonDate: 2021-09-21T22:00:00.000Z
+  lessonDate: 2023-03-18T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 2
@@ -131,14 +131,14 @@
   content: Kuba je skvělý čtenář úloze porozuměl a dokázal by vysvětlit i svým
       spolužákům proč se má sčítat.
 - id: mocked-17
-  lessonDate: 2021-09-23T22:00:00.000Z
+  lessonDate: 2023-03-20T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
   type: LessonGoal
   content: Žák vyřeší slovní úlohu s operátorem porovnání
 - id: mocked-18
-  lessonDate: 2021-09-23T22:00:00.000Z
+  lessonDate: 2023-03-20T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -147,21 +147,21 @@
       operátory porovnání. Žákům pomohlo si úlohu nakreslit pomocí úseček.
       Slabším žákům pomohlo si určit kolik měří Hanka například.
 - id: mocked-19
-  lessonDate: 2021-09-26T22:00:00.000Z
+  lessonDate: 2023-03-23T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
   type: LessonGoal
   content: Žák vyřeší úlohu o zlomcích a modelem zlomků je tyč.
 - id: mocked-20
-  lessonDate: 2021-09-26T22:00:00.000Z
+  lessonDate: 2023-03-23T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 0
   type: Note
   content: Peťa má dobrou představu o zlomcích 1/2 1/4 1/3 vyřešil je snadno a rychle.
 - id: mocked-21
-  lessonDate: 2021-09-26T22:00:00.000Z
+  lessonDate: 2023-03-23T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 1
@@ -170,7 +170,7 @@
       proužek papíru a pomocí přikládání si vyznačit polovinu a čtvrtinu aby
       určila zbytek tyče.
 - id: mocked-22
-  lessonDate: 2021-09-26T22:00:00.000Z
+  lessonDate: 2023-03-23T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 2
@@ -178,7 +178,7 @@
   content: bylo pro něj snadné určit délku zbytku tyče. orientuje se ve zlomcích
       polovinách 1/4.
 - id: mocked-23
-  lessonDate: 2021-09-28T22:00:00.000Z
+  lessonDate: 2023-03-24T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -186,7 +186,7 @@
   content: Žák vyřeší slovní úlohy, která otevírá operaci dělení jako inverzní k
       násobení.
 - id: mocked-24
-  lessonDate: 2021-09-28T22:00:00.000Z
+  lessonDate: 2023-03-24T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -194,14 +194,14 @@
   content: S žáky jsme řešili úlohu manipulativně. rozdělovali jsme lentilky a
       graficky znázorňovaly obsah obdélníků. péťa tyhle strategie nepotřeboval
 - id: mocked-25
-  lessonDate: 2021-09-30T22:00:00.000Z
+  lessonDate: 2023-03-25T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
   type: LessonGoal
   content: Žák poznává znak pro dělení a vytvoří slovní úlohu na dělení.
 - id: mocked-26
-  lessonDate: 2021-09-30T22:00:00.000Z
+  lessonDate: 2023-03-25T23:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 1
@@ -209,7 +209,7 @@
   content: Pro terezku je náročné převést slovní úlohu do matematického
       symbolického jazyka a použít znak pro dělení.
 - id: mocked-27
-  lessonDate: 2021-10-03T22:00:00.000Z
+  lessonDate: 2023-03-28T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -217,7 +217,7 @@
   content: Žák vyřeší složenou slovní úlohu, ve které bude potřebovat násobit a
       pak následně sčítat.
 - id: mocked-28
-  lessonDate: 2021-10-03T22:00:00.000Z
+  lessonDate: 2023-03-28T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 0
@@ -225,7 +225,7 @@
   content: péťa by řešil všechny 3 gradované úlohy a ještě dostal doplňující úlohy
       na dělení.
 - id: mocked-29
-  lessonDate: 2021-10-03T22:00:00.000Z
+  lessonDate: 2023-03-28T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 1
@@ -233,21 +233,21 @@
   content: Terezka nedokáže slovní úlohu uchopit čtenářsky a pomohla jí k vyřešení
       vizualizace obrázkem. Po vizualizaci vyřeší úlohu snadno
 - id: mocked-30
-  lessonDate: 2021-10-03T22:00:00.000Z
+  lessonDate: 2023-03-28T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 2
   type: Note
   content: Kuba využívá strategii vizualizace sám a díky ní vyřeší i náročnější úlohy.
 - id: mocked-31
-  lessonDate: 2021-10-05T22:00:00.000Z
+  lessonDate: 2023-03-30T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
   type: LessonGoal
   content: Žák vyřeší úlohu z antisignálem a poznává vazby mezi násobením a dělením.
 - id: mocked-32
-  lessonDate: 2021-10-05T22:00:00.000Z
+  lessonDate: 2023-03-30T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -257,14 +257,14 @@
       představit spolužákům a jeho vyjadřovací schopnosti se posunuli zvládl to
       lépe.
 - id: mocked-33
-  lessonDate: 2021-10-07T22:00:00.000Z
+  lessonDate: 2023-04-01T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
   type: LessonGoal
   content: Žák rozumí odčítání ve slovních úlohách.
 - id: mocked-34
-  lessonDate: 2021-10-07T22:00:00.000Z
+  lessonDate: 2023-04-01T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 1
@@ -272,21 +272,21 @@
   content: Terezka díky manipulaci s mincemi dokázala odhalit operátory změny
       dopočítáním.
 - id: mocked-35
-  lessonDate: 2021-10-07T22:00:00.000Z
+  lessonDate: 2023-04-01T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 2
   type: Note
   content: Kuba úlohu řešil operací odčítáním.
 - id: mocked-36
-  lessonDate: 2021-10-09T22:00:00.000Z
+  lessonDate: 2023-04-03T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
   type: LessonGoal
   content: Žák vyřeší slovní úlohu na odčítání s operátorem změny.
 - id: mocked-37
-  lessonDate: 2021-10-09T22:00:00.000Z
+  lessonDate: 2023-04-03T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 0
@@ -294,7 +294,7 @@
   content: Pro peťu jsou tyto úlohy velmi jednoduché a odčítání dvojciferných
       čísel zvládá výborně.
 - id: mocked-38
-  lessonDate: 2021-10-09T22:00:00.000Z
+  lessonDate: 2023-04-03T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 1
@@ -302,7 +302,7 @@
   content: Terezka už si slovní úlohy vizualizuje kreslí ale stále ještě chybuje v
       pamětném odčítání dvojciferných čísel.
 - id: mocked-39
-  lessonDate: 2021-10-12T22:00:00.000Z
+  lessonDate: 2023-04-06T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -311,7 +311,7 @@
       obdélníku je 120 kachlíků z nich je 19 modrý a 22 zelených. Žák má zjistit
       kolik z nich je vybarvený kolik není zelených a kolik není vybarvených.
 - id: mocked-40
-  lessonDate: 2021-10-12T22:00:00.000Z
+  lessonDate: 2023-04-06T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -320,7 +320,7 @@
       strategii vizualizace. Osvědčilo se i u žáků kterým dělala úloha potíže
       vrátit se k menším číslům.
 - id: mocked-41
-  lessonDate: 2021-10-12T22:00:00.000Z
+  lessonDate: 2023-04-06T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 0
@@ -328,7 +328,7 @@
   content: Péťa snadno uchopí úlohu, počítá bezchybně a potřeboval by náročnější
       úlohy.
 - id: mocked-42
-  lessonDate: 2021-10-14T22:00:00.000Z
+  lessonDate: 2023-04-08T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -337,28 +337,28 @@
       kdy na louce je 7 krav a několik slepic celkem mají 32 nohou. Kolik slepic
       bude na louce když celkem bude nohou za a 38, za b 48, za c 58?
 - id: mocked-43
-  lessonDate: 2021-10-14T22:00:00.000Z
+  lessonDate: 2023-04-08T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 0
   type: Note
   content: Péťa využívá numerické strategie k řešení této úlohy.
 - id: mocked-44
-  lessonDate: 2021-10-14T22:00:00.000Z
+  lessonDate: 2023-04-08T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 1
   type: Note
   content: Terka k řešení úlohy využila manipulaci s víčky.
 - id: mocked-45
-  lessonDate: 2021-10-14T22:00:00.000Z
+  lessonDate: 2023-04-08T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 2
   type: Note
   content: Kuba vyřešil úlohu vizualizací když si ji slovní úlohu nakreslil
 - id: mocked-46
-  lessonDate: 2021-10-16T22:00:00.000Z
+  lessonDate: 2023-04-10T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -367,7 +367,7 @@
       tím neměla problém u slabších žáků jsme situaci modelovali na kuličkovém
       počítadle nebo na mincích.
 - id: mocked-47
-  lessonDate: 2021-10-19T22:00:00.000Z
+  lessonDate: 2023-04-13T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -375,7 +375,7 @@
   content: My jsme se učili dělit se zbytkem v reálném kontextu. Využili jsme k
       tomu dramatizaci a hru na molekuly, kdy nějaký žák nebo žáci přebývali
 - id: mocked-48
-  lessonDate: 2021-10-21T22:00:00.000Z
+  lessonDate: 2023-04-15T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -385,7 +385,7 @@
       plán. Propojovali jsme portrét fyzickou stavbu– pohled zepředu a shora.
       Někteří žáci si stavbu nepotřebovali postavit a viděli to rovnou.
 - id: mocked-49
-  lessonDate: 2021-10-23T22:00:00.000Z
+  lessonDate: 2023-04-17T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -396,7 +396,7 @@
       desítky. Dětem pomáhala práce ve skupinách. Ve skupině si mohli svá měření
       porovnává a společně si pomáhat při zaokrouhlování.
 - id: mocked-50
-  lessonDate: 2021-10-26T22:00:00.000Z
+  lessonDate: 2023-04-20T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -405,7 +405,7 @@
       jsme ve dvojicích a žáci se dokázali ve většině případů dohodnout.
       problematická dvojice byla s Lukášem a Kubou
 - id: mocked-51
-  lessonDate: 2021-10-28T22:00:00.000Z
+  lessonDate: 2023-04-22T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -414,7 +414,7 @@
       žáků jsme násobení barevně vyznačili aby si tuto novou dovednost lépe
       osvojili.
 - id: mocked-52
-  lessonDate: 2021-10-30T22:00:00.000Z
+  lessonDate: 2023-04-24T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -424,7 +424,7 @@
       Pavlína je o 26 milimetrů nižší než Alena. Je vyšší lucka nebo pavlína? O
       kolik?"
 - id: mocked-53
-  lessonDate: 2021-10-30T22:00:00.000Z
+  lessonDate: 2023-04-24T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 1
@@ -432,7 +432,7 @@
   content: Terezka už sama řeší úlohy strategii vizualizace. To jí pomáhá k
       vyřešení slo těchto slovních úloh nebo těchto typů slovních úloh
 - id: mocked-54
-  lessonDate: 2021-11-02T23:00:00.000Z
+  lessonDate: 2023-04-27T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -440,14 +440,14 @@
   content: Dnes jsme se věnovali operaci dělení se zbytkem. Naučili jsme se jak se
       tento výpočet zapisuje. Slabším žákům porozumění zápisů trvalo.
 - id: mocked-55
-  lessonDate: 2021-11-09T23:00:00.000Z
+  lessonDate: 2023-05-04T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
   type: LessonGoal
   content: Žák vytvoří slovní úlohu na dělení.
 - id: mocked-56
-  lessonDate: 2021-11-09T23:00:00.000Z
+  lessonDate: 2023-05-04T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -456,7 +456,7 @@
       Jurásek přicházel s velmi zajímavými kontexty slovní úloh. Žáci pracovali
       ve dvojicích. Terezce skupinová práce pomohla.
 - id: mocked-57
-  lessonDate: 2021-11-11T23:00:00.000Z
+  lessonDate: 2023-05-06T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -465,7 +465,7 @@
       třetinou jako části celku. Využívali jsme k tomu model tyče. Některým
       žákům činila potíže 1/3.
 - id: mocked-58
-  lessonDate: 2021-11-11T23:00:00.000Z
+  lessonDate: 2023-05-06T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: 2
@@ -474,7 +474,7 @@
       bravurně předvedl celé třídě. Kuba rád maluje a před třídou to nakreslil
       na tabuli. To pomohlo ostatním spolužákům porozumět jeho řešení.
 - id: mocked-59
-  lessonDate: 2021-11-13T23:00:00.000Z
+  lessonDate: 2023-05-08T22:00:00.000Z
   lessonClassId: 3.A
   lessonSubjectId: MATH
   pupilId: null
@@ -482,3 +482,1312 @@
   content: Dnes jsme písemně odčítají trojmístná čísla. Žáci kteří měli potíže u
       dvojciferných čísel, počítali obtížně i trojmístná čísla. potřebujeme to
       ještě trénovat.
+- id: 4c3de7d9-25a6-4c2c-8b2a-fc3aa4985624
+  lessonDate: 2023-04-18T22:31:38.415Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: 1ed5b6f1-c733-4d7c-8e53-90c59b8f6e13
+  lessonDate: 2023-04-18T22:31:38.415Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonEvaluation
+  content: null
+- id: 199d9adc-d559-4e72-b368-0fee57cd1dc9
+  lessonDate: 2023-04-18T22:31:38.415Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: 5c29eced-f998-4b94-859d-562164724fd4
+  lessonDate: 2023-04-19T22:31:38.419Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: 0f2b33a2-d287-4d0e-aeea-623b6c8483d6
+  lessonDate: 2023-04-19T22:31:38.419Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonEvaluation
+  content: null
+- id: 4bea446a-5a18-41c0-a0d0-b0baf4b305ad
+  lessonDate: 2023-04-19T22:31:38.419Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: ec015331-d637-4d5e-8c30-91624bbed025
+  lessonDate: 2023-04-20T22:31:38.422Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: 49afd019-c934-493c-a01f-5076223b870c
+  lessonDate: 2023-04-20T22:31:38.422Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: d317c551-1ee8-4194-a68b-847e7c972eb0
+  lessonDate: 2023-04-23T22:31:38.424Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: 9e170b19-d77d-483d-a137-525ee0204223
+  lessonDate: 2023-04-23T22:31:38.424Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonEvaluation
+  content: null
+- id: fbef6ba6-a6ba-4626-9c43-ab0b1b42a5c5
+  lessonDate: 2023-04-23T22:31:38.424Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: a29297df-1a16-4afa-a4ed-ed8cf21a13d6
+  lessonDate: 2023-04-24T22:31:38.427Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonEvaluation
+  content: null
+- id: 117e1878-4234-4c67-aa9f-b47ac0d88c51
+  lessonDate: 2023-04-24T22:31:38.427Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: f16ce159-4ec7-4720-8386-707f6261336c
+  lessonDate: 2023-04-25T22:31:38.429Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: 9cfe8e00-5b5a-4596-9636-ecc5ade8e824
+  lessonDate: 2023-04-25T22:31:38.429Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonEvaluation
+  content: null
+- id: 85f9f3b9-b57c-47f9-b2f7-3ccc249883bb
+  lessonDate: 2023-04-25T22:31:38.429Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: ca330a2a-acfd-4379-82d0-353711dbc866
+  lessonDate: 2023-04-26T22:31:38.431Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: 764fdccb-37a0-4a16-a2fa-ef173b2c1c3a
+  lessonDate: 2023-04-26T22:31:38.431Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonEvaluation
+  content: null
+- id: 8a8fcc5a-1697-47e6-ab40-4c1a0b76482e
+  lessonDate: 2023-04-26T22:31:38.431Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: 0661c66d-fc58-4d4b-86a1-170df4d60c2e
+  lessonDate: 2023-04-27T22:31:38.439Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: 80befdc5-d589-4dc1-b9b5-31d1e8da2bd4
+  lessonDate: 2023-04-27T22:31:38.439Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: 58fc1fa5-f830-44ca-a842-33b10ef76cb2
+  lessonDate: 2023-04-30T22:31:38.441Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: b29f1973-fd04-4d1f-9e8d-4675fb852a14
+  lessonDate: 2023-04-30T22:31:38.441Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonEvaluation
+  content: null
+- id: 2b1446be-ba85-4758-b1ee-241fd1f2c4ff
+  lessonDate: 2023-04-30T22:31:38.441Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: 8f929464-f92f-464b-b172-b8303ecc080d
+  lessonDate: 2023-05-01T22:31:38.443Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: b246af1f-fa5f-49be-bd81-551437235de3
+  lessonDate: 2023-05-01T22:31:38.443Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonEvaluation
+  content: null
+- id: ca42d263-f741-4067-84eb-164ca129c6e9
+  lessonDate: 2023-05-01T22:31:38.443Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: 88f45683-fbc8-45ce-9e47-459ab169664f
+  lessonDate: 2023-05-02T22:31:38.445Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: b392123c-a7d4-4768-b292-bd238c358f4f
+  lessonDate: 2023-05-02T22:31:38.445Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonEvaluation
+  content: null
+- id: 4c7345ee-2ce3-44b5-a16b-f469e178c3f4
+  lessonDate: 2023-05-02T22:31:38.445Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: cdeee3bc-670a-4f82-8a51-3ae9a4ddfd2b
+  lessonDate: 2023-05-03T22:31:38.447Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: bd87faa6-f80e-46dd-80f6-20b95b0c611f
+  lessonDate: 2023-05-03T22:31:38.447Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonEvaluation
+  content: null
+- id: eec761e8-d5d5-4bbb-a2d9-70c881fc1fdc
+  lessonDate: 2023-05-03T22:31:38.447Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: 750eb377-650b-4337-b3ab-7a7b6953a8e8
+  lessonDate: 2023-05-04T22:31:38.448Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: 436501db-499d-4eb3-bd32-5ceb0d4c08b9
+  lessonDate: 2023-05-07T22:31:38.450Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: 9015c5fd-15c0-40b2-83f6-fefb084ad0be
+  lessonDate: 2023-05-07T22:31:38.450Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonEvaluation
+  content: null
+- id: ec74cb1c-f09c-447e-94e7-9e4b61519418
+  lessonDate: 2023-05-07T22:31:38.450Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: e2005aaf-1b57-4857-8b23-0c0349beffa8
+  lessonDate: 2023-05-08T22:31:38.453Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: a7946088-7a4d-45b9-893d-46fefb6502be
+  lessonDate: 2023-05-08T22:31:38.453Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: Note
+  content: null
+- id: f30b22ce-1531-40d7-af51-81c45f93b14c
+  lessonDate: 2023-05-09T22:31:38.455Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: 6fe3bc3e-35a8-4960-86b8-024041c32d48
+  lessonDate: 2023-05-10T22:31:38.455Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: 238eff2b-4e8b-496d-af71-10538deb38c7
+  lessonDate: 2023-05-11T22:31:38.456Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: null
+- id: 6c7ea501-3462-4cfc-8473-6cebe3cb03ae
+  lessonDate: 2023-05-14T22:31:38.457Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: null
+  type: LessonGoal
+  content: aaa
+- id: ea81d624-e093-4bea-8a08-82619e265e91
+  lessonDate: 2023-04-18T22:31:38.457Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 6f37f235-0255-49b4-88f4-ab12763bd039
+  lessonDate: 2023-04-18T22:31:38.457Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: d3a4d902-f169-4a8f-ae35-4614a5ba0d56
+  lessonDate: 2023-04-18T22:31:38.457Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: ed7e5a24-d6f9-4923-9ca2-aebfb734cffc
+  lessonDate: 2023-04-19T22:31:38.462Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 3a00690a-b3f2-476d-b419-425d0d917550
+  lessonDate: 2023-04-19T22:31:38.462Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: 58ef63b4-c273-4776-a0ef-5bd9ea853013
+  lessonDate: 2023-04-19T22:31:38.462Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: d1c9d806-1a70-4278-8120-9fca015ad837
+  lessonDate: 2023-04-20T22:31:38.464Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 3419c1c8-e1ee-44bd-87fe-d64cc5804bb3
+  lessonDate: 2023-04-20T22:31:38.464Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: b66ff867-af55-448b-914b-9a54cfa5a761
+  lessonDate: 2023-04-20T22:31:38.464Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: be212831-29e9-46cf-98e0-e0e98e2fc547
+  lessonDate: 2023-04-23T22:31:38.466Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 91e05711-a2c2-4616-81f1-263c61333dd8
+  lessonDate: 2023-04-23T22:31:38.466Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: 20d01f4b-e22b-462e-87a1-e7d6fe9623ff
+  lessonDate: 2023-04-23T22:31:38.466Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: 903910e3-5fb7-4dd3-8bfb-164fa8e60444
+  lessonDate: 2023-04-24T22:31:38.467Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: fd6d9eed-8003-47c0-a006-354185ff65f8
+  lessonDate: 2023-04-24T22:31:38.467Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: 46e539b0-1e6c-473f-b06c-45f4913a7c84
+  lessonDate: 2023-04-24T22:31:38.467Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: b3b623dd-a5ac-4c78-8822-6e4fab76384b
+  lessonDate: 2023-04-25T22:31:38.470Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 5c8577d3-18b0-4ce9-bad1-7c6a1f50c2c2
+  lessonDate: 2023-04-25T22:31:38.470Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: 32688d8d-7a1a-4f10-8181-f1d088cfa9bd
+  lessonDate: 2023-04-25T22:31:38.470Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: b97685e9-86bb-4f5c-bf13-ae3f8d57f241
+  lessonDate: 2023-04-26T22:31:38.471Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: db117a89-9dfc-4286-856e-0ad70a457e55
+  lessonDate: 2023-04-26T22:31:38.471Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: e98343ae-225a-4f9c-886c-f2be4aafce58
+  lessonDate: 2023-04-26T22:31:38.471Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: 7ea6f228-39a9-4f22-921d-dbbb3167633c
+  lessonDate: 2023-04-27T22:31:38.473Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: ae6e47ae-2c1c-4098-be69-012139098e9d
+  lessonDate: 2023-04-27T22:31:38.473Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: 6a4cb6a7-37f0-4fe0-8dfb-11e598877ad4
+  lessonDate: 2023-04-27T22:31:38.473Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: 06d29280-fc84-4cb4-8c1f-50c511724555
+  lessonDate: 2023-04-30T22:31:38.475Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: b77da94b-f48d-44f2-ba1b-0c84083be30e
+  lessonDate: 2023-04-30T22:31:38.475Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: fc5e6244-138c-42eb-a847-d66fb1a3137c
+  lessonDate: 2023-04-30T22:31:38.475Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: 25f7966f-b868-4805-8018-2171f3f5ef97
+  lessonDate: 2023-05-01T22:31:38.476Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 3713f893-218e-4790-a769-eef8ef3c22c5
+  lessonDate: 2023-05-01T22:31:38.476Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: ee5eb8d3-c834-4c78-92a0-b45fb4dfb5b7
+  lessonDate: 2023-05-01T22:31:38.476Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: 2cf0a91c-94d1-4746-bcc4-26b5f2d71192
+  lessonDate: 2023-05-02T22:31:38.478Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 5d9ae9c0-8632-44b2-95f1-1ff461dfe0e3
+  lessonDate: 2023-05-02T22:31:38.478Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: 14178ac7-9f6b-40a9-9526-02d2178ced64
+  lessonDate: 2023-05-02T22:31:38.478Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: e90b22bc-e9b4-4d54-824e-00d7bf5db898
+  lessonDate: 2023-05-03T22:31:38.481Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 6938db4a-09e1-44d4-8d55-34a69310432e
+  lessonDate: 2023-05-03T22:31:38.481Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: b6053216-cde2-42a7-8a8e-3d7a08aad90b
+  lessonDate: 2023-05-03T22:31:38.481Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: 78642929-ec0c-4c7a-9a0e-7f90ecdc5bd5
+  lessonDate: 2023-05-04T22:31:38.483Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: b6f4935c-1868-4539-88e3-f12124bb823c
+  lessonDate: 2023-05-04T22:31:38.483Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: 07413eeb-99e3-4231-ae2a-7a8f0c3ccb9f
+  lessonDate: 2023-05-04T22:31:38.483Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: b5f2bff5-08f9-43eb-98c4-2ea3e396d59c
+  lessonDate: 2023-05-07T22:31:38.486Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: a6de9684-d8f8-441b-ab42-b6d5641379ef
+  lessonDate: 2023-05-07T22:31:38.486Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: fe0f81ec-5192-4cde-ac14-5686f603f3ba
+  lessonDate: 2023-05-07T22:31:38.486Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: 8907204b-92b6-4851-a5db-8afcff56bbce
+  lessonDate: 2023-05-08T22:31:38.487Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 23f63a14-8d66-47f6-8650-fd637f000989
+  lessonDate: 2023-05-08T22:31:38.487Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonEvaluation
+  content: null
+- id: baf3bdd6-5b43-4812-890c-3774485575d0
+  lessonDate: 2023-05-08T22:31:38.487Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: Note
+  content: null
+- id: 42a9f289-0b7b-45d7-8990-d8e0afbec856
+  lessonDate: 2023-05-09T22:31:38.489Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: f16c5783-654e-4ac7-b5dd-bc773f3a4922
+  lessonDate: 2023-05-10T22:31:38.490Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 5906f461-49ca-4f9d-b7ff-c91e5d358b72
+  lessonDate: 2023-05-11T22:31:38.491Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 8dbc1891-d2e3-47ed-a3cf-423740c4557a
+  lessonDate: 2023-05-14T22:31:38.491Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 0
+  type: LessonGoal
+  content: null
+- id: 43f4f744-a327-4287-8ece-98020387961e
+  lessonDate: 2023-04-18T22:31:38.492Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 33bea7a9-b04e-4605-b0c6-38d8a52e63e1
+  lessonDate: 2023-04-18T22:31:38.492Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: f013c3f4-8b09-45b0-90d1-72b73770772a
+  lessonDate: 2023-04-18T22:31:38.492Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: d7ef5e0f-6588-463e-8226-faac44c5b868
+  lessonDate: 2023-04-19T22:31:38.494Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 6664f2e6-e3fa-4f64-8516-9ddf63655645
+  lessonDate: 2023-04-19T22:31:38.494Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: 11ebf570-573c-452c-8ad8-b1de07b7fe02
+  lessonDate: 2023-04-19T22:31:38.494Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: 97b09492-1258-42c2-a529-32e432400ec2
+  lessonDate: 2023-04-20T22:31:38.496Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 1028d565-1ed1-4b08-93bc-968abce56799
+  lessonDate: 2023-04-20T22:31:38.496Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: 0e86b995-2a6a-4272-bb38-ac6aff8cae17
+  lessonDate: 2023-04-20T22:31:38.496Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: 4ae96d3e-ceca-43a1-9c58-9a223c715522
+  lessonDate: 2023-04-23T22:31:38.498Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: bdac7a2f-4ca2-4a4e-bdd1-3aa41b1eaf69
+  lessonDate: 2023-04-23T22:31:38.498Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: a60c5f4e-d356-4ae6-8662-ce445c65d510
+  lessonDate: 2023-04-23T22:31:38.498Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: 05e05625-02e5-47ae-a2aa-449e1ffb39e0
+  lessonDate: 2023-04-24T22:31:38.500Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 55c68a6b-1ab2-4cb4-9a48-9cc042d95b21
+  lessonDate: 2023-04-24T22:31:38.500Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: d23c6b38-b81b-4d03-ba15-30980b9e7a6e
+  lessonDate: 2023-04-25T22:31:38.502Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: ce89da37-36ca-4687-9bae-30129e862738
+  lessonDate: 2023-04-25T22:31:38.502Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: df36e3d9-0a70-44f0-aaed-086ed94760cd
+  lessonDate: 2023-04-25T22:31:38.502Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: 971e3500-0c99-436b-848e-21f0ffb55add
+  lessonDate: 2023-04-26T22:31:38.504Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 4007e567-c300-41bc-b9e2-8a9859f0d32b
+  lessonDate: 2023-04-26T22:31:38.504Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: 15c0381e-3cf6-4ab5-985f-0f2ad9e37152
+  lessonDate: 2023-04-26T22:31:38.504Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: 071f5d9b-76fc-4ead-b2c8-76d4e345e260
+  lessonDate: 2023-04-27T22:31:38.506Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 33e16b2b-613a-47d6-aef4-aaac4ab17a35
+  lessonDate: 2023-04-27T22:31:38.506Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: c1e0adc2-c725-4cdc-832f-856ea02b8eb3
+  lessonDate: 2023-04-27T22:31:38.506Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: 75a2ce47-f3f7-434b-8a81-fc524ab339a8
+  lessonDate: 2023-04-30T22:31:38.508Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 07b08502-4da6-4913-8d00-f57eaf0dc7a7
+  lessonDate: 2023-04-30T22:31:38.508Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: 788deae9-31bf-471a-b28e-3953cc7e0f54
+  lessonDate: 2023-04-30T22:31:38.508Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: e7fe424d-76db-4088-8c5d-d781aaeddcc7
+  lessonDate: 2023-05-01T22:31:38.510Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 93fbb036-482d-4979-8c98-7f9006f20e0d
+  lessonDate: 2023-05-01T22:31:38.510Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: 6c4052f2-bca6-4b49-b042-e06e0b64be6a
+  lessonDate: 2023-05-01T22:31:38.510Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: d827056c-8267-4266-b54f-0c95f3de47ec
+  lessonDate: 2023-05-02T22:31:38.511Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 8adfa7ce-6801-4985-a548-3862771d5908
+  lessonDate: 2023-05-02T22:31:38.511Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: 0f24f34e-e34b-44a2-bca5-4fac47737ecf
+  lessonDate: 2023-05-02T22:31:38.511Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: cee5eaaa-7cbf-48fd-89f1-1b70aa95bcdf
+  lessonDate: 2023-05-03T22:31:38.514Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 56a86674-2f24-47ae-ac4f-4cd49fde7ed1
+  lessonDate: 2023-05-03T22:31:38.514Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: 1fd64fc8-c685-45ce-b000-786b7f26818d
+  lessonDate: 2023-05-03T22:31:38.514Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: 50e5829c-1d41-4956-a6f9-fa3ae7e7c98b
+  lessonDate: 2023-05-04T22:31:38.516Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: e3034185-bba1-42e2-84b8-0c4809254737
+  lessonDate: 2023-05-04T22:31:38.516Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: a49df253-8696-4d62-8588-32258b2a07af
+  lessonDate: 2023-05-04T22:31:38.516Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: 51d8f035-21f2-4342-8831-27a76fe91d83
+  lessonDate: 2023-05-07T22:31:38.519Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: b864552a-8ad0-4169-8a28-31108df7b7d7
+  lessonDate: 2023-05-07T22:31:38.519Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: bd9b47a2-6f2a-4e20-bbd1-2b2b938b1b0b
+  lessonDate: 2023-05-07T22:31:38.519Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: 74ef85dd-cb30-4346-bf7a-18c150aff295
+  lessonDate: 2023-05-08T22:31:38.520Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 00eaaff4-94a1-4261-bfe1-84fe7e42e2d9
+  lessonDate: 2023-05-08T22:31:38.520Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonEvaluation
+  content: null
+- id: 3f750d7b-521e-4840-bb31-ba5baf45bbca
+  lessonDate: 2023-05-08T22:31:38.520Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: Note
+  content: null
+- id: 0aa3ebfe-720e-4970-88c1-cd419f5999c5
+  lessonDate: 2023-05-09T22:31:38.522Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: 9454a9a7-d3c7-4064-aa05-b62d6fcafd52
+  lessonDate: 2023-05-10T22:31:38.522Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: ad6f5532-b903-4053-8e81-1d0136e837ca
+  lessonDate: 2023-05-11T22:31:38.523Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: e3242067-4b5b-45ec-835c-1930a1a7c373
+  lessonDate: 2023-05-14T22:31:38.523Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 1
+  type: LessonGoal
+  content: null
+- id: f01f09eb-96d0-49d1-a091-64afb80fa3d6
+  lessonDate: 2023-04-18T22:31:38.524Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: 1da55642-9870-4bf7-be4e-44f4af4f7692
+  lessonDate: 2023-04-18T22:31:38.524Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 78ae772a-dd52-446a-be48-7a1e0231e6e3
+  lessonDate: 2023-04-18T22:31:38.524Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: 31cd6489-225f-4a69-838e-d0c80e21766b
+  lessonDate: 2023-04-19T22:31:38.526Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: 1a72ff89-675f-4cf9-9dd2-c62a3f20db08
+  lessonDate: 2023-04-19T22:31:38.526Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 33804d3b-6b0c-4974-b676-7994d6b0030e
+  lessonDate: 2023-04-19T22:31:38.526Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: dad41292-fe83-4e4a-b9da-676b33d50469
+  lessonDate: 2023-04-20T22:31:38.527Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: 375e66fd-ebda-417b-ae06-2a867da8b96c
+  lessonDate: 2023-04-20T22:31:38.527Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 19a4cd5f-3714-43ba-9104-d0f4a31ce4b1
+  lessonDate: 2023-04-20T22:31:38.527Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: 08cfb1c1-b5b3-4984-b23f-66dfc63c75df
+  lessonDate: 2023-04-23T22:31:38.529Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: 41bf8b56-788f-48b1-975d-89eef2f73d38
+  lessonDate: 2023-04-23T22:31:38.529Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 5cf1feae-9c38-4d1c-bb14-890e3b7708b4
+  lessonDate: 2023-04-23T22:31:38.529Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: 14338096-376f-4ca6-a5a9-c03ecfc74c9f
+  lessonDate: 2023-04-24T22:31:38.531Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: cf3b97da-a66a-46ef-8c7f-cb0ec3a4177e
+  lessonDate: 2023-04-24T22:31:38.531Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 130816a4-85f1-44fa-86c4-f7a7bfcabd75
+  lessonDate: 2023-04-24T22:31:38.531Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: 8217d23f-0c94-411f-95a4-d52b684070dc
+  lessonDate: 2023-04-25T22:31:38.533Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: ac198e3c-42d6-49b0-b413-233311989c1d
+  lessonDate: 2023-04-25T22:31:38.533Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 46c0c914-6b63-400d-a41a-2b7c68f1eadc
+  lessonDate: 2023-04-25T22:31:38.533Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: 0ddd2ddc-e99a-4969-918b-14722a1bb231
+  lessonDate: 2023-04-26T22:31:38.536Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: 476e6f53-db1c-4fd5-9293-0307e2fce822
+  lessonDate: 2023-04-26T22:31:38.536Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 01a0b27a-173c-48fe-a3f8-0cb1d9e86d35
+  lessonDate: 2023-04-26T22:31:38.536Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: b8dbc8da-208e-42c4-9ad5-26386fda43b2
+  lessonDate: 2023-04-27T22:31:38.538Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: 3ab5fc42-444c-459a-b13c-12d0f8ba4c7d
+  lessonDate: 2023-04-27T22:31:38.538Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 540a5d21-055a-4e40-a62f-fd4b81273136
+  lessonDate: 2023-04-27T22:31:38.538Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: 95ac89d8-d5aa-4a86-8c4a-915d08a432fe
+  lessonDate: 2023-04-30T22:31:38.541Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: b42b934b-6437-42c2-b302-be173abf87bd
+  lessonDate: 2023-04-30T22:31:38.541Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 19386b8a-915b-4ac3-af84-0d57edbd7fd1
+  lessonDate: 2023-04-30T22:31:38.541Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: 42aecb62-d3c0-484a-820e-a1d8dc20af10
+  lessonDate: 2023-05-01T22:31:38.542Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: 4f2e5872-67cd-4962-a0bb-d343796ac4ee
+  lessonDate: 2023-05-01T22:31:38.542Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 553f9d36-ca9f-42b4-98e8-c5a39ac66f9d
+  lessonDate: 2023-05-01T22:31:38.542Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: 959ee8fc-6917-428b-a578-ca42883a8be9
+  lessonDate: 2023-05-02T22:31:38.544Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: c3d950d8-f3cc-4c9b-a61a-f79d0720b15f
+  lessonDate: 2023-05-02T22:31:38.544Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 0f761557-a63b-47fd-8cdf-aaa7d6f184a3
+  lessonDate: 2023-05-02T22:31:38.544Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: aca2fa6a-a1cc-4b04-997d-5bce8da62962
+  lessonDate: 2023-05-03T22:31:38.546Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: 54a857ca-9c54-4256-b9da-42f1980274d7
+  lessonDate: 2023-05-03T22:31:38.546Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: d73fee4d-03a5-4110-9afc-01fcb39b1e72
+  lessonDate: 2023-05-03T22:31:38.546Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: 40a8bb74-6f44-4294-b5c4-edd1e59641f5
+  lessonDate: 2023-05-04T22:31:38.548Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: aac4a14f-f56c-4504-8f2d-cecd47fc9e93
+  lessonDate: 2023-05-04T22:31:38.548Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: bad747c9-8abc-4d8f-adc9-4358faf7a652
+  lessonDate: 2023-05-04T22:31:38.548Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: b2267283-9de2-4ce1-91d3-722720b852db
+  lessonDate: 2023-05-07T22:31:38.550Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: ba3cdfc0-bb45-42db-8240-af587439afbb
+  lessonDate: 2023-05-07T22:31:38.550Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonEvaluation
+  content: null
+- id: 1038aeb9-e2de-49a5-9fdc-d265dbd40a3e
+  lessonDate: 2023-05-07T22:31:38.550Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: Note
+  content: null
+- id: 42b146b6-f796-4d57-941c-4447ad824064
+  lessonDate: 2023-05-08T22:31:38.554Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: 8961d470-d257-4f1c-82fd-48ba9b75480d
+  lessonDate: 2023-05-09T22:31:38.554Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: 241a7fa9-aa47-4eed-871f-5a867516911a
+  lessonDate: 2023-05-10T22:31:38.555Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: d1079a47-f018-4108-8151-7cc62444d4da
+  lessonDate: 2023-05-11T22:31:38.556Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
+- id: 3794e894-7a9a-422c-9279-7455dae11769
+  lessonDate: 2023-05-14T22:31:38.556Z
+  lessonClassId: 3.A
+  lessonSubjectId: MATH
+  pupilId: 2
+  type: LessonGoal
+  content: null
