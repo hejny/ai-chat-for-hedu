@@ -19,53 +19,55 @@ export function askChatGptThread(options: AskChatGptThreadOptions): Observable<s
         completionParams,
     });
 
-    return new Observable(async (subscriber) => {
-        let isDestroyed = false;
-        const responses: Array<{ requestText: string; responseText: string; responseId: string }> = [];
-        let parentMessageId: undefined | string = undefined;
+    return new Observable((subscriber) => {
+        (async () => {
+            let isDestroyed = false;
+            const responses: Array<{ requestText: string; responseText: string; responseId: string }> = [];
+            let parentMessageId: undefined | string = undefined;
 
-        let i = 0;
-        for (const requestText of requestTexts) {
-            i++;
+            let i = 0;
+            for (const requestText of requestTexts) {
+                i++;
 
-            console.info(chalk.gray(requestText));
-            const gptResponse = await chatGptApi.sendMessage(requestText, {
-                parentMessageId,
-                onProgress(partialResponse) {
-                    if (i !== requestTexts.length) {
-                        return;
-                    }
-                    // Only on last requestText
+                console.info(chalk.gray(requestText));
+                const gptResponse = (await chatGptApi.sendMessage(requestText, {
+                    parentMessageId,
+                    onProgress(partialResponse) {
+                        if (i !== requestTexts.length) {
+                            return;
+                        }
+                        // Only on last requestText
 
-                    subscriber.next(partialResponse.text);
-                },
-            });
+                        subscriber.next(partialResponse.text);
+                    },
+                })) as any;
 
-            parentMessageId = gptResponse.id;
+                parentMessageId = gptResponse.id;
 
-            console.info(gptResponse);
-            console.info(chalk.magenta(gptResponse.text));
+                console.info(gptResponse);
+                console.info(chalk.magenta(gptResponse.text));
 
-            responses.push({ requestText, responseText: gptResponse.text, responseId: gptResponse.id });
-        }
+                responses.push({ requestText, responseText: gptResponse.text, responseId: gptResponse.id });
+            }
 
-        const cacheDirPath = join(process.cwd(), 'data', 'chat', ...cache);
-        await mkdir(cacheDirPath, { recursive: true });
-        const cacheFilePath = join(cacheDirPath, `${Date.now()}.md`);
-        await writeFile(
-            cacheFilePath,
+            const cacheDirPath = join(process.cwd(), 'data', 'chat', ...cache);
+            await mkdir(cacheDirPath, { recursive: true });
+            const cacheFilePath = join(cacheDirPath, `${Date.now()}.md`);
+            await writeFile(
+                cacheFilePath,
 
-            responses
-                .map(
-                    ({ requestText, responseText, responseId }, i) =>
-                        requestText + `\n\n\n---\n\n<!-- ${responseId} -->\n\n\n` + responseText,
-                )
+                responses
+                    .map(
+                        ({ requestText, responseText, responseId }, i) =>
+                            requestText + `\n\n\n---\n\n<!-- ${responseId} -->\n\n\n` + responseText,
+                    )
 
-                .join(`\n\n\n---\n\n\n`),
-        );
+                    .join(`\n\n\n---\n\n\n`),
+            );
 
-        subscriber.next(responses[responses.length - 1].responseText);
-        subscriber.complete();
+            subscriber.next(responses[responses.length - 1].responseText);
+            subscriber.complete();
+        })();
 
         return () => void (isDestroyed = true);
     });
