@@ -36,6 +36,7 @@ export function RecordsFilter(props: RecordsFilterProps) {
                     })),
                 ]}
             />
+            {/*
             <SelectWithFirst
                 title={`Styl`}
                 value={sumarizationStyle}
@@ -46,6 +47,7 @@ export function RecordsFilter(props: RecordsFilterProps) {
                     { id: 'FULL' as ISumarizationStyle, title: `Podrobně` },
                 ]}
             />
+            */}
             <SelectWithFirst
                 title={`Předmět`}
                 value={subject}

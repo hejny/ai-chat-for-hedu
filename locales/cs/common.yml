@@ -8,6 +8,10 @@ Records:
     title: Záznamy
     content: Zde se zobrazují Vaše učitelské zápisky
 
+Journal:
+    title: Žurnál
+    content: Zde se můžete ptát na otázky ohledně vašich záznamů
+
 subjects:
     HISTORY: Dějepis
     MATH: Matematika

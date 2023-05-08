@@ -2,6 +2,7 @@ import moment from 'moment';
 import 'moment/locale/cs';
 import { capitalize } from 'n12';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import { useState } from 'react';
 import { Article } from '../../components/Article/Article';
 import { Section } from '../../components/Section/Section';
@@ -37,6 +38,11 @@ export function RecordsSection(props: RecordsProps) {
         <Section id="Records" className={styles.RecordsSection}>
             <h2>{t('Records.title')}</h2>
             <Article content={t('Records.content')} isEnhanced />
+
+            <Link href={'/chat'} className="button">
+                Zjistit informace
+            </Link>
+
             <RecordsFilter
                 {...{ pupils, subjects, pupil, setPupil, sumarizationStyle, setSumarizationStyle, subject, setSubject }}
             />

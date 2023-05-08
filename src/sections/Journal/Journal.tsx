@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import { useEffect, useReducer } from 'react';
 import { v4 } from 'uuid';
 import { Article } from '../../components/Article/Article';
@@ -65,9 +66,12 @@ export function JournalSection() {
 
     return (
         <Section id="Journal" className={styles.JournalSection}>
-            <h2>
-                <Article content={t('title')} />
-            </h2>
+            <h2>{t('Journal.title')}</h2>
+            <Article content={t('Journal.content')} isEnhanced />
+
+            <Link href={'/'} className="button">
+                Zadat informace
+            </Link>
 
             <Playground />
 

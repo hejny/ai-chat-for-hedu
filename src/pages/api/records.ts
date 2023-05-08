@@ -4,16 +4,18 @@ import { IRecord } from '../../model/__IRecord';
 
 let records: Array<IRecord>;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(request: NextApiRequest, response: NextApiResponse) {
     if (!records) {
+        console.log(`Creating new records`);
         records = MOCKED_RECORDS;
     }
 
-    if (req.method === 'GET') {
-        res.status(200).json({ records });
-    } else if (req.method === 'PUT') {
+    if (request.method === 'GET') {
+        return response.status(200).json({ records });
+    } else if (request.method === 'PUT') {
+        console.log(`Updating record`);
         try {
-            const newRecord = req.body.record;
+            const newRecord = request.body.record;
 
             if (!newRecord) {
                 throw new Error('No record');
@@ -26,14 +28,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
 
             const index = records.indexOf(oldRecord);
-            records[index] = newRecord;
+            records[index] = { ...oldRecord, ...newRecord };
 
-            res.status(200).json({ message: 'Records saved successfully' });
+            return response.status(200).json({ message: 'Record saved successfully' });
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Failed to save records' });
+            return response.status(500).json({ message: 'Failed to save records' });
         }
     } else {
-        res.status(405).json({ message: 'Method not allowed' });
+        return response.status(405).json({ message: 'Method not allowed' });
     }
 }

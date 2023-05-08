@@ -8,6 +8,10 @@ Records:
     title: Records
     content: Your teacher notes are displayed here
 
+Journal:
+    title: Žurnál
+    content: Zde se můžete ptát na otázky ohledně vašich záznamů
+
 subjects:
     HISTORY: History
     MATH: Mathematics
