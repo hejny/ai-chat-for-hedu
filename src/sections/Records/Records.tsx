@@ -5,10 +5,11 @@ import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 import { Article } from '../../components/Article/Article';
 import { Section } from '../../components/Section/Section';
-import { getPupilName, getTypeName, IPupilId, ISubjectId, ISumarizationStyle } from '../../model/__IRecord';
+import { getPupilName, IPupilId, ISubjectId, ISumarizationStyle } from '../../model/__IRecord';
 import { useFetchRecords } from '../../utils/hooks/useFetchRecords';
 import { extractPupils } from './extractPupils';
 import { extractSubjects } from './extractSubjects';
+import { Record } from './Record';
 import styles from './Records.module.css';
 import { RecordsFilter } from './RecordsFilter/RecordsFilter';
 import { recordsToCalendar } from './recordsToCalendar';
@@ -60,11 +61,7 @@ export function RecordsSection(props: RecordsProps) {
                                     <ul className={styles.records}>
                                         {records.map(({ id, type, content, contentSummarized }, i) => (
                                             <li className={styles.record} key={id}>
-                                                {content}
-                                                <div className="button">
-                                                    {content === null || content.trim() === '' ? 'Napsat' : 'Upravit'}{' '}
-                                                    {getTypeName(type)}
-                                                </div>
+                                                <Record record={{ id, type, content, contentSummarized }} />
                                             </li>
                                         ))}
                                     </ul>
