@@ -1,23 +1,17 @@
-import moment, { Moment } from 'moment';
+import moment from 'moment';
 import 'moment/locale/cs';
 import { capitalize } from 'n12';
 import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
 import { useState } from 'react';
 import { Article } from '../../components/Article/Article';
 import { Section } from '../../components/Section/Section';
 import { MOCKED_RECORDS } from '../../mocks/records';
-import {
-    IClassId,
-    IPupilId,
-    IRecord,
-    ISubjectId,
-    ISumarizationStyle,
-    RecordType,
-    string_markdown,
-} from '../../model/__IRecord';
+import { IPupilId, ISubjectId, ISumarizationStyle } from '../../model/__IRecord';
+import { extractPupils } from './extractPupils';
+import { extractSubjects } from './extractSubjects';
 import styles from './Records.module.css';
 import { RecordsFilter } from './RecordsFilter/RecordsFilter';
+import { recordsToCalendar } from './recordsToCalendar';
 
 interface RecordsProps {}
 
@@ -33,7 +27,10 @@ export function RecordsSection(props: RecordsProps) {
     const [sumarizationStyle, setSumarizationStyle] = useState<ISumarizationStyle>('SUMMARIZE');
     const [subject, setSubject] = useState<ISubjectId | null>(null);
 
-    const uniqueDates = extractUniqueDates(records);
+    const filteredRecords = records
+        .filter((record) => subject === null || record.lessonSubjectId === subject)
+        .filter((record) => record.pupilId === pupil);
+    const calendar = recordsToCalendar(...filteredRecords);
 
     return (
         <Section id="Records" className={styles.RecordsSection}>
@@ -43,7 +40,59 @@ export function RecordsSection(props: RecordsProps) {
                 {...{ pupils, subjects, pupil, setPupil, sumarizationStyle, setSumarizationStyle, subject, setSubject }}
             />
 
-            {Array.from(uniqueDates).map((date) => (
+            {calendar.map(({ date, subjectsAndClasses }) => (
+                <div key={date.toISOString()} className={styles.day}>
+                    <h2 className={styles.title}>{moment(date).format('D.M.YYYY')}</h2>
+                    <i className={styles.subtitle}>
+                        {capitalize(moment(date).locale('cs').calendar().split(' v ')[0])}
+                    </i>
+
+                    {subjectsAndClasses.map(({ classId, subjectId, pupils }) => (
+                        <div className={styles.lesson} key={subjectId + classId}>
+                            <h3 className={styles.title}>
+                                {subjectId} {classId}
+                            </h3>
+
+                            {/* TODO: !!! <div>{sumarizationStyle === 'FULL' ? record.content : record.contentSummarized}</div>*/}
+
+                            {pupils.map(({ pupilId, records }) => {
+                                const recordsJsx = (
+                                    <ul className={styles.records}>
+                                        {records.map(({ type, content, contentSummarized }, i) => (
+                                            <li
+                                                className={styles.record}
+                                                key={i /* <- TODO: Here should be recordId */}
+                                            >
+                                                {content}
+                                                <div className="button">
+                                                    {content === null || content.trim() === '' ? 'Napsat' : 'Upravit'}
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                );
+
+                                if (!pupilId) {
+                                    return (
+                                        <div key={'WHOLE_CLASS'} className={styles.wholeClass}>
+                                            {recordsJsx}
+                                        </div>
+                                    );
+                                } else {
+                                    return (
+                                        <div key={'WHOLE_CLASS'} className={styles.wholeClass}>
+                                            <h4 className={styles.title}>Záznamy k žákovi {pupilId}:</h4>
+                                            {recordsJsx}
+                                        </div>
+                                    );
+                                }
+                            })}
+                        </div>
+                    ))}
+                </div>
+            ))}
+
+            {/* TODO: Remove> Array.from(uniqueDates).map((date) => (
                 <div key={date} className={styles.day}>
                     <h2 className={styles.title}>{moment(date).format('D.M.YYYY')}</h2>
                     <i className={styles.subtitle}>
@@ -78,68 +127,7 @@ export function RecordsSection(props: RecordsProps) {
                             </div>
                         ))}
                 </div>
-            ))}
+            ))*/}
         </Section>
     );
 }
-
-function extractSubjects(records: IRecord[]): Set<ISubjectId> {
-    const uniqueSubjects = new Set<ISubjectId>();
-    records.forEach((record) => {
-        if (!record.lessonSubjectId) {
-            return;
-        }
-        uniqueSubjects.add(record.lessonSubjectId);
-    });
-    return uniqueSubjects;
-}
-
-function extractPupils(records: IRecord[]): Set<IPupilId> {
-    const uniquePupils = new Set<IPupilId>();
-    records.forEach((record) => {
-        if (!record.pupilId) {
-            return;
-        }
-        uniquePupils.add(record.pupilId);
-    });
-    return uniquePupils;
-}
-
-function extractUniqueDates(records: IRecord[]): Set<string> {
-    const dates: Array<Moment> = [];
-    records.forEach((record) => {
-        dates.push(moment(record.lessonDate));
-    });
-
-    // Note: Sort dates from newest to oldest
-    const uniqueDates = new Set(
-        dates.sort((date1, date2) => date2.diff(date1)).map((date) => date.format('YYYY/MM/DD')),
-    );
-
-    return uniqueDates;
-}
-
-type ICalendar = Array<{
-    date: Date;
-    subjectsAndClasses: Array<{
-        // Note: Now there are just listed records for subjectId+classId combination "Matematika 2.A" with whole class + each pupil
-        //       Records just for class without subject are not possible yet in ICalendar
-        //       Records just for pupil are not possible yet in ICalendar
-        classId: IClassId;
-        subjectId: ISubjectId;
-        pupils: Array<{
-            pupilId: IPupilId | null;
-            records: Array<{
-                type: keyof typeof RecordType;
-                content: string_markdown | null;
-                contentSummarized?: string_markdown | null;
-            }>;
-        }>;
-    }>;
-}>;
-
-function recordsToCalendar(...records: IRecord[]): ICalendar {
-    // !!! Implement
-}
-
-// TODO: !!! Extract function into files

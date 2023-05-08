@@ -6,10 +6,12 @@ export type IClassId = string;
 export type ISubjectId = string;
 
 export const RecordType = {
-    // !!! Or just as array of strings
+    // TODO: !!! Make as array of strings
     LessonGoal: 'LESSON_GOAL',
     LessonEvaluation: 'LESSON_EVALUATION',
     Note: 'NOTE',
+
+    // Kritéria úspěchu
 } as const;
 
 export interface IRecord {

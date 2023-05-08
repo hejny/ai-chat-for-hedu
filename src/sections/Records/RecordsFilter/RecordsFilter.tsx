@@ -27,7 +27,7 @@ export function RecordsFilter(props: RecordsFilterProps) {
                 value={pupil}
                 onChange={(newPerson) => void setPupil(newPerson)}
                 options={[
-                    { id: null, title: 'Můj' },
+                    { id: null, title: 'Celá třída' },
                     ...Array.from(pupils).map((pupilId) => ({
                         id: pupilId,
                         title: getPupilName(pupilId),
@@ -35,7 +35,7 @@ export function RecordsFilter(props: RecordsFilterProps) {
                 ]}
             />
             <SelectWithFirst
-                title={``}
+                title={`Styl`}
                 value={sumarizationStyle}
                 onChange={(newSumarizationStyle) => void setSumarizationStyle(newSumarizationStyle)}
                 numberOfButtons={2}
