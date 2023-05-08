@@ -52,6 +52,8 @@ export async function recordsScenario({
                         Zde jsou záznamy na základě kterých odpovíš:
                         ${block(
                             records
+                                // .filter(({ lessonSubjectId }) => lessonSubjectId === 'GEOGRAPHY')
+                                // .filter(({ pupilId }) => pupilId === 1)
                                 .map(
                                     ({ lessonClassId, lessonSubjectId, pupilId, content }) =>
                                         `-  ${
